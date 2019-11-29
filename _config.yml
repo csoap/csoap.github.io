@@ -6,7 +6,7 @@ email: csoap@gmail.com
 description: ""
 keyword: ""
 url: "http://czzz2.com"              # your host, for absolute URL
-#baseurl: "/295007712.github.io"         # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
@@ -83,7 +83,7 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 friends: [
     {
         title: "Hux Blog",
-        href: "http://huangxuan.me"
+        href: "http://czzz2.com"
     },{
         title: "Foo",
         href: "#"
