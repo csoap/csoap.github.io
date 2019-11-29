@@ -84,23 +84,5 @@ friends: [
     {
         title: "雨松MOMO的Blog",
         href: "https://www.xuanyusong.com/"
-    },{
-        title: "冯乐乐的Blog",
-        href: "http://candycat1992.github.io/"
-    },{
-        title: "Allen Kashiwa Blog",
-        href: "http://baizihan.me/#blog"
-    },{
-        title: "云雨的Blog",
-        href: "https://blog.codingnow.com/oiie/oiie/"
-    },{
-        title: "luzexi的Blog",
-        href: "http://www.luzexi.com/"
-    },{
-        title: "周孟康的Blog",
-        href: "https://mengkang.net/"
-    },{
-        title: "酷 壳 – CoolShell",
-        href: "https://coolshell.cn/"
     }
 ]
