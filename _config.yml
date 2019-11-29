@@ -47,7 +47,7 @@ kramdown:
 
 
 # Disqus settings
-#disqus_username: _your_disqus_short_name_
+disqus_username: CSoap
 
 # Duoshuo settings
 duoshuo_username: Cshaopblog
@@ -82,19 +82,25 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Hux Blog",
-        href: "http://czzz2.com"
+        title: "雨松MOMO的Blog",
+        href: "https://www.xuanyusong.com/"
     },{
-        title: "Foo",
-        href: "#"
+        title: "冯乐乐的Blog",
+        href: "http://candycat1992.github.io/"
     },{
-        title: "Bar",
-        href: "#"
+        title: "Allen Kashiwa Blog",
+        href: "http://baizihan.me/#blog"
     },{
-        title: "Example Friends",
-        href: "#"
+        title: "云雨的Blog",
+        href: "https://blog.codingnow.com/oiie/oiie/"
     },{
-        title: "It helps SEO",
-        href: "#"
+        title: "luzexi的Blog",
+        href: "http://www.luzexi.com/"
+    },{
+        title: "周孟康的Blog",
+        href: "https://mengkang.net/"
+    },{
+        title: "酷 壳 – CoolShell",
+        href: "https://coolshell.cn/"
     }
 ]
