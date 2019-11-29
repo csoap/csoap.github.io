@@ -47,7 +47,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: CSoap
+#disqus_username: CSoap
 
 # Duoshuo settings
 duoshuo_username: Cshaopblog
