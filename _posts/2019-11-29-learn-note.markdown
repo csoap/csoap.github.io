@@ -4,7 +4,7 @@ title:      "学习记录清单（不定期更新）"
 subtitle:   "个人学习清单"
 date:       2019-11-29
 author:     "CSoap"
-header-img: "img/post-bg-js-version.jpg"
+header-img: "img/home-bg-o.jpg"
 tags:
     - 其他
 ---
