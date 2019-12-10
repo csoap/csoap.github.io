@@ -75,7 +75,7 @@ sidebar-avatar: /img/avatar-csoap.jpg      # use absolute URL, seeing it's used 
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
 
 
 
@@ -84,9 +84,9 @@ friends: [
     {
         title: "雨松MOMO的Blog",
         href: "https://www.xuanyusong.com/"
-    },{
-        title: "冯乐乐的Blog",
-        href: "http://candycat1992.github.io/"
+    # },{
+    #     title: "冯乐乐的Blog",
+    #     href: "http://candycat1992.github.io/"
     },{
         title: "Allen Kashiwa Blog",
         href: "http://baizihan.me/#blog"
