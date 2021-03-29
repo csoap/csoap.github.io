@@ -12,12 +12,13 @@ tags:
 
 #### 优先队列 PriorityQueue
 优先队列把优先级最高的元素设为链表的头节点，这样我们获取或删除优先级最高的元素只要O(1)的时间复杂度，这么设计的代价就是牺牲插入的效率，每插如一个元素，都需要迭代链表，并找合适的地方插如，这个时间复杂度往往是O(n)。
-以下是优先队列支持的操作:
+以下是优先队列支持的操作
 - push 插入一个新的元素
 - pop 将优先级最高的元素弹出
 - peek 查看优先级最高的值
 #### 代码实现
 优先队列的定义和链表很相似，首先我们需要定义节点Node和PriorityQueue
+
 ```
 public class PriorityQueue{
     static class Node{
@@ -31,8 +32,10 @@ public class PriorityQueue{
     }
     Node head = null;
 }
+
 ```
-Node就是的队列中的节点，包含value和优先级priority，如果希望数值越大的节点优先级越高，可以将priority的数值设为和value一样。反之，我们可以将priority设为数值相反值，那么在队列中，一个数值越小，优先级就越高。在PriorityQueue中，我们只需要记录一个头节点head即可。以下是push定义：
+Node就是的队列中的节点，包含value和优先级priority，如果希望数值越大的节点优先级越高，可以将priority的数值设为和value一样。反之，我们可以将priority设为数值相反值，那么在队列中，一个数值越小，优先级就越高。在PriorityQueue中，我们只需要记录一个头节点head即可。以下是push定义
+
 ```
 public void push(int value, int priority){
     if(head == null){
@@ -53,7 +56,9 @@ public void push(int value, int priority){
     }
 }
 ```
-在push中，我们需要检查是否头节点为空，如果是，那么就将新的节点设置为头节点。如果新节点优先级高于头节点，则新节点代替成为头节点。反之，迭代循环头节点，将新的节点插如一个特定位置，插入后之前节点的优先级都比新节点高，之后的节点优先级都比新节点小。接着实现peek 和pop:
+
+在push中，我们需要检查是否头节点为空，如果是，那么就将新的节点设置为头节点。如果新节点优先级高于头节点，则新节点代替成为头节点。反之，迭代循环头节点，将新的节点插如一个特定位置，插入后之前节点的优先级都比新节点高，之后的节点优先级都比新节点小。接着实现peek 和pop
+
 ```
 public Node peek(){
     return head;
@@ -71,6 +76,7 @@ public bool isEmpty(){
     return head == null;
 }
 ```
+
 复杂度分析
 - push: O(n)
 - pop: O(1)
@@ -101,7 +107,8 @@ heap 是一种特殊的平衡二叉树，堆中的节点满足以下条件：一
 4. 如果父节点的数值比子节点小，替换父子节点
 5. 重复 3，4 步骤，知道最大堆的特性被满足。
 #### 实现方式:Array
-虽然堆看起来非常像数，但是我们不用链表形式的节点来实现。因为堆的特殊属性，我们可以直接使用数组来实现。数组:[0][1][2][3][4][5][6],以下是最大堆heap的定义：
+虽然堆看起来非常像数，但是我们不用链表形式的节点来实现。因为堆的特殊属性，我们可以直接使用数组来实现。数组:[0][1][2][3][4][5][6],以下是最大堆heap的定义
+
 ```
 public class MaxHeap{
     private int capacity;
@@ -114,7 +121,9 @@ public class MaxHeap{
     }
 }
 ```
-其中capicity记录了可承载的节点数量，array就是用来储存节点的数组。而以下是一些有用的helper methods：
+
+其中capicity记录了可承载的节点数量，array就是用来储存节点的数组。而以下是一些有用的helper methods
+
 ```
 private int getLeftChildIndex(int parentIndex){
     return 2 * parentIndex + 1;
@@ -152,7 +161,9 @@ private int rightChild(int parentIndex){
     return array[getRightChildIndex(parentIndex)];
 }
 ```
-getLeftChildIndex就是拿到一个父节点左孩子节点的数组位置，hasLeftChild查看一个节点是否拥有一个不为空的左孩子，lefChild就是拿到左孩子的数值。接下来是核心函数add的实现：
+
+getLeftChildIndex就是拿到一个父节点左孩子节点的数组位置，hasLeftChild查看一个节点是否拥有一个不为空的左孩子，lefChild就是拿到左孩子的数值。接下来是核心函数add的实现
+
 ```
 //Time Complexity:O(logN)
 public void add(int item){
@@ -175,7 +186,9 @@ private void heapifyUp(){
     }
 }
 ```
-在add中，首先查看数组是否为空，如果为空，则拓展数组的容量。不然就将新元素插如最后一个元素，然后heapifyUp新元素，heapifyUp的作用就是将元素不断与父节点对比，直到将新元素排到一个位置，它的父节点比他大，子节点都比他小。接下来再看一个核心函数poll:
+
+在add中，首先查看数组是否为空，如果为空，则拓展数组的容量。不然就将新元素插如最后一个元素，然后heapifyUp新元素，heapifyUp的作用就是将元素不断与父节点对比，直到将新元素排到一个位置，它的父节点比他大，子节点都比他小。接下来再看一个核心函数poll
+
 ```
 //Tiem Complexity O(logN)
 public void poll(){
@@ -204,7 +217,9 @@ private void heapifyDown(){
     }
 }
 ```
-在poll中，我们将最后一个元素放在第一位，然后对第一位元素进行heapifyDown,其作用就是将此元素与子节点比较，然后插入到一个位置，其父节点都比此节点大，子节点都比其子节点小。最后是peek的实现：
+
+在poll中，我们将最后一个元素放在第一位，然后对第一位元素进行heapifyDown,其作用就是将此元素与子节点比较，然后插入到一个位置，其父节点都比此节点大，子节点都比其子节点小。最后是peek的实现
+
 ```
 //Time Complexity O(1)
 public int peek(){
@@ -214,4 +229,5 @@ public int peek(){
     return array[0];
 }
 ```
+
 以上就是最大堆的实现，最小堆只需要实现有关大小比对的逻辑取反即可。
