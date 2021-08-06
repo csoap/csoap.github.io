@@ -108,3 +108,11 @@ tags:
             - 如何实现重定向
 
 - ToLua
+    - Tolua是Unity静态绑定lua的一个解决方案，它通过C#中集成lua的插件，可以自动生成用于在lua中访问Unity的绑定代码，并把C#中的常量、变量、函数、属性、类以及枚举暴露给lua。其从cstolua衍变而来。
+    - wrap文件是如何生成，为什么要生成wrap？
+    -  lua是怎么获取、调用c#的静态方法、成员方法？c#对象在lua栈里是以什么形式存在的？
+    - c#如何调用到lua的方法的？tolua是怎么把lua的table、function转成c#的table、function实例的？
+    - tolua把对象存在objects里，而值类型的Struct如果存在objects了，会发生封箱、拆箱的操作，tolua是如何避免的？
+    - objects里的对象是什么时候会被移除？lua怎样才算正确释放了c#对象？
+    - 利用tolua如何实现热更？
+    - 针对lua和c#的交互有什么优化手段？
