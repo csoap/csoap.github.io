@@ -60,7 +60,7 @@ tags:
 
 - ios平台推荐PVRTC
     - 优点：保证图片比较清晰，比较小
-    - 缺点：对透明的支持不好，比如拿字符集图片，RGBA Compressed PVRTC格式的图片比较模糊，RGB Compressed PVRTC比较清晰
+    - 缺点：对透明的支持不好，比如拿字符集图片，在IOS平台，默认的压缩格式是RGBA Compressed PVRTC 4 / RGB Compressed PVRTC 4。但RGBA的图片压缩后的效果看起来要比RGB的图片效果差很多，所以通常的解决办法是将带alpha通道的贴图分成两个不带通道的贴图，一张储存颜色信息，另一张存alpha值，和在安卓平台中使用ETC1时拆分RGBA贴图的处理方式一样。
     - PVRTC贴图的要求
         - 正方形的纹理
         - 2 的n次方，这个如何保证？
@@ -76,6 +76,10 @@ tags:
     - 支持透明
     - 压缩比高
     - 压缩快大小可调 （12 * 12 ~ 4 * 4）
+- 所以最后结论是：
+    - Android：如果对贴图质量要求高比如某些UI，使用RGBA32/RGB32。如果对质量无特殊要求而且目标机型是中高端机型，使用ETC2。如果是全机型通用或者要考虑某些低端机型（如红米的部分机型），使用ECT1拆分alpha通道的方式。
+
+    - IOS：如果对贴图质量要求高比如某些UI，使用RGBA32/RGB32。如果对质量无特殊要求，使用RGB Compressed PVRTC 4拆分alpha通道的方式。
 
 | 压缩快大小 | bpp |
 | :-----| ----: |
@@ -90,3 +94,8 @@ tags:
     比如安卓手机不支持ETC2，会回退到ETC2 fallback设置的参数，例子：每个像素32位（有点太大），如何设置如下
     - 例：File-> BuildSeting->选择android平台，有个ETC2 fallback，设置32bit
 
+- 提问
+    - 计算下面贴图的大概尺寸，并说明在不同平台你会如何选择？为什么？
+        - 1024 * 1024 RGBA Compressed ETC2 8bits
+        - 1024 * 1024 RGB Compressed ASTC 6 * 6 block
+    - 假如有一实时战斗竞技游戏，一场战斗里，每个游戏角色需要2张1024*1024贴图，异常战斗预估最多24各角色，在苹果ASTC_RGBA(6 * 6)格式下占多大内存？
