@@ -10,10 +10,10 @@ tags:
 ---
 - 算法篇
     - GC的历史
-        - 1960年john McCarthy发布了GC标记-清除算法的论文，会检查所有的活动和非活动对象
+        - 1960年John McCarthy发布了GC标记-清除算法的论文，会检查所有的活动和非活动对象
         - 1960年Geirge E.Collins在论文发布了叫做引用技术的GC算法
             - 有个缺点，不能回收“循环利用”，两个或以上对象循环互相引用
-        - 1963年 Marvin L.Minsky在论文发布了复制算法。GC复制算法把内存分成两部分,GC复制算法只检查活动对象。
+        - 1963年Marvin L.Minsky在论文发布了复制算法。GC复制算法把内存分成两部分,GC复制算法只检查活动对象。
         > 后续的算法发布基本上实在这三种算法进行组合和应用
     - 学习GC之前
         - 对象是GC的基本单位，对象由“头”和“域”组成
@@ -61,12 +61,12 @@ tags:
         - 标记
             - 首先要标记通过根直接引用的对象。递归地标记通过指针能访问到的对象，这边使用的是深度优先搜索。
             > 比较一下内存使用量（已存储的对象数量）就可以知道，深度优先搜索比广度优先搜索更能压低内存使用量。因此我们在标记阶段经常用到深度优先搜索。
+
             ```
             mark_phase(){
                 for(r : $roots)
                 mark(*r)
             }
-
             mark(obj){
                 if(obj.mark == FALSE)
                 obj.mark = TRUE
@@ -74,8 +74,120 @@ tags:
                 mark(*child)
             }
             ```
+
             ![设置标志位的处理](http://csoap.github.io/img/in-post/post-js-version/gc_2.png "设置标志位的处理")
         - 清除
+            - 非活动对象回收再利用。回收对象就是把对象作为分块，连接到被成为“空闲链表”的单向链表。在之后进行分配的时候，这个空闲链表就可以找到分块了。
+
+            ```
+            sweep_phase(){
+                sweeping = $heap_start
+                while(sweeping < $heap_end)
+                    if(sweeping.mark == TRUE)
+                        sweeping.mark = FALSE
+                    else
+                        sweeping.next = $free_list
+                        $free_list = sweeping
+                        sweeping += sweeping.size
+            }
+            ```
+
+            ![清除阶段结束后的堆状态](http://csoap.github.io/img/in-post/post-js-version/gc_3.png "清除阶段结束后的堆状态")
+
+        - 分配
+            - 搜索空闲链表并找到大小合适的分块，成为分配。
+            - 思考。当mutator申请分块时，怎样才能把大小合适的分块分配给mutator？
+                - pickup_chunk() 函数用于遍历 $free_list，寻找大于等于 size 的分块。它
+不光会返回和 size 大小相同的分块，还会返回比 size 大的分块。如果它找到和 size 大小相同的分块，则会直接返回该分块；如果它找到比 size 大的分块，则会将其分割成 size 大小的分块和去掉 size 后剩余大小的分块，并把剩余的分块返回空闲链表
+            ```
+            new_obj(size){
+                chunk = pickup_chunk(size, $free_list)
+                if(chunk != NULL)
+                    return chunk
+                else
+                    allocation_fail()
+            }
+            ```
+            - 分配策略
+                - First-fit。最初发现大于等于size的分块就会**立即返回**改方块。上述分配就是First-fit
+                    - 考虑到是分配所需的时间，First-fit最快。
+                - Best-fit。遍历空闲链表，返回大于等于size的**最小**分块
+                - Worst-fit。找出空闲链表中最大的分块，将其分割成mutator申请的大小和分割后剩余的大小。
+                    - 目的是将分割后剩余的分块最大化
+                    - 缺点： 很容易生成大量小的分块。不推荐。
+            - 合并
+                - 根据分配策略的不同可能产生大量的小分块，如果他们是连续的，就能把所有的小分块连在一起形成一个大分块
+        - 优点
+            - 算法简单，与其他算法组合相应也简单
+            - 与保守式GC算法兼容，对象不能被移动
+        - 缺点
+            - 碎片化
+                -  GC 标记 - 清除算法的使用过程中会逐渐产生被细化的分块，不久后就会导致无数的小分块散布在堆的各处。
+                - 极端情况下，即使堆中分块的总大小够用，也会因为一个个的分块都太小而不能进行分配。还会导致把具有引用关系的对象安排在堆中较远的位置，就会增加访问所需的时间
+                - 如何避免？
+                    - 压缩
+                    - BiBOP
+            - 分配速度，每次分配都得遍历空闲链表，找到足够的分块，最差情况要遍历到最后。
+            - 与写实时复制技术不兼容。what？
+        - 多个空闲链表
+            - 创建只链接打分快的空闲链表和只链接小分块的空闲链表，只要按照mutator所申请的分块大小选择空闲链表，即可在短时间内找到符合条件的分块。
+
+            ![利用多个空闲链表的情况](http://csoap.github.io/img/in-post/post-js-version/gc_4.png "利用多个空闲链表的情况")
+            - 思考？那到底要多少个空闲链表。避免空闲链表的空间过于巨大，压迫到内存空间。
+            - 最佳策略：因为分配非常大的分块是罕见的，更重要的是怎么去更快地搜索mutator频繁申请分配的小分块。
+                - 比如，假定分块大小上限为100个字，那么准备1、2、3、...100个字， 大于等于101个字总共100个空闲聊表即可。
+        - BiBOP（Big Bag Of Pages）。把堆分割成固定大小的块，让每个块只能配置同样大小的对象
+            - 优点：为每个块中只能配置同样大小的对象，所以不可能出现大小不均的分块
+            - 缺点：比方说在全部用于2个字的块中，只有1到2个活动对象，这种情况下就不能算是有效利用了堆。
+
+            ![BiBOP法的示意图](http://csoap.github.io/img/in-post/post-js-version/gc_5.png "BiBOP法的示意图")
+        - 位图标记
+            - why？以往的标记操作都是直接对对象设置标志位，这会产生无谓的复制。
+            - what?只收集各个对象的标志位并表格化，不跟对象一起管理。在
+标记的时候，不在对象的头里置位，而是在这个表格中的特定场所置位，利用表格进行标记的行为成为“位图标记”
+            - 优点
+                - 与写时复制技术兼容, 仅存在linux
+                - 清除更高效，以往的清除操作都必须遍历整个堆，把非活动对象连接到空闲链表，同时取消活动对象的标志位。
+        - 延迟清除法
+            - 延迟清除法（Lazy Sweep）是缩减因清除操作而导致的 mutator 最大暂停时间的方法。在标记操作结束后，不一并进行清除操作，而是如其字面意思一样让它延迟。因为为延迟清除法不是一下遍历整个堆，它只在**分配**时执行必要的遍历
+            - 延迟清除法中的new_obj()函数
+
+            ```
+            new_obj(size){
+                chunk = lazy_sweep(size) //用清除操作来分配分块
+                // 返回 NULL时，也就是没有找到分块
+                if(chunk != NULL)
+                    return chunk
+                mark_phase() // 执行标记操作
+                chunk = lazy_sweep(size)
+                if(chunk != NULL)
+                    return chunk
+                allocation_fail()
+            }
+            lazy_sweep(size){
+                while($sweeping < $heap_end)
+                    if($sweeping.mark == TRUE)
+                        $sweeping.mark = FALSE
+                    else if($sweeping.size >= size)
+                        chunk = $sweeping
+                        $sweeping += $sweeping.size
+                    return chunk
+                    $sweeping += $sweeping.size
+                $sweeping = $heap_start // 遍历的开始位置位于上一次清除操作中发现的分块的右边。
+                return NULL
+            }
+            ```
+
+            - 思考？有延迟清除法就够了吗？
+                - 程序在清除垃圾较多的部分时能马上获得分块，所以能减少 mutator 的暂停时间。然而一旦程序开始清除活动对象周围，就怎么也无法获得分块了，这样就增加了mutator 的暂停时间。
+                - 思考如何解决？
+
+            ![堆里垃圾分布不均的情况](http://csoap.github.io/img/in-post/post-js-version/gc_6.png "堆里垃圾分布不均的情况")
+
+
+
+
+    - 引用计数法
 - 实现篇
     - python的垃圾回收
 
