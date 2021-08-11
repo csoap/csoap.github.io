@@ -1,0 +1,28 @@
+---
+layout:     post
+title:      "GC引用计数法"
+subtitle:   "阅读《垃圾回收的算法与实现》一书摘录与思考"
+date:       2019-11-29
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - gc
+---
+- what？
+    - 引用计数法运用一个计数器，计数器指的是有**多少**程序引用了这个对象。计数器是无符号的整数。
+
+        ![引用计数法中的对象](http://csoap.github.io/img/in-post/post-js-version/gc_7.png "引用计数法中的对象")
+        - 两种情况会导致计数器的值发生增减
+            - new_obj()
+            - update_ptr()
+
+        ```
+        new_obj(size){
+            obj = pickup_chunk(size, $free_list)
+            if(obj == NULL)
+                allocation_fail() //返回 NULL 那一刻，堆中就没有合适大小的分块了
+            else
+                obj.ref_cnt = 1 // 计数器为1
+                return obj
+        }
+        ```
