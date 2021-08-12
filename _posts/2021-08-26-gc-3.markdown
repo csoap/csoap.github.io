@@ -1,0 +1,12 @@
+---
+layout:     post
+title:      "GC复制算法"
+subtitle:   "阅读《垃圾回收的算法与实现》一书摘录与思考"
+date:       2021-08-12
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - gc
+---
+- GC复制算法
+    - 只把某个空间里的活动对象复制到其他空间，把空间里的所有对象都回收掉。复制活动对象的原空间称为 From 空间，将粘贴活动对象的新空间称为 To 空间。
