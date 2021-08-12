@@ -25,4 +25,225 @@ tags:
                 obj.ref_cnt = 1 // 计数器为1
                 return obj
         }
+
+        update_ptr(ptr, obj){
+            inc_ref_cnt(obj) //对指针 ptr 新引用的对象（obj）的计数器进行增量操作
+            dec_ref_cnt(*ptr) //对指针 ptr 之前引用的对象（*ptr）的计数器进行减量操作
+            *ptr = obj
+        }
+
+        inc_ref_cnt(obj){
+            obj.ref_cnt++
+        }
+
+        dec_ref_cnt(obj){
+            obj.ref_cnt--
+            if(obj.ref_cnt == 0)
+                for(child : children(obj))
+                    dec_ref_cnt(*child)
+                reclaim(obj) //将obj链接到空闲链表
+        }
         ```
+
+        ![update_ptr()函数执行时的情况](http://csoap.github.io/img/in-post/post-js-version/gc_8.png "update_ptr()函数执行时的情况")
+
+        - 优点
+            - 可即刻回收垃圾。
+                -当被引用数的值为0时，对象马上就会把自己作为空闲空间连接到空闲链表。也就是说，各个对象变成垃圾的同时会理科被回收。
+            - 最大暂停时间短。
+                - 因为每次通过执行mutator生成垃圾时这部分垃圾都会被回收，大幅度减少mutator的最大暂停时间
+            - 没有必要由根沿指针查找。
+                - 打个比方，在分布式环境中，如果要沿各个计算节点之间的指针进行查找，成本就会增大，因此需要极力控制沿指针查找的次数。
+        - 缺点
+            - 计数器值的增减处理繁重
+                - 大多数情况下指针都会频繁的更新。每当指针更新时，计数器的值都都会随之更新，因此值得增减处理必然变得更繁重。
+            - 计数器需要占用很多位
+                - 假如我们用的是 32 位机器，那么就有可能要让 2 的 32 次方个对象同时引用一个对象。考虑到这种情况，就有必要确保各对象的计数器有 32 位大小，使得内存空间使用效率大大降低。
+            - 实现繁琐复杂。
+                - 我们需要把以往写成 *ptr=obj 的地方都重写成update_ptr(ptr,obj)，因为mutator调用 update_ptr() 函数的地方非常多，所以重写过程中很容易出现遗漏。
+            - 循环引用无法回收
+
+        ![循环引用对象](http://csoap.github.io/img/in-post/post-js-version/gc_9.png "循环引用对象")
+
+    - 引用计数法有很多缺点。为何很多处理系统和应用都在使用引用计数法。因为只要稍作**改良**，如何改良如下：
+    - 延迟引用计数法
+        - 在延迟引用计数法中使用 ZCT（Zero Count Table）。ZCT 是一个表，它会事先记录下计数器值在 dec_ref_cnt() 函数的作用下变为 0 的对象。因为计数器值为 0 的对象不一定都是垃圾，所以暂时先将这些对象保留。仅在无法分配大小合适得分块的时候，会执行回收。
+
+        ![ZCT](http://csoap.github.io/img/in-post/post-js-version/gc_10.png "ZCT")
+
+        ```
+        dec_ref_cnt(obj){
+            obj.ref_cnt--
+            if(obj.ref_cnt == 0)
+                if(is_full($zct) == TRUE)
+                    scan_zct()
+                push($zct, obj)
+        }
+
+        new_obj(size){
+            obj = pickup_chunk(size, $free_list)
+            if(obj == NULL) //如果第一次分配没有顺利进行，就意味着空闲链表中没有了大小合适的分块。此时程序要搜索一遍 $zct，以再次分配分块。
+                scan_zct()
+                obj = pickup_chunk(size, $free_list)
+            if(obj == NULL)
+                allocation_fail()
+            obj.ref_cnt = 1
+            return obj
+        }
+
+        scan_zct(){
+            for(r : $roots)
+                (*r).ref_cnt++
+            for(obj : $zct)
+                if(obj.ref_cnt == 0)
+                    remove($zct, obj)
+                    delete(obj)
+            for(r : $roots)
+                (*r).ref_cnt--
+        }
+
+        delete(obj){
+            for(child : children(obj)
+                (*child).ref_cnt--
+                if((*child).ref_cnt == 0)
+                    delete(*child)
+            reclaim(obj)
+        }
+        ```
+
+    - Sticky引用计数法
+        - 把引用计数法和 GC 标记 - 清除算法结合起来，用来减少计数器位宽
+            - 什么也不做
+                - 对于计数器溢出的对象，我们可以这样处理：不再增减计数器的值，就把它放着，什么也不做。不过这样一来，即使这个对象成了垃圾（即被引用数为 0），也不能将其回收。也就是说，白白浪费了内存空间。
+            - 使用GC标记-清除算法进行管理
+
+            ```
+            mark_sweep_for_counter_overflow(){
+                reset_all_ref_cnt() //所有对象的计数器值都设为 0
+                mark_phase()
+                sweep_phase()
+            }
+            // 标志阶段
+            mark_phase(){
+                for(r : $roots)
+                    push(*r, $mark_stack) //把由根直接引用的对象堆到标记栈里
+                //按顺序从标记栈取出对象，对计数器进行增量操作
+                while(is_empty($mark_stack) == FALSE)
+                    obj = pop($mark_stack)
+                    obj.ref_cnt++
+                    if(obj.ref_cnt == 1)
+                        for(child : children(obj))
+                            push(*child, $mark_stack)
+            }
+            //清除阶段
+            sweep_phase(){
+                sweeping = $heap_top
+                //搜索整个堆，回收计数器值仍为 0 的对象
+                while(sweeping < $heap_end)
+                    if(sweeping.ref_cnt == 0)
+                        reclaim(sweeping)
+                    sweeping += sweeping.size
+            }
+            ```
+        - 优点：
+            - 在计数器溢出后即使对象成了垃圾，程序还是能回收它
+            - 能回收循环的垃圾
+        - 缺点
+            - 在进行标记处理之前，必须重置所有的对象和计数器，吞吐量会缩小
+        - 极端例子：1位引用计数法（懒得深入了解了。。）
+    
+    - 部分标记-清除算法
+        - 只对“可能有循环引用的对象群”使用 GC 标记 - 清除算法，对其他对象进行内存管理时使用引用计数法。
+        - 特点：执行一般的 GC 标记 - 清除算法的目的是查找活动对象，而执行部分标记 - 清除算法的目的则是查找非活动对象。
+        - 对象会被涂成4种不同得颜色来进行管理
+            - **涂颜色**：往头中分配2位空间，用00~11的值对应这4个颜色。
+            - 黑black：绝对不是垃圾的对象，对象产生时的初始颜色
+            - 白white：绝对是垃圾的对象
+            - 灰gray：搜索完毕的对象
+            - 阴影hatch：可能是循环垃圾的对象
+
+        - 具体实现如下
+        - 通过mutator删除由根到对象A的引用。这个引用是由 update_ptr() 函数产生的。跟以往的引用计数法一样，为了将对象 A 的计数器减量，在 update_ptr() 函数中调用 dec_ref_cnt() 函数
+
+        ```
+        dec_ref_cnt(obj){
+            obj.ref_cnt--
+            if(obj.ref_cnt == 0)
+                delete(obj)
+            else if(obj.color != HATCH)
+                obj.color = HATCH
+                enqueue(obj, $hatch_queue) //加入hetch队列
+        }
+        ```
+
+        ![dec_ref_cnt()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_11.png "dec_ref_cnt()函数执行之后")
+
+        - 由根到 A 的引用被删除了，指向 A 的指针被追加到了队列（$hatch_queue）之中。此外，A 被涂上了阴影。这个队列的存在是为了连接那些可能是循环引用的一部分的对象。被连接到队列的对象会被作为 GC 标记 - 清除算法的对象，使得循环引用的垃圾被回收。
+
+        ```
+        new_obj(size){
+            obj = pickup_chunk(size)
+            if(obj != NULL)
+                obj.color = BLACK //可以分配直接涂黑
+                obj.ref_cnt = 1
+                return obj
+            else if(is_empty($hatch_queue) == FALSE) //检查队列是否空
+                scan_hatch_queue() // 搜索队列，分配分块
+                return new_obj(size)
+            else
+                allocation_fail()
+        }
+
+        scan_hatch_queue(){
+            obj = dequeue($hatch_queue)
+            if(obj.color == HATCH) // 当 obj 没有被涂上阴影时，就意味着 obj 没有形成循环引用
+                paint_gray(obj) // 查找对象进行计数器的减量操作，把对象涂成灰色是为了防止程序重复搜索
+                scan_gray(obj) //搜索灰色对象，把计数器值为 0 的对象涂成白色。
+                collect_white(obj) // 回收白色对象
+            else if(is_empty($hatch_queue) == FALSE)
+                scan_hatch_queue()
+        }
+
+        paint_gray(obj){
+            if(obj.color == (BLACK | HATCH))
+                obj.color = GRAY
+                for(child : children(obj))
+                    (*child).ref_cnt--
+                    paint_gray(*child)
+        }
+        ```
+
+        ![paint_gray()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_12.png "paint_gray()函数执行之后")
+
+         - 这样一来，A、B、C 的循环垃圾的计数器值都变成了 0
+         - 部分标记 - 清除算法的特征就是要涂色的对象和要进行计数器减量的对象不是同一对象，据此就可以很顺利地回收循环垃圾。
+
+        ```
+        scan_gray(obj){
+            if(obj.color == GRAY)
+                if(obj.ref_cnt > 0)
+                    paint_black(obj)
+                else
+                    obj.color = WHITE
+                    for(child : children(obj))
+                        scan_gray(*child)
+        }
+        // 从那些可能被涂成了灰色的有循环引用的对象群中，找出已知不是垃圾的对象，并将其归回原处
+        paint_black(obj){
+            obj.color = BLACK
+            for(child : children(obj))
+                (*child).ref_cnt++
+                if((*child).color != BLACK)
+                    paint_black(*child)
+        }
+        // 回收白色对象
+        collect_white(obj){
+            if(obj.color == WHITE)
+                obj.color = BLACK
+                for(child : children(obj))
+                    collect_white(*child)
+                reclaim(obj)
+        }
+        ```
+
+        ![paint_gray()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_13.png "paint_gray()函数执行之后")
