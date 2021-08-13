@@ -10,3 +10,80 @@ tags:
 ---
 - GC复制算法
     - 只把某个空间里的活动对象复制到其他空间，把空间里的所有对象都回收掉。复制活动对象的原空间称为 From 空间，将粘贴活动对象的新空间称为 To 空间。
+    - 在 GC 复制算法中，在 GC 结束时，原空间的对象会作为垃圾被回收。因此，由根指向原空间对象的指针也会被重写成指向返回值的新对象的指针。
+
+    - GC复制算法的copying()函数
+
+    ```
+    copying(){
+        $free = $to_start // $free 是指示分块开头的变量
+        for(r : $roots)
+            *r = copy(*r)
+        swap($from_start, $to_start)
+    }
+
+    copy(obj){
+        //如果 obj.tag == COPIED，则 obj 的复制已经完成
+        if(obj.tag != COPIED)
+            copy_data($free, obj, obj.size) // obj 真正“复制”到 $free 指示的空间,这里执行完毕时从新空间的对象指出的指针还指向 From 空间
+            obj.tag = COPIED//给 obj.tag 贴上 COPIED 这个标签。这样一来，即使有很多个指向 obj 的指针，obj 也不会被复制很多次。
+            obj.forwarding = $free
+            $free += obj.size
+            for(child : children(obj.forwarding))
+                *child = copy(*child)
+        return obj.forwarding
+    }
+    ```
+
+    - 要实现这个方法有 2 个条件。首先每个对象都至少要有 2 个域，分别用作 COPIED标签和 forwarding 指针。大多数处理系统应该都能满足这个条件。
+    - obj.forwarding，指向新空间对象的指针放在 obj.forwarding，称为“forwarding指针”。之后当找到指向原空间对象的指针时，需要把找到的指针换到新空间，forwarding 指针正是为此准备的。
+    - 4.2(a) 中的活动对象 A、C、D 保持着原有的引用关系被从 From 空间复制到了 To 空间。
+
+    ![copying](http://csoap.github.io/img/in-post/post-js-version/gc_14.png "copying")
+
+    - new_obj()函数。
+
+    ```
+    new_obj(size){
+        // $free 空闲空间的指针
+        if($free + size > $from_start + HEAP_SIZE/2)
+            copying()
+            if($free + size > $from_start + HEAP_SIZE/2)
+                allocation_fail()
+        obj = $free
+        obj.size = size
+        $free += size
+        return obj
+    }
+    ```
+
+    - 在 GC 复制算法中，GC 完成后只有 1 个分块的内存空间。在每次分配时，只要把所申请大小的内存空间从这个分块中分割出来给 mutator 就行了。也就是说，这里的分配跟 GC 标记 - 清除算法中的分配不同，不需要遍历空闲链表。
+    - HEAP_SIZE 表示的是把 From 空间和 To 空间加起来的大小。也就是说，From 空间和 To 空间的大小一样，都是 HEAP_SIZE 的一半。
+    - 优点
+        - 优秀的吞吐量
+            - GC标记-清除算法消耗的吞吐量是搜索活动对象（标记阶段）和搜索整体堆（清除阶段）所花费的时间之和。GC复制算法只搜索并复制活动对象。
+        - 可实现告诉分配
+            - GC标记-清除算法 和 引用技术法 都是使用空闲链表的分配
+            - GC复制算法不使用空闲链表，这是因为分块是一个连续的内存空间。分配的时候，只要这个分块的大小不小于所申请的大小，那么移动一下$free指针就可以完成分配。
+        - 不会发生碎片化
+            - 基于算法性质，活动对象被集中安排在 From 空间的开头对吧。像这样把对象重新集中，放在堆的一端的行为就叫作**压缩**
+
+        - 与缓存兼容
+            - 在 GC 复制算法中有引用关系的对象会被安排在堆里离彼此较近的位置。近来很多 CPU 都通过缓存来高速读取位置较近的对象。
+
+    ![GC结束后](http://csoap.github.io/img/in-post/post-js-version/gc_15.png "GC结束后")
+
+    - 缺点
+        - 堆使用效率低下
+            - GC 复制算法把堆二等分，通常只能利用其中的一半来安排对象
+            - 如何解决？通过搭配使用 GC 复制算法和 GC 标记 - 清除算法可以改善这个缺点
+        - 不兼容保守式 GC算法
+            - GC 标记 - 清除算法有着跟保守式 GC 算法相兼容的优点。因
+为 GC 标记 - 清除算法不用移动对象。
+            - GC 复制算法必须移动对象重写指针
+        - 递归调用函数
+            - 复制某个对象时要递归复制它的子对象。因此在每次进行复制的
+时候都要调用函数，由此带来的额外负担不容忽视。
+            - 比起这种递归算法，迭代算法更能高速地执行
+            - 递归调用都会消耗栈，有可能栈溢出
+            - 如何解决？GC 复制算法 — 迭代进行复制的算法

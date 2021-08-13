@@ -1,0 +1,86 @@
+---
+layout:     post
+title:      "GC标记-压缩算法"
+subtitle:   "阅读《垃圾回收的算法与实现》一书摘录与思考"
+date:       2021-08-13
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - gc
+---
+- GC标志-压缩算法
+    -  GC 标记 - 清除算法与 GC 复制算法相结合
+    - GC 标记 - 压缩算法由**标记**阶段和**压缩**阶段构成。
+
+    ![GC 标记 -压缩算法](http://csoap.github.io/img/in-post/post-js-version/gc_17.png "GC 标记 -压缩算法")
+
+    - 标记。
+        - 标记阶段和我们在讲解 GC 标记 - 清除算法时提到的标记阶段完全一样。
+        - https://csoap.github.io/2019/11/29/gc-1/
+    - 压缩阶段
+        - 压缩阶段并不会改变对象的排列顺序，只是缩小了它们之间的空隙，把它们聚集到了堆的一端。
+
+        ```
+        compaction_phase(){
+            set_forwarding_ptr() //设定 forwarding 指针
+            adjust_ptr() //更新各个对象的指针
+            move_obj() //移动对象
+        }
+        ```
+        - scan 是用来搜索堆中的对象的指针，new_address 是指向目标地点的指针
+        - 一旦 scan 指针找到活动对象，就会将对象的 forwarding 指针的引用目标从 NULL 更新到new_address，将 new_address 按对象长度移动
+
+        ```
+        set_forwarding_ptr(){
+            scan = new_address = $heap_start
+            while(scan < $heap_end)
+                if(scan.mark == TRUE)
+                    scan.forwarding = new_address
+                    new_address += scan.size
+                scan += scan.size
+        }
+        ```
+
+        ![set_forwarding_ptr()函数执行完毕后](http://csoap.github.io/img/in-post/post-js-version/gc_18.png "set_forwarding_ptr()函数执行完毕后")
+
+        - 思考为何在移动对象前，需要实现将各对象的指针全部更新到预计要移动到的地址？
+            - 因为在 GC 标记 - 压缩算法中新空间和原空间是同一个空间，所以有可能出现把移动前的对象覆盖掉的情况
+        
+        ```
+        adjust_ptr(){
+            // 重写根的指针,注意这里是第二次对堆进行搜索
+            for(r : $roots)
+                *r = (*r).forwarding
+            scan = $heap_start
+            // 重写所有活动对象的指针
+            while(scan < $heap_end)
+                if(scan.mark == TRUE)
+                    for(child : children(scan))
+                        *child = (*child).forwarding
+                scan += scan.size
+        }
+        ```
+
+        ![adjust_ptr()函数执行完毕后](http://csoap.github.io/img/in-post/post-js-version/gc_19.png "adjust_ptr()函数执行完毕后")
+
+        ```
+        move_obj(){
+            scan = $free = $heap_start
+            // 第三次对堆搜索
+            while(scan < $heap_end)
+                if(scan.mark == TRUE)
+                    new_address = scan.forwarding //目标地址
+                    copy_data(new_address, scan, scan.size)
+                    new_address.forwarding = NULL // 取消forwarding指针
+                    new_address.mark = FALSE // 取消标志位
+                    $free += new_address.size
+                    scan += scan.size
+        }
+        ```
+
+    - 优点
+        - 对比其他算法，堆利用效率更高
+            -  GC 标记 - 压缩算法不会出现 GC 复制算法那样只能利用半个堆的情况。GC 标记 -压缩算法可以在整个堆中安排对象，堆使用效率几乎是 GC 复制算法的 2 倍。用“几乎”这个词，是因为要留出用于 forwarding 指针的空间，所以严格来说不到 2 倍。
+        - 执行压缩
+            - 不会发生碎片化（把对象重新集中）
+            - 与缓存兼容（有引用关系的对象在堆里比较相近）
