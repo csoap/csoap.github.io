@@ -108,5 +108,5 @@ https://blog.csdn.net/chenjiayi_yun/article/details/25219937
             f1()　　　　　　　　--　打印1999
             ```
 
-            - 执行完t　=　Test(1979)后，Test的局部变量n就结束生命周期了，所以当f1,f2这两个闭包被创建时堆栈上根本找不到变量n。Test函数的局部变量n不仅是foo的upvalue，也是inner1和inner2的upvalue。t　=　Test(1979)之后，闭包t  已经把n保存为upvalue，之后f1、f2如果在当前堆栈上找不到变量n就会自动到它们的外包闭包(这里是t的)的upvalue引用数组中去找.
+            - 执行完t = Test(1979)后，Test的局部变量n就结束生命周期了，所以当f1,f2这两个闭包被创建时堆栈上根本找不到变量n。Test函数的局部变量n不仅是foo的upvalue，也是inner1和inner2的upvalue。t　=　Test(1979)之后，闭包t  已经把n保存为upvalue，之后f1、f2如果在当前堆栈上找不到变量n就会自动到它们的外包闭包(这里是t的)的upvalue引用数组中去找.
             - g1和g2与f1和f2共享同一个upvalue。因为g1和g2与f1和f2都是同一个闭包t 创建的，所以它们引用的upvalue  (变量n)实际也是同一个变量，而它们的upvalue引用都会指向同一个地方。
