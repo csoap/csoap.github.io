@@ -116,6 +116,8 @@ for(任意一个对象O){
     - marked这个标志用来记录对象与GC相关的一些标志位。其中0和1位表示对象的white状态和垃圾状态。当垃圾回收的标识阶段结束后，剩下的white对象就是垃圾对象。由于lua并不是立即清除垃圾对象，这些对象还会再系统中存在一段时间，所以需要能够区分同为white状态的垃圾对象和非垃圾对象。
         - 如何解决？
             - lua 使用两个标志位来表示white。这个标志位会轮流被当作white状态标志，另一个表示垃圾状态。在global_state中保存着一个currentwhite，来表示当前是哪个标志位用来标识white。每当GC标识阶段完成，系统会切换这个标志位，这样原来white的所有对象不需要遍历就变成了垃圾对象，而真正的white对象则使用新得标志位标识。
+        - 联想到问题：如果刚好开始sweep阶段之前创建了一个新对象，会不会有问题?
+            - 进入 sweep 阶段之前 white bit 进行了翻转，此时判断死亡用的是 other white bit, 跟新创建对象用的 white bit 不一样
     - 第2个标志位用来标识black状态，而既非white也非black就是gray
         - 除了short string和open upvalue之外，所有的GCObject都通过next被串接到全局状态global_State中的allgc链表上。我们可以通过遍历allgc链表来访问系统中的所有GCObject。short string被字符串标单独管理。open upvalue会在被close时也连接到allgc上。
             - open、close 如何理解

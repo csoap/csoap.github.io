@@ -84,7 +84,6 @@ tags:
     - 委托是什么？匿名方法是什么？在C# 3.0中，Lambda表达式是什么？扩展方法是什么？LINQ是什么？您觉得C# 3.0中还有哪些重要的特性，它们带来了什么优势？BCL中哪些类库和这些特性有关？您平时最常用哪些？
     - 工作之外您看哪些技术相关的书、网站、社区、项目等等？您还接触哪些.NET以外的技术，能和.NET或.NET中有针对性的部分做个对比吗？
 
-
 - unity
     - untiy游戏 C#和lua是如何交互的？
     - Unity 与Mono和.Net的关系
@@ -369,7 +368,9 @@ tags:
                 - 如何减少临时分配
                     - 尽可能复用一些table。
                     - 思考还有什么。。
-        - 工具：https://www.uwa4d.com/#download UWAGOT
+        - 工具：
+            - https://www.uwa4d.com/#download UWAGOT
+            - https://github.com/leinlin/Miku-LuaProfiler lua profiler
 
 - 图形学
     - unity shader
