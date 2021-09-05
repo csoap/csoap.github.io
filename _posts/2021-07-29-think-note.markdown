@@ -8,7 +8,21 @@ header-img: "img/home-bg-o.jpg"
 tags:
     - 面试
 ---
+
+- 加密问题
+    - 游戏防作弊
+        - 怎么做？
+            - 用配置文件限定防作弊数值范围
+                - 如果解包更改配置文件，有办法能够防止吗？
+                    - 配置文件用ab加密
+                        - ab如何加密的呢？加密解密，LoadFromMemory会造成什么问题？大批量造成内存过大？如何解决内存过大 （这个方案带来的次生风险更大）
+                    - 还有什么方法？
+                        - Anti-Cheat Toolkit https://www.bilibili.com/video/av668088669/
+
 - 网络
+    - TCP和UDP区别
+    - HTTP报文都包含什么
+    - HTTP 如何保持长连接
     - TCP可靠协议
     - 拥塞控制
     - TCP滑动窗口
