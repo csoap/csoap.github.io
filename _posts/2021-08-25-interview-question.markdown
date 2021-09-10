@@ -21,7 +21,33 @@ tags:
 		- ref、out的区别
 		- 什么是重写、什么是重载
 	- unity
-		- Update和fixUpdate的区别
+		- Update和fixUpdate、LateUpdate 的区别
+			- 当MonoBehaviour启用时，其Update和fixUpdate、LateUpdate在每一帧被调用
+			- Update
+				- update是每次渲染新的一帧时才会调用，和机器性能有着紧密的联系。如果机器的性能较差或者场景较复杂，Update的更新频率会出现较大的波动，因此和机型性能以及需要精准计算的操作不宜出现在Update中
+			- fixUpdate 固定更新
+				- FixedUpdate是固定时间更新，也就是说这个函数和帧率无关，他的更新频率是固定的。在unity中默认的更新频率是0.02秒，当然你也可以通过Edit->ProjectSetting->Time->FixedTimeStep来设置更新频率。
+				- FixedUpdate应用于物理碰撞和倒计时等需要精准数据的操作。
+					- 比如Force，Collider，Rigidbody等。外设的操作也是，比如说键盘或者鼠标的输入输出Input，因为这样GameObject的物理表现的更平滑，更接近现实。
+				- 如果把物理操作放在update中，会有什么问题？
+					- 因为碰撞检测的时间不是固定的，当物体发生碰撞时，如果人物未停止移动，则下一帧物体会继续移动，这样就会产生抖动。
+					- 通俗来讲就是Update的更新频率太快大于了碰撞检测的频率，物体已经向前移动了，但还未进行碰撞检测，因此人物会穿越过去，待碰撞检测完毕后人物又会被弹出去。
+						- 举例子
+
+							```
+							void Update()
+							{
+								a.transform.position = b.transform.position;
+							}
+							```
+
+							- Unity有个主循环，一直在更新物体位置，然后渲染物体。
+							- 如果在一次循环中，先更新B的Transform，再执行A和B的同步，那么结果会很完美。
+							- 如果先执行A和B的同步，然后又更新B的Transform，然后再渲染物体，显然A和B不在同一个位置，A就会出现抖动现象。
+			- LateUpdate 晚于更新
+				- 当物体在Update里移动时，跟随物体的相机可以在LateUpdate里实现。
+				- 每个脚本的update先后顺序无法确定。假如一个宿舍4个人，每个人的起床在update中执行，出发在某个人中的lateupdate执行，这样就可以保证每个人都起床了才会出发。
+				- 例如物体的跟随（相机视角跟随人物移动）如果相机放在Update有可能会出现抖动，这是因为相机可能先于人物执行了跟随移动指令，人物之后再执行移动指令，此时相机的视距就会发生变化，因此就会产生抖动。如果经相机操作写在Update中可以确保人物位置确定完毕后再确定相机的位置和旋转。
 - 米哈游 网友分享面经 水曜日鸡
 	- https://mp.weixin.qq.com/s/dep-wfhZN3qRI2DdcSTryA
 	- 一面：

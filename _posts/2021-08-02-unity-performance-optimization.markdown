@@ -55,6 +55,39 @@ tags:
         - 三线性插值
         - 注意半透明优化
 
+- 脚本优化
+    - Transfor.SetPositionAndRotation
+        - 每次调用Transform.SetPosition或Transform.SetRotation时，Unity都会通知一遍所有的子节点。
+        - 当位置和角度信息都可以预先知道时，我们可以通过Transform.SetPositionAndRotation一次调用来同时设置位置和角度，从而避免两次调用导致的性能开销。
+    - Animator.Set..
+        - m_animator.SetTrigger(“Attack”)是用来触发攻击动画。然而在这个函数内部，“Attack”字符串会被hash成一个整数。如果我们需要频繁触发攻击动画，我们可以通过Animator.StringToHash来提前进行hash，来避免每次的hash运算
+
+        ```
+        private static readonly int s_Attack = Animator.StringToHast("Attack");
+        m_animator.SetTrigger(s_Attack);
+        ```
+
+    - Material.Set...
+        - 与Animator类似，Material也提供了一系列的设置方法用于改变Shader。例如：m_mat.SetFloat(“Hue”, 0.5f)是用来设置材质的名为Hue的浮点数。同样的我们可以通过Shader.PropertyToID来提前进行hash
+
+        ```
+        private static readonly int s_Hue = Shader.PropertyToID("HUE");
+        m_mat.SetFloat(s_Hue, 0.5f);
+        ```
+    - Coroutine
+        - 当需要实现一些定时操作时，有些同学可能会在Update中每帧进行一次判断，假设帧率是60帧，需要定时1秒调用一次，则会导致59次无效的Update调用。
+        - 用Coroutine则可以避免掉这些无效的调用，只需要yield return new WaitForSeconds(1f);即可。当然这里的最佳实践还是用一个变量缓存一下new WaitForSeconds(1f)，这样省去了每次都new的开销。
+
+- IL2CPP
+    - I2LCPP是Unity提供的将C#的IL码转换为C++代码的服务，由于转成了C++，所以其最后会转换成汇编语言，直接以机器语言的方式执行，而不需要跑在.NET虚拟机上，所以提高了性能。同时由于IL的反编译较为简单，转换成C++后，也会增加一定的反汇编难度。
+
+- 与C#交互
+    - 关于与C#的交互，不同的Lua解决方案有不同的策略，但是有些基本的点都是一样的。
+    - 关于MonoBehaviour的三大Update的桥接，最佳策略是通过一个管理器继承MonoBehaviour的Update，然后将其派发给Lua端，然后Lua端所有的Update都注册于这个管理器当中。这样可以避免了多次Lua与C#的桥接交互，可以大量节省时间。
+    - 需要考虑GC问题，默认的struct比如Vector3传递到Lua中都需要经历一次装箱操作，会带来额外的GC Alloc，可以采用特殊配置的方式将其避免。参考：https://github.com/Tencent/xLua/blob/master/Assets/XLua/Doc/XLua%E5%A4%8D%E6%9D%82%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%88struct%EF%BC%89gc%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md
+    - 优化思路：https://blog.uwa4d.com/archives/USparkle_Lua.html
+
+
 - 其他优化
     - 定点GC
     - 关闭不用的碰撞矩阵？这是啥
