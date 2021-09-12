@@ -179,6 +179,21 @@ tags:
     - 频繁的垃圾回收可能会降低程序的运行效率。
     - 对于批处理的Lua程序来说，停止垃圾回收collectgarbage("stop")会提高效率，因为批处理程序在结束时，内存将全部被释放。
     - 对于垃圾回收器的步幅来说，实际上很难一概而论。更快幅度的垃圾回收会消耗更多CPU，但会释放更多内存，从而也降低了CPU的分页时间。只有小心的试验，我们才知道哪种方式更适合。
+
+- lua 语法细节注意
+    - 混淆 a.x 和 a [ x ］ 。 实际上，a.x 代表的是 a ［” x ”］ ，即由字符串” x ”索引的表；而 a[x ］则是指由变量 x 对应的值索引的表
+    - 安全访问
+        - 表的嵌套深度变得比较深时，这种写法就会很容易出错
+        
+        ``` lua
+        zip = company and company.director and
+                company.director.address and
+                    company.director.address.zipcode
+
+        -- 优化
+        local E = {}
+        zip = (((company or E).director or E).address or E).zipcode
+        ```
 - 总结
     - 我们应该在写代码时，按照高标准去写，尽量避免在事后进行优化。
     - 如果真的有性能问题，我们需要用工具量化效率，找到瓶颈，然后针对其优化
