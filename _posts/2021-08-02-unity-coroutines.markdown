@@ -20,6 +20,119 @@ tags:
         - 协程的停止和创建必须用相同形式。字符串、IEnumerator、Coroutine形式
         - 禁用脚本(this.enabled = false)不会停止协程执行
         - 删除脚本（Destory(this)）或禁用GameObject会停止协程执行
+
+- 关键词 IEnumerator
+    - 一个迭代器，三个基本的操作：Current/MoveNext/Reset
+    ```csharp
+    public interface IEnumerator
+    {
+        bool MoveNext();
+        void Reset();
+        Object Current{get;}
+    }
+    ```
+
+- c#对协程调用的编译结果
+
+    ```csharp
+    class Test
+    {
+        static IEnumerator GetCounter()
+        {
+            for(int count = 0; count < 10; count++)
+            {
+                    yiled return count;
+            }
+        }
+    }
+    ```
+    - 编译后的c++结果
+    ```cpp
+    internal class Test
+    { 
+        // GetCounter获得结果就是返回一个实例对象
+        private static IEnumerator GetCounter()
+        {
+            return new <GetCounter>d__0(0);
+        }
+
+        // Nested type automatically created by the compiler to implement the iterator
+        [CompilerGenerated]
+        private sealed class <GetCounter>d__0 : IEnumerator<object>, IEnumerator, IDisposable
+        {
+            // Fields: there'll always be a "state" and "current", but the "count"
+            // comes from the local variable in our iterator block.
+            private int <>1__state;
+            private object <>2__current;
+            public int <count>5__1;
+
+            [DebuggerHidden]
+            public <GetCounter>d__0(int <>1__state)
+            {
+            //初始状态设置
+                this.<>1__state = <>1__state;
+            }
+
+            // Almost all of the real work happens here
+            //类似于一个状态机，通过这个状态的切换，可以将整个迭代器执行过程中的堆栈等环境信息共享和保存
+            private bool MoveNext()
+            {
+                switch (this.<>1__state)
+                {
+                    case 0:
+                        this.<>1__state = -1;
+                        this.<count>5__1 = 0;
+                        while (this.<count>5__1 < 10)        //这里针对循环处理
+                        {
+                            this.<>2__current = this.<count>5__1;
+                            this.<>1__state = 1;
+                            return true;
+                        Label_004B:
+                            this.<>1__state = -1;
+                            this.<count>5__1++;
+                        }
+                        break;
+
+                    case 1:
+                        goto Label_004B;
+                }
+                return false;
+            }
+
+            [DebuggerHidden]
+            void IEnumerator.Reset()
+            {
+                throw new NotSupportedException();
+            }
+
+            void IDisposable.Dispose()
+            {
+            }
+
+            object IEnumerator<object>.Current
+            {
+                [DebuggerHidden]
+                get
+                {
+                    return this.<>2__current;
+                }
+            }
+
+            object IEnumerator.Current
+            {
+                [DebuggerHidden]
+                get
+                {
+                    return this.<>2__current;
+                }
+            }
+        }
+    }
+    ```
+- **所以我们在执行开启一个协程的时候，其本质就是返回一个迭代器的实例，然后在主线程中，每次update的时候，都会更新这个实例，判断其是否执行MoveNext的操作，如果可以执行(比如文件下载完成)，则执行一次MoveNext，将下一个对象赋值给Current(MoveNext需要返回为true， 如果为false表明迭代执行完成了**
+
+
+
 - 协程底层原理
     > unity有多条渲染线程，但是对于代码的调度是在一个主线程，协程是靠操作系统在主线程的调度实现的
     - 实现原理
@@ -68,7 +181,11 @@ tags:
     - yield是一个多义英文单词，有放弃、投降、 生产、 获利等诸多意思，在这边我理解为生产、产量的意思
     - 在C#中，yield语句有以下两种用法
         - yield return <expression>;
-        - yield break;
+            - WWW : 常见的web操作，在每帧末调用，会检查isDone/isError，如果true，则 call MoveNext
+            - WaitForSeconds: 检测间隔时间是否到了，返回true， 则call MoveNext
+            - null: 直接 call MoveNext
+            - WaitForEndOfFrame: 在渲染之后调用， call MoveNext
+        - yield break; 跳出协程的操作，一般用在报错或者需要退出协程的地方。
 
     ```
     static void Main()
@@ -93,3 +210,49 @@ tags:
     - yield return的意义是**返回一个值给foreach的每次迭代，然后终止迭代器方法的执行。等到下一次迭代时，迭代器方法会从原来的位置继续往下运行**
     - 可以理解为迭代器方法SomeNumbers为一个生产者，foreach循环的每次循环MoveNext是一个消费者。每一次循环往下移动一格，消费者便要向迭代器方法要一个值。所以，我想yield在其中的意思应该是**产出**的意思，而且是按需生产的意思。
     - yield break则可以视为终止产出的意思，即结束迭代器的迭代。
+
+- gc
+    - 调用 StartCoroutine()会产生少量的内存垃圾，因为unity会生成实体来管理协程。所以在游戏的关键时刻应该限制该函数的调用。基于此，任何在游戏关键时刻调用的协程都需要特别的注意，特别是包含延迟回调的协程。
+    - yield在协程中不会产生堆内存分配，但是如果yield带有参数返回，则会造成不必要的内存垃圾,比如 yield return 0;, 由于返回0，引发了装箱操作，所以会产生内存垃圾。为了避免可以写:yield return null;
+        >> 在Unity的装箱操作中，对于值类型会在堆内存上分配一个System.Object类型的引用来封装该值类型变量，其对应的缓存就会产生内存垃圾。装箱操作是非常普遍的一种产生内存垃圾的行为，即使代码中没有直接的对变量进行装箱操作，在插件或者其他的函数中也有可能会产生。最好的解决办法是尽可能的避免或者移除造成装箱操作的代码。
+
+- lua 中的协程
+    - Lua中的协程和unity协程的区别，最大的就是其不是抢占式的执行，也就是说不会被主动执行类似MoveNext这样的操作，而是需要我们去主动激发执行
+        - coroutine.create()/wrap: 构建一个协程, wrap构建结果为函数，create为thread类型对象
+        - coroutine.resume(): 执行一次类似MoveNext的操作
+        - coroutine.yield(): 将协程挂起
+
+        ```lua
+        local func = function(a, b)
+            for i= 1, 5 do
+                print(i, a, b)
+            end
+        end
+
+        local func1 = function(a, b)
+            for i = 1, 5 do
+                print(i, a, b)
+                coroutine.yield()
+            end
+        end
+
+        co =  coroutine.create(func)
+        coroutine.resume(co, 1, 2)
+        --此时会输出 1 ，1， 2/ 2，1，2/ 3， 1，2/4，1，2/5，1，2
+
+        co1 = coroutine.create(func1)
+        coroutine.resume(co1, 1, 2)
+        --此时会输出 1， 1，2 然后挂起
+        coroutine.resume(co1, 3, 4)
+        --此时将上次挂起的协程恢复执行一次，输出： 2, 1, 2 所以新传入的参数3，4是无效的
+        ```
+    - lua协程的准备工作
+        
+        ```lua
+        lua.Start(); -- 虚拟机的 lua.Start 函数初始化
+        LuaBinder.Bind(lua); -- 调用LuaBinder的静态方法
+        looper = gameObject.AddComponent<LuaLooper>(); -- 为你的一个游戏对象添加组件  LuaLooper
+        looper.luaState = lua; --  LuaLooper  的内部虚拟机引用指定为我们创建的虚拟机
+
+        -- 然后就可以正常的使用Lua中的协程了，它会在c#每一帧驱动lua的协同完成所有的协同功能，这里的协同已经不单单是lua自身功能，而是tolua#模拟unity的所有的功能
+        ```

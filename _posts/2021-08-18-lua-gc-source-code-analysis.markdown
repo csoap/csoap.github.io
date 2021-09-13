@@ -134,3 +134,19 @@ for(任意一个对象O){
     - https://www.cnblogs.com/nele/p/5673215.html
     - https://blog.csdn.net/shenwansangz/article/details/98907328
     - 那么GC的工作大致是，查询内存中对象是否成为垃圾，然后对垃圾进行释放和回收。那么对于GC对于内存回收采取了一定的优先算法进行轮循回收内存资源。其次，对于内存中的垃圾分为两种，一种是需要调用对象的析构函数，另一种是不需要调用的。GC对于前者的回收需要通过两步完成，第一步是调用对象的析构函数，第二步是回收内存，但是要注意这两步不是在GC一次轮循完成，即需要两次轮循；相对于后者，则只是回收内存而已。
+    - 重构代码来减小GC的影响
+        - struct是值类型的变量，但是如果struct中包含有引用类型的变量，那么GC就必须检测整个struct
+
+        ```
+        public struct ItemData
+        {
+            public string name;
+            public int cost;
+            public Vector3 position;
+        }
+        private ItemData[] itemData;
+        //将该struct拆分为多个数组的形式，从而减小GC的工作量
+        private string[] itemNames;
+        private int[] itemCosts;
+        private Vector3[] itemPositions;
+        ```

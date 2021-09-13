@@ -87,6 +87,9 @@ tags:
     - 需要考虑GC问题，默认的struct比如Vector3传递到Lua中都需要经历一次装箱操作，会带来额外的GC Alloc，可以采用特殊配置的方式将其避免。参考：https://github.com/Tencent/xLua/blob/master/Assets/XLua/Doc/XLua%E5%A4%8D%E6%9D%82%E5%80%BC%E7%B1%BB%E5%9E%8B%EF%BC%88struct%EF%BC%89gc%E4%BC%98%E5%8C%96%E6%8C%87%E5%8D%97.md
     - 优化思路：https://blog.uwa4d.com/archives/USparkle_Lua.html
 
+- ugui优化
+    - 在UI界面中，因为一个Canvas下的所有UI元素都是合在一个Mesh中的，过大的Mesh在更新时开销很大，所以一般建议每个较复杂的UI界面，都自成一个Canvas(可以是子Canvas)，在UI界面很复杂时，甚至要划分更多的子Canvas
+    - 注意动态元素和静态元素的分离，因为动态元素会导致Canvas的mesh的更新。最后，Canvas又不能细分的太多，因为会导致Draw Call的上升。
 
 - 其他优化
     - 定点GC
