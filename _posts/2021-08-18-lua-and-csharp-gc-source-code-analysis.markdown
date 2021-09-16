@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      "LuaGC源码剖析"
-subtitle:   "LuaGC源码剖析"
+title:      "LuaGC以及C#GC"
+subtitle:   ""
 date:       2019-11-29
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:
-    - LuaGC源码解析
+    - GC
 ---
 - 参考云风的luaGC的源码剖析与yuanlin2008的探索Lua5.2内部实现:Garbage Collection 原理系列文章。
 https://blog.codingnow.com/2011/03/lua_gc_1.html
@@ -150,3 +150,6 @@ for(任意一个对象O){
         private int[] itemCosts;
         private Vector3[] itemPositions;
         ```
+    - 我们都知道CLR有一个使用根的可达性算法的垃圾回收机制来回收托管内存，那么对于那些本机资源（非托管内存）他又是怎么清理的呢？
+        - 有些对象需要显示地销毁代码来释放资源，比如打开的文件资源，锁，操作系统句柄和非托管对象。在.NET中，这就是所谓的对象销毁，它通过IDisposal接口来实现。不再使用的对象所占用的内存管理，必须在某个时候回收
+        - 对象销毁和垃圾回收的区别在于：对象销毁通常是明确的策动；而垃圾回收完全是自动地。换句话说，程序员负责释放文件句柄，锁，以及操作系统资源；而CLR负责释放内存。
