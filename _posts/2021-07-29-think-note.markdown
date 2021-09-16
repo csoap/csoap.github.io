@@ -107,7 +107,9 @@ tags:
     - 怎么让单例模式的静态类延迟加载
     - cpu调度算法
     - 是否了解多线程编程，线程与进程的联系与区别
+        - 推荐文章:https://www.cnblogs.com/anding/p/5301754.html,记得回来仔细再看一遍
 - C#
+    - c#相关知识点：https://www.cnblogs.com/anding
     - C#多线程的同步与通信
         - https://www.cnblogs.com/-ShiL/archive/2012/09/06/Star_201209061219.html
     - 构造函数和析构函数中调用虚函数
