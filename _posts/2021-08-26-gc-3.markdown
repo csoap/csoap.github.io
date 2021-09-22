@@ -39,7 +39,7 @@ tags:
     - obj.forwarding，指向新空间对象的指针放在 obj.forwarding，称为“forwarding指针”。之后当找到指向原空间对象的指针时，需要把找到的指针换到新空间，forwarding 指针正是为此准备的。
     - 4.2(a) 中的活动对象 A、C、D 保持着原有的引用关系被从 From 空间复制到了 To 空间。
 
-    ![copying](http://csoap.github.io/img/in-post/post-js-version/gc_14.png "copying")
+    ![copying](/img/in-post/post-js-version/gc_14.png "copying")
 
     - new_obj()函数。
 
@@ -71,7 +71,7 @@ tags:
         - 与缓存兼容
             - 在 GC 复制算法中有引用关系的对象会被安排在堆里离彼此较近的位置。近来很多 CPU 都通过缓存来高速读取位置较近的对象。
 
-    ![GC结束后](http://csoap.github.io/img/in-post/post-js-version/gc_15.png "GC结束后")
+    ![GC结束后](/img/in-post/post-js-version/gc_15.png "GC结束后")
 
     - 缺点
         - 堆使用效率低下

@@ -12,7 +12,7 @@ tags:
     -  GC 标记 - 清除算法与 GC 复制算法相结合
     - GC 标记 - 压缩算法由**标记**阶段和**压缩**阶段构成。
 
-    ![GC 标记 -压缩算法](http://csoap.github.io/img/in-post/post-js-version/gc_17.png "GC 标记 -压缩算法")
+    ![GC 标记 -压缩算法](/img/in-post/post-js-version/gc_17.png "GC 标记 -压缩算法")
 
     - 标记。
         - 标记阶段和我们在讲解 GC 标记 - 清除算法时提到的标记阶段完全一样。
@@ -41,7 +41,7 @@ tags:
         }
         ```
 
-        ![set_forwarding_ptr()函数执行完毕后](http://csoap.github.io/img/in-post/post-js-version/gc_18.png "set_forwarding_ptr()函数执行完毕后")
+        ![set_forwarding_ptr()函数执行完毕后](/img/in-post/post-js-version/gc_18.png "set_forwarding_ptr()函数执行完毕后")
 
         - 思考为何在移动对象前，需要实现将各对象的指针全部更新到预计要移动到的地址？
             - 因为在 GC 标记 - 压缩算法中新空间和原空间是同一个空间，所以有可能出现把移动前的对象覆盖掉的情况
@@ -61,7 +61,7 @@ tags:
         }
         ```
 
-        ![adjust_ptr()函数执行完毕后](http://csoap.github.io/img/in-post/post-js-version/gc_19.png "adjust_ptr()函数执行完毕后")
+        ![adjust_ptr()函数执行完毕后](/img/in-post/post-js-version/gc_19.png "adjust_ptr()函数执行完毕后")
 
         ```
         move_obj(){

@@ -1,0 +1,87 @@
+---
+layout:     post
+title:      "kow项目流程规范-配置表"
+subtitle:   ""
+date:       2019-11-29
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - 配置工具
+---
+## __一、配置表命名规则__
+### excel表格sheet命名规则
+1. 纯英文小写，纯服务端表可以增加尾缀"_server"，纯客户端表可以增加尾缀"_client"
+2. 功能名称_ 作为开头， 如英雄表均以 hero_xxx_xxxx
+    *特殊情况：若配置结构仅与某某道具相关，例如番茄大战活动的贡献与收获排行榜奖励表（如xxx_xxxx_800546），则尾缀以对应道具id结尾
+
+## __二、配置表结构规则__
+### 1、配置结构需要以字段名、确认导出字段、字段类型、备注四部分构成
+#### 1）字段名
+ 首列字段名默认为Index，可填写英文大小写、下划线、数字，不可填写中文
+#### 2） B | C | S（导出标记，填上才会导进Lua表中）
+若该列仅为客户端使用，则填写C；仅为服务端使用，则填写S ；如果是客户端和服务端都需要使用，则填写B；
+若为备注字段（即不需要导出），则字段名、确认字段、字段类型需要全空，否则导出会出错
+配表一般是服务端和客户端一起商量决定，如果因为时间差，服务端先配表的话，服务端可以先都填成S，客户端做的时候需要复用的话再将其改为B。
+另外尽量排布整齐，B在前，S为中，C最后
+以下是不好的排列：
+![图片描述](/img/in-post/post-js-version/process/process_1.png)
+修改后如下，这样子才不会混乱
+![图片描述](/img/in-post/post-js-version/process/process_2.png)
+
+
+#### 3）字段类型
+![图片描述](/img/in-post/post-js-version/process/process_3.png)
+#### 4）备注（Lua表格不会导出此行内容）
+说明该字段的填写规则，若有枚举需填写枚举
+
+示例：
+![图片描述](/img/in-post/post-js-version/process/process_4.png)
+
+##__三、excel文件命名规则与SVN上传路径__
+1. 通常以功能英文单词命名，服务端增加尾缀_server,客户端增加尾缀_client
+2. 若为2.0新增功能则统一增加palace前缀，后功能单词首字母大写，如palaceAbcd
+
+
+![图片描述](/img/in-post/post-js-version/process/process_5.png)
+
+示例：
+![图片描述](/img/in-post/post-js-version/process/process_6.png)
+
+## 四 配置表导出工具
+
+- 源码参考C2z网盘kow项目excel2lua.zip
+- 使用工具前，需要安装AccessDatabaseEngine、Python环境和TortoiseSVN
+- AccessDatabaseEngine
+    - 目录位置：data\配置导出工具\插件，安装对应的32位和64位版本
+- Python2.7
+    > 命令行输入:python,显示版本信息则表示已经安装，跳过这个步骤
+    - 目录位置：data\配置导出工具\插件，安装对应版本,并配置对应环境变量
+        - 快捷键（WIN+R）在“运行”中输入:cmd
+        - 输入命令行:set PATH=%PATH%;C:\Python2.7(替换安装目录)
+        - 再次输入:python，显示版本信息则表示设置成功
+- TortoiseSVN
+    - 应该都已经装了，没有的话自己百度
+
+- 使用说明图
+    ![使用说明图](/img/in-post/post-js-version/process/excel_1.png "使用说明图")
+    ![使用说明图](/img/in-post/post-js-version/process/excel_2.png "使用说明图")
+
+- 问题处理
+    - 程序无法运行，提示xx文件拒绝访问
+        - win10下需要右键管理员运行就可以了
+    - 各种报错，可能是配置出现问题
+        - 删除C:/App.config这个是导出程序的配置文件，重新启动程序即可
+    - 实在不行的话，使用终极大招
+        - 使用原生的python脚本导出配置，需要手动修改参数，改完后双击bat文件运行即可
+            - 数据配置
+                - 打开文件：佛祖保佑.bat
+                - start python excel2lua_single.py excel全路径 导出客户端 导出客户端 元表方式
+                    - 如导出道具表:
+                        - start python excel2lua_single.py F:/KOW/data/formal/item.xlsx true false false
+                    - 如导出道具表-指定页
+                        - start python excel2lua_single.py F:/KOW/data/formal/item.xlsx true false false item_desc item_config
+            - 多语言配置
+                - 打开文件：佛祖保佑_多语言.bat
+                - start python genlocal_simple.py 多语言excel全路径 语言分页 --output=cs
+                    - 如导出中文
+                    - start python genlocal_simple.py F:/KOW/data/localized_all.xlsx zh_cn --output=cs

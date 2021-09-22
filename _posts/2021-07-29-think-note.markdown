@@ -574,6 +574,7 @@ tags:
         - 如果放了一个技能，如何判定对方是否收到伤害？
         - 收到伤害如何做飘出伤害文字？伤害文字怎么优化？
     - 行为树和状态机的区别
+    - 行为状态机和指令状态机
     - 请简述GC（垃圾回收）产生的原因，并描述如何避免
         - 当用new创建对象时，当可分配的内存不足GC就会去回收未使用的对象，但是GC的操作是非常复杂的，会占用很多CPU时间，对于移动设备来说频繁的垃圾回收会严重影响性能。下面的建议可以避免GC频繁操作。
             - 减少用new创建对象的次数，在创建对象时会产生内存碎片，这样会造成碎片内存不法使用；
@@ -691,7 +692,7 @@ tags:
                 - C#code 通过Mono C# Compiler编译生成CIL(中间汇编语言，不同平台的CIL可能不一样)，在游戏运行时候，IL和项目里其他的第三方兼容的DLL一起放入Mono VM虚拟机，由虚拟机解析成机器码，并且执行。
                 - 等到需要真正执行的时候，这些IL会被加载到运行时库，也就是VM中，由VM动态的编译程汇编代码（JIT）再执行
             - CLI = CIL + CLR
-            ![编译流程图](http://csoap.github.io/img/in-post/post-js-version/mono-complier.png "编译流程图")
+            ![编译流程图](/img/in-post/post-js-version/mono-complier.png "编译流程图")
                 - 编译：通过C#编译器，运行前把C#编译成CIL（实现平台无关汇编）
                 - 运行：通过CLR，在运行时把CIL转换成各平台的原生码
                 >  CLI: Common Language Infrastructure 公共语言基础结构 | CIL: Common Intermediate Language 公共中间语言 | CLR: Common Language Runtime
@@ -707,7 +708,7 @@ tags:
                     - 不允许运行时动态加载代码了，也就是说**不支持热更**，如ios只支持Full AOT,andorid支持三种。
                     - 安全性比较好
         - IL2CPP方式脚本编译流程
-            ![IL2CPP编译流程图](http://csoap.github.io/img/in-post/post-js-version/il2cpp-complier.png "IL2CPP编译流程图")
+            ![IL2CPP编译流程图](/img/in-post/post-js-version/il2cpp-complier.png "IL2CPP编译流程图")
             - C#code 通过Mono C# Compiler编译生成CIL，通过IL2CPP将CIL重新编程C++代码，然后再由各个平台的C++编译器（例:x86：vc++,linux、android:gcc）直接编译程能执行的原生汇编代码,然后通过IL2CPP VM虚拟机生成机器码
             - 仅支持AOT方式
         - 理想的热更流程
@@ -730,7 +731,7 @@ tags:
             - IL2CPP
             - 但也不能完全避免问题。在IOS平台上运行的程序,如果在运行的时候才知道泛型的实际类型，用上述2种编译会直接跳过这段代码的编译，编译器会认为说我既然是静态编译的，就不能执行在程序运行中动态指令的代码，会导致报错，如下：
 
-            ![ios代码](http://csoap.github.io/img/in-post/post-js-version/complier-ios.png "ios代码")
+            ![ios代码](/img/in-post/post-js-version/complier-ios.png "ios代码")
             - 怎么解决？
                 - 比较不好的解决方法。强制AOT生成具象类型代码，这样就丧失的泛型的灵活性。如：OnMessage(AnyEnum.Zero);需要思考有没有更好的办法？思考kow项目中tolua 是怎么解决的
         - 解决方案

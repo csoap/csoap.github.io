@@ -9,7 +9,7 @@ tags:
     - assetbundle
 ---
 
-![ab内存引用](http://csoap.github.io/img/in-post/post-js-version/ab_1.png "ab内存引用")
+![ab内存引用](/img/in-post/post-js-version/ab_1.png "ab内存引用")
 
 - 注：CreateFromFile 已改为LoadFromFile
 

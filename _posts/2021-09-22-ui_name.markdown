@@ -1,0 +1,38 @@
+---
+layout:     post
+title:      "kow项目流程规范-UI命名规范"
+subtitle:   ""
+date:       2019-11-29
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - 规范
+---
+### ui图片命名规则 :
+![图片描述](/img/in-post/post-js-version/process/ui_1.png)
+
+
+### 图片类型前缀:
+- bg        背景
+- line      线
+- frame   边框
+- btn       按钮
+- icon      图标
+- lace      装饰
+- text       字
+- sheer    透明遮罩
+- item      道具（可使用的道具）
+- head     头像
+- figure    半身像
+### 图片功能前缀:
+- progress  进度条
+- toggle    切换开关
+- 如:
+    - common_w_bg_001             (common图集下的一张背景)
+    - common_w_btn_001            (common图集下的一张按钮)
+    - common_w_progress_line_001  (common图集下一张用于进度条功能的线)
+    - common_w_toggle_btn_001     (common图集下一张用于切换开关功能的按钮)
+    - common_w_toggle_bg_001      (common图集下一张用于切换开关功能的背景)
+    - bag_w_item_001      (bag图集下一张用于可使用道具的图片)
+
+### KOW图集名格式为 ： common_w

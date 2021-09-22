@@ -11,6 +11,7 @@ tags:
 - 参考文章
     - https://blog.csdn.net/u012999985/article/details/106346136
 - 配置
+    - excel2lua ,源码参考C2z网盘kow项目excel2lua.zip
     - 策划配置的数据存放在哪里
 - 声音数据处理
 - 国际化与本地化

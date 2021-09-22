@@ -48,7 +48,7 @@ tags:
 - unity使用PSD/PNG/JPG格式的图片吗？
     - 不。这些格式是经过压缩的，不支持像素的随机访问，需要耗时的解压过程。比如512*512的图片，无法通过img[x][y]得到像素地址。所以unity使用texture2D这个格式，在打包的时候打包成各个平台对应的不同压缩格式。
 
-![不同平台可以使用的贴图格式](http://csoap.github.io/img/in-post/post-js-version/compressed-texture.png "不同平台可以使用的贴图格式")
+![不同平台可以使用的贴图格式](/img/in-post/post-js-version/compressed-texture.png "不同平台可以使用的贴图格式")
 
 - 纹理压缩的基本概念
     - 压缩比度量BPP（每个像素压缩以后所占的存储位数），每个像素压缩以后所占的存储位数越少，说明压缩比越高，占用的显存的存储容量越低，耗费显卡带宽越低，
@@ -119,7 +119,7 @@ tags:
     - 假如有一实时战斗竞技游戏，一场战斗里，每个游戏角色需要2张1024*1024贴图，异常战斗预估最多24各角色，在苹果ASTC_RGBA(6 * 6)格式下占多大内存？
 - 关于图片在运行的时占用内存大小
     - OpenGL ES 2.0支持以上提到的R5G6B5，A4R4G4B4，A1R5G5B5，R8G8B8，A8R8G8B8等纹理格式，其中R5G6B5，A4R4G4B4，A1R5G5B5每个像素占用2个字节(BYTE)，R8G8B8每个像素占用3个字节，A8R8G8B8每个像素占用4个字节。
-        ![纹理格式](http://csoap.github.io/img/in-post/post-js-version/texture_1.png "纹理格式")
+        ![纹理格式](/img/in-post/post-js-version/texture_1.png "纹理格式")
     - 一个像素占的字节 = 位数（bit）/ 8   因为一个字节8位
     - 运行时大小 = 长 x 宽 x 每个像素占的大小
     - 举例：rgba8888 表示的是通道 rgba 每个通道都占用 8bit 那么也就是一个像素占用了 4bytes。故，图片大小若为 1014x1024，则大小=1024x1024x4/1024/1024 = 4M

@@ -11,7 +11,7 @@ tags:
 - GC引用计数法
     - what？引用计数法运用一个计数器，计数器指的是有**多少**程序引用了这个对象。计数器是无符号的整数。
 
-        ![引用计数法中的对象](http://csoap.github.io/img/in-post/post-js-version/gc_7.png "引用计数法中的对象")
+        ![引用计数法中的对象](/img/in-post/post-js-version/gc_7.png "引用计数法中的对象")
         - 两种情况会导致计数器的值发生增减
             - new_obj()
             - update_ptr()
@@ -45,7 +45,7 @@ tags:
         }
         ```
 
-        ![update_ptr()函数执行时的情况](http://csoap.github.io/img/in-post/post-js-version/gc_8.png "update_ptr()函数执行时的情况")
+        ![update_ptr()函数执行时的情况](/img/in-post/post-js-version/gc_8.png "update_ptr()函数执行时的情况")
 
         - 优点
             - 可即刻回收垃圾。
@@ -63,13 +63,13 @@ tags:
                 - 我们需要把以往写成 *ptr=obj 的地方都重写成update_ptr(ptr,obj)，因为mutator调用 update_ptr() 函数的地方非常多，所以重写过程中很容易出现遗漏。
             - 循环引用无法回收
 
-        ![循环引用对象](http://csoap.github.io/img/in-post/post-js-version/gc_9.png "循环引用对象")
+        ![循环引用对象](/img/in-post/post-js-version/gc_9.png "循环引用对象")
 
     - 引用计数法有很多缺点。为何很多处理系统和应用都在使用引用计数法。因为只要稍作**改良**，如何改良如下：
     - 延迟引用计数法
         - 在延迟引用计数法中使用 ZCT（Zero Count Table）。ZCT 是一个表，它会事先记录下计数器值在 dec_ref_cnt() 函数的作用下变为 0 的对象。因为计数器值为 0 的对象不一定都是垃圾，所以暂时先将这些对象保留。仅在无法分配大小合适得分块的时候，会执行回收。
 
-        ![ZCT](http://csoap.github.io/img/in-post/post-js-version/gc_10.png "ZCT")
+        ![ZCT](/img/in-post/post-js-version/gc_10.png "ZCT")
 
         ```
         dec_ref_cnt(obj){
@@ -176,7 +176,7 @@ tags:
         }
         ```
 
-        ![dec_ref_cnt()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_11.png "dec_ref_cnt()函数执行之后")
+        ![dec_ref_cnt()函数执行之后](/img/in-post/post-js-version/gc_11.png "dec_ref_cnt()函数执行之后")
 
         - 由根到 A 的引用被删除了，指向 A 的指针被追加到了队列（$hatch_queue）之中。此外，A 被涂上了阴影。这个队列的存在是为了连接那些可能是循环引用的一部分的对象。被连接到队列的对象会被作为 GC 标记 - 清除算法的对象，使得循环引用的垃圾被回收。
 
@@ -213,7 +213,7 @@ tags:
         }
         ```
 
-        ![paint_gray()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_12.png "paint_gray()函数执行之后")
+        ![paint_gray()函数执行之后](/img/in-post/post-js-version/gc_12.png "paint_gray()函数执行之后")
 
          - 这样一来，A、B、C 的循环垃圾的计数器值都变成了 0
          - 部分标记 - 清除算法的特征就是要涂色的对象和要进行计数器减量的对象不是同一对象，据此就可以很顺利地回收循环垃圾。
@@ -246,4 +246,4 @@ tags:
         }
         ```
 
-        ![paint_gray()函数执行之后](http://csoap.github.io/img/in-post/post-js-version/gc_13.png "paint_gray()函数执行之后")
+        ![paint_gray()函数执行之后](/img/in-post/post-js-version/gc_13.png "paint_gray()函数执行之后")
