@@ -40,6 +40,7 @@ tags:
             - 一个基于CLR的开源项目，运行引擎和用户的托管代码运行在每一个目标平台上
             - 微软的传统虚拟机叫做.NET平台虚拟机，本身是不支持跨平台的，经过mono的移植，才可以支持跨平台。unity也是利用mono这个开源项目实现跨平台
         - Mono虚拟机如何运行CIL？
+            - 最好翻阅一下 https://www.cnblogs.com/zwywilliam/p/5999980.html
             - JIT（Just In Time）模式。在编译的时候，把C#编译成CIL，在运行时，逐条读入，逐条解析成原生码交给CPU再执行
             - AOT（Ahead Of Time）模式。在编译程CIL之后，会把CIL再处理一边，编译成原生码，在运行的时候交给CPU直接执行，Mono下的AOT只会处理部分的CIL，还有一部分CIL采用JIT的模式
             - Full AOT。在编程CIL之后，把所有的CIL编译成原生码，在运行时的时候直接执行
