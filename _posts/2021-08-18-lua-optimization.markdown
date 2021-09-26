@@ -13,6 +13,7 @@ tags:
 - 不错的文章链接,建议反复阅读
     - https://www.cnblogs.com/zwywilliam/p/5999924.html
     - https://www.cnblogs.com/zwywilliam/p/5999980.html
+    - https://www.cnblogs.com/zwywilliam/p/5992737.html
 - Unity+Lua，性能注意点
     - lua跟c#交互时的性能
     - lua代码本身的性能，CPU & 内存
@@ -57,12 +58,16 @@ tags:
                 - 0.2229311466217
                 - 0.052457094192505
 
+- luajit
+    - trace compiler(跟踪编译)的特征：先运行字节码，针对热点代码做profile，了解了可以优化的点后再优化出最高效的机器码。这就是luajit目前的做法。
 - 精简你的lua导出，否则IL2CPP会是你的噩梦
     - 网上已经有非常多IL2CPP导致包体积激增的抱怨，而基于lua静态导出后，由于生成了大量的导出代码。这个问题又更加严重。
     - 鉴于目前ios必须使用IL2CPP发布64bit版本，所以这个问题必须要重视，否则不但你的包体积会激增，binary是要加载到内存的，你的内存也会因为大量可能用不上的lua导出而变得吃紧
     - 移除你不必要的导出，尤其是unityengine的导出
     - 如果只是为了导出整个类的一两个函数或者字段，重新写一个util类来导出这些函数，而不是整个类进行导出。也可以使用[notolua]属性来标记不导出。
     - 如果有把握，可以修改自动导出的实现，自动或者手动过滤掉不必要导出的东西。
+- ios在没有jit的加持下，luajit的性能特性与原生lua基本一致
+    - 注意，这里说的不是“性能”一致，是“性能特性”一致。luajit不开启jit依然是要比原生lua快很多的。这里说的性能特性一致是指你可以按照原生lua的优化思路来优化luajit的非jit环境。因为ios下无法开启jit，只能使用interpreter，因为原生lua的优化方案基本都适用于ios下使用。这时，每一个a.b都意味着一次表查找，写代码的时候一定要考虑清楚，该cache的cache，该省的省。
 
 - lua中的GC
     - 在 Lua 中，一共只有 9 种数据类型，分别为 nil 、boolean 、lightuserdata 、number 、string 、 table 、 function 、 userdata 和 thread 。其中，只有 string table function thread 四种在 vm 中以引用方式共享，是需要被 GC 管理回收的对象。其它类型都以值形式存在。

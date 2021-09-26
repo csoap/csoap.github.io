@@ -389,6 +389,10 @@ tags:
         - 用于获取 值类型 的字节大小。
         - 对于所有其他类型（包括 struct），sizeof 运算符只能在不安全代码块中使用。
         - sizeof只适用于值类型，并且需要在unsafe上下文环境中使用
+    - C# List源码解析
+        - http://www.luzexi.com/2018/07/06/Unity3D%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%BF%9B%E9%98%B6%E4%B8%BB%E7%A8%8B-CSharp%E8%A6%81%E7%82%B9%E6%8A%80%E6%9C%AF1
+    - C# Dictionary源码解析
+        - http://www.luzexi.com/2018/07/18/Unity3D%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%BF%9B%E9%98%B6%E4%B8%BB%E7%A8%8B-CSharp%E8%A6%81%E7%82%B9%E6%8A%80%E6%9C%AF2
     - c#中，ArrayList和list，dictionary和hashtable区别，dictionary的底层实现原理
         - https://www.cnblogs.com/yiyi20120822/p/11429137.html
         https://www.cnblogs.com/TiestoRay/p/4891026.html
@@ -420,7 +424,8 @@ tags:
         - 数组和list对比
         - map 和 hashmap 区别
         - tree了解吗？红黑树知道吗？说说你理解的红黑树
-
+    - 为何尽量不要用foreach
+        - foreach,本质上是Enumerator 这个结构，每次获取迭代器时，Enumerator 每次都是被new出来，如果大量使用迭代器的话，比如foreach就会造成大量的垃圾对象
     - CLI、CIL、JIT、Mono
         - C#编译和执行都要依赖CLI(公共语言基础结构)，c#生成中间语言指令，也就是公共中间语言（CIL）
         - CLI是理解C#程序的执行环境以及C#如何与其他程序和库（甚至是用其他语言写的）进行无缝交互的一个重要规范
