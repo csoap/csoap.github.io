@@ -10,12 +10,15 @@ tags:
 ---
 - 环境
     - 语言:C#
+- 不错的文章链接
+    - https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/
+    - https://blog.csdn.net/weixin_41190227/article/details/86600821
 - 前言
     - 记录常用排序算法,日后方便回顾
+
     - 定义测试环境代码
 
         ```csharp
-
         static void Main(string[] args)
         {
             int[] nums = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
@@ -249,7 +252,7 @@ tags:
             //比key大的放右边
             array[high] = array[low];
         }
-        //结束循环时，此时low等于high，左边都小于或等于key，右边都大于key。将key放在游标当前位置。 
+        //结束循环时，此时low等于high，左边都小于或等于key，右边都大于key。将key放在游标当前位置。
         array[low] = key;
         return high;
     }
@@ -259,3 +262,8 @@ tags:
         - 最佳 O(nlogn)
         - 最差 O(n^2)
         - 平均 O(nlogn)
+
+- 堆排序
+    - https://www.bilibili.com/video/BV1K4411X7fq
+    - 思路
+        - 先将待排序的序列建成大根堆，使得每个父节点的元素大于等于它的子节点。此时整个序列最大值即为堆顶元素，我们将其与末尾元素交换，使末尾元素为最大值，然后再调整堆顶元素使得剩下的 n-1n−1 个元素仍为大根堆，再重复执行以上操作我们即能得到一个有序的序列
