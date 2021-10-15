@@ -185,6 +185,8 @@ tags:
             - FTP：定义了文件传输协议，使用21端口;HTTP：是从Web服务器传输超文本到本地浏览器的传送协议;端口默认80,Telnet 一种用于远程登陆的端口，使用23端口;SMTP 邮件传输协议,发送邮件 25端口;POP3,POP3用于接收邮件,端口110
         - 三次握手 四次挥手
             > seq:"sequance"序列号；ack:"acknowledge"确认号；SYN:"synchronize"请求同步标志；；ACK:"acknowledge"确认标志"；FIN："Finally"结束标志。
+            - 三次握手建立在哪个函数哪个阶段
+            - listen函数是干嘛
             - 三次握手过程
                 - 第一次握手：Client将标志位**SYN置为1**，**随机产生一个值seq=J**，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认
                 - Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，**ack (number )=J+1**，**随机产生一个值seq=K**，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态

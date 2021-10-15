@@ -127,3 +127,135 @@ tags:
         - 最差 O(n^2)
         - 平均 O(n^2)
 
+- 希尔排序
+
+    ![插入排序](/img/in-post/post-js-version/sort/shell_sort.png)
+
+    ```csharp
+    public static void Sort(int[] nums)
+    {
+        if (nums == null) return;
+        int count = nums.Length;
+        if (count == 0) return;
+        int gap = count / 2;
+        while (1 <= gap)
+        {
+            // 把距离为 gap 的元素编为一个组，扫描所有组
+            for (int i = gap; i < count; i++)
+            {
+                int preIndex;
+                int temp = nums[i];
+                // 对距离为 gap 的元素组进行排序
+                for (preIndex = i - gap; preIndex >= 0 && temp < nums[preIndex]; preIndex -= gap)
+                {
+                    nums[preIndex + gap] = nums[preIndex];
+                }
+                nums[preIndex + gap] = temp;
+            }
+            gap /= 2;
+        }
+    }
+    ```
+    
+    - 算法分析
+        - 最佳 O(nLogn)
+        - 最差 O(nLogn)
+        - 平均 O(nLogn)
+
+- 归并排序
+    - https://leetcode-cn.com/problems/sort-an-array/solution/pai-xu-shu-zu-by-leetcode-solution/
+    - 思路 归并排序利用了分治的思想来对序列进行排序。对一个长为 n 的待排序的序列，我们将其分解成两个长度n/2的子序列,每次先递归调用函数使两个子序列有序，然后我们再线性合并两个有序的子序列使整个序列有序。
+
+    ![插入排序](/img/in-post/post-js-version/sort/merge_sort.png)
+
+    ```csharp
+    public static void SortArray(int[] nums)
+    {
+        if (nums == null) return;
+        int count = nums.Length;
+        if (count == 0) return;
+        tmp = new int[count];
+        MergeSort(nums, 0, count - 1);
+    }
+
+    public static void MergeSort(int[] nums, int l, int r)
+    {
+        if (l >= r) return;
+        int mid = (l + r) >> 1;
+        MergeSort(nums, l, mid);
+        MergeSort(nums, mid + 1, r);
+        int i = l, j = mid + 1;
+        int cnt = 0;
+        while (i <= mid && j <= r)
+        {
+            if (nums[i] <= nums[j])
+            {
+                tmp[cnt++] = nums[i++];
+            }
+            else
+            {
+                tmp[cnt++] = nums[j++];
+            }
+        }
+        while (i <= mid)
+        {
+            tmp[cnt++] = nums[i++];
+        }
+        while (j <= r)
+        {
+            tmp[cnt++] = nums[j++];
+        }
+        for (int k = 0; k < r - l + 1; k++)
+        {
+            nums[k + l] = tmp[k];
+        }
+    }
+    ```
+
+    - 算法分析
+        - 最佳 O(n)
+        - 最差 O(nlogn)
+        - 平均 O(nlogn)
+
+- 快速排序
+    - https://www.bilibili.com/video/BV1at411T75o
+    - 基本思想
+        - 选定Pivot中心轴
+        - 将大于Pivot的数字放在Pivot的右边,将小于Pivotde的数字放在Pivot的左边
+        - 分别对左右子序列重复前三步操作
+    
+    ```csharp
+    public static void QuickSort(int[] nums, int low, int high)
+    {
+        if (low >= high) return;
+        int index = SortUnit(nums, low, high);
+        QuickSort(nums, low, index - 1);
+        QuickSort(nums, index + 1, high);
+    }
+
+    public static int SortUnit(int[] array, int low, int high)
+    {
+        int key = array[low];//基准数
+        while (low < high)
+        {
+            //从high往前找小于或等于key的值
+            while (low < high && array[high] > key)
+                high--;
+            //比key小开等的放左边
+            array[low] = array[high];
+            //从low往后找大于key的值
+            while (low < high && array[low] <= key)
+                low++;
+            //比key大的放右边
+            array[high] = array[low];
+        }
+        //结束循环时，此时low等于high，左边都小于或等于key，右边都大于key。将key放在游标当前位置。 
+        array[low] = key;
+        return high;
+    }
+    ```
+
+    - 算法分析
+        - 最佳 O(nlogn)
+        - 最差 O(n^2)
+        - 平均 O(nlogn)
