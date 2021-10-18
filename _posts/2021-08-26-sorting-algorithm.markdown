@@ -45,6 +45,15 @@ tags:
             nums[j] = temp;
         }
         ```
+
+- 各种排序时空复杂度
+    - n: 数据规模
+    - k: “桶”的个数
+    - In-place: 占用常数内存，不占用额外内存
+    - Out-place: 占用额外内存
+
+    ![排序时空复杂度](/img/in-post/post-js-version/sort/sort.png)
+
 - 冒泡排序
 
     ![冒泡排序](/img/in-post/post-js-version/sort/bubble_sort.gif)
