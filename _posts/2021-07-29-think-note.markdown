@@ -202,13 +202,15 @@ tags:
         - 例子
             - FTP：定义了文件传输协议，使用21端口;HTTP：是从Web服务器传输超文本到本地浏览器的传送协议;端口默认80,Telnet 一种用于远程登陆的端口，使用23端口;SMTP 邮件传输协议,发送邮件 25端口;POP3,POP3用于接收邮件,端口110
         - 三次握手 四次挥手
+            - https://www.bilibili.com/video/BV1eA411V7RQ
             > seq:"sequance"序列号；ack:"acknowledge"确认号；SYN:"synchronize"请求同步标志；；ACK:"acknowledge"确认标志"；FIN："Finally"结束标志。
             - 三次握手建立在哪个函数哪个阶段
             - listen函数是干嘛
             - 三次握手过程
-                - 第一次握手：Client将标志位**SYN置为1**，**随机产生一个值seq=J**，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认
-                - Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，**ack (number )=J+1**，**随机产生一个值seq=K**，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态
-                - Client收到确认后，检查**ack是否为J+1**，ACK是否为1，如果正确则将标志位ACK置为1，**ack=K+1**，并将该数据包发送给Server，Server检查a**ck是否为K+1**，**ACK是否为1**，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了
+                - 第一次握手：Client将标志位**SYN置为1**，**随机产生一个值seq=J**，并将该数据包发送给Server，Client进入**SYN_SENT**状态，等待Server确认
+                - Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，**ack (number )=J+1**，**随机产生一个值seq=K**，并将该数据包发送给Client以确认连接请求，Server进入**SYN_RCVD*状态
+                - Client收到确认后，检查**ack是否为J+1**，ACK是否为1，如果正确则将标志位ACK置为1，**ack=K+1**，并将该数据包发送给Server，Server检查a**ck是否为K+1**，**ACK是否为1**，如果正确则连接建立成功，Client和Server进入**ESTABLISHED**(已确认)状态，完成三次握手，随后Client与Server之间可以开始传输数据了
+                > 确认包的序号,IP的包头里面有TTL(最大生存时间),包如果很晚到达超过TTL就失效了
             - 为什么TCP连接需要三次握手，两次不可以吗，为什么？
                 - 为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。极端的情况可能由于Client端多次重新发送请求数据而导致Server端最后建立了N多个响应在等待，因而造成极大的资源浪费.采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。
             - 四次挥手过程
@@ -239,10 +241,21 @@ tags:
                 - 发送固定长度的消息
                 - 把消息的尺寸与消息一块发送
                 - 使用特殊标记来区分消息间隔
-        - TCP流量控制
-            - 流量控制主要针对的是端到端传输中控制流量大小并保证传输可靠性（未收到ack就不滑动）。流量控制往往是指点对点通信量的控制，所要做的是抑制发送端发送数据的速率
-        - 拥塞控制
-            - 拥塞控制主要是一个全局性过程，涉及到所有主机，路由器，以及与降低网络传输性能有关的所有因素。防止过多的数据注入到网络中。如果有发生丢包则通过拥塞控制减小窗口，确定出合适(**慢启动 拥塞避免 快重传 快恢复**)的拥塞窗口（增性加乘性减）
+        - TCP流量控制 拥塞控制
+            - 拥塞控制与**网络的拥堵**情况相关联，而流量控制与**接收方的缓存状态**相关联
+            - TCP流量控制
+                - https://www.cnblogs.com/kubidemanong/p/9987810.html
+                - 流量滑动窗口
+                    - 作用:怕发送方把接收方的缓存打满
+                ![tcp流量控制](/img/in-post/post-js-version/tcp_1.png)
+                - tcp的流量控制相关算法
+                    - 流量控制主要针对的是端到端传输中控制流量大小并保证传输可靠性（未收到ack就不滑动）。流量控制往往是指点对点通信量的控制，所要做的是抑制发送端发送数据的**速率**
+            - 拥塞控制
+                - https://mp.weixin.qq.com/s?__biz=Mzg2NzA4MTkxNQ==&mid=2247485204&idx=1&sn=27daef390eec05b3d5db7cebcdcb4b7c&source=41#wechat_redirect
+                - https://blog.csdn.net/qq_41431406/article/details/97926927
+                - 拥塞窗口
+                    - 作用:怕发送方把带宽网络打满
+                - 拥塞控制主要是一个全局性过程，涉及到所有主机，路由器，以及与降低网络传输性能有关的所有因素。防止过多的数据注入到网络中。如果有发生丢包则通过拥塞控制减小窗口，确定出合适(**慢启动 拥塞避免 快重传 快恢复**)的拥塞窗口
         - TCP可靠协议
             - TCP使用校验和，确认和重传机制来保证可靠传输
             - https://www.cnblogs.com/xiaokang01/p/10033267.html
