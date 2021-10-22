@@ -93,3 +93,32 @@ tags:
     }
     ```
 
+- 插值运算
+    - 场景: 在英文字典里面查“apple”，你下意识翻开字典是翻前面的书页还是后面的书页呢？如果再让你查“zoo”，你又怎么查？很显然，这里你绝对不会是从中间开始查起，而是有一定目的的往前或往后翻
+    - 基本思想
+        - 基于二分查找算法，将查找点的选择改进为自适应选择，让mid值的变化更靠近关键字key，这样也就间接地减少了比较次数
+        - mid = (low+high)/2 ,  即 mid = low + 1/2*(high-low); 改进为 mid = low+(key-a[low]) / (a[high]-a[low])*(high-low);
+    - 前提条件
+        - 对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好的多
+    - 时间复杂度均为O(log2(log2n))
+
+    ```csharp
+    public static int BinarySearch(int[] array, int value, int low, int high)
+    {
+        if (array == null || array.Length < 1)
+            return -1;
+        int mid = low+(value-a[low])/(a[high]-a[low])*(high-low);
+        if (array[mid] == value)
+        {
+            return mid;
+        }else if(array[mid] > value)
+        {
+            return BinarySearch(array, value, low, mid - 1);
+        }
+        else
+        {
+            return BinarySearch(array, value, mid + 1, high);
+        }
+    }
+    ```
+
