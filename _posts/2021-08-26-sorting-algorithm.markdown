@@ -8,8 +8,39 @@ header-img: "img/home-bg-o.jpg"
 tags:
     - 算法
 ---
+
 - 环境
     - 语言:C#
+
+- C#基础常用API
+    - Random
+        ```csharp
+        //public virtual int Next(int minValue, int maxValue);
+        Random ran = new Random();
+        int rand1 = ran.Next(100,999); //100至999的随机数
+        int rand2 = ran.Next(); 返回一个大于或等于零而小于2,147,483,647的数
+        ran.NextDouble()返回一个介于 0.0 和 1.0 之间的随机数
+        ```
+    - String
+        - IndexOf(char value, int startIndex);//查找字符索引 startIndex 默认0
+        - Substring(int startIndex, int length)
+        - Insert(int startIndex, string value)
+        - Remove(int startIndex, int count)
+        - ToArray() char[] str1 = str.ToArray();
+        - Contains,ToLower,ToUpper
+    - Array
+        - Array.IndexOf(arr,"d") != -1
+        - arr.Length
+        - Array.Clear(arr)
+        - Array.Sort(arr)
+        - Array.Reverse()
+    - List
+        - List<Wife> list1 = new List<Wife>();
+        - list1.Insert(1, wf1); // 在指定位置插入
+        - list1.Remove(wf1);// 删除指定对象的第一个匹配项
+        - list1.Add(new Wife("aa")); // 将元素添加到末尾
+# 排序算法
+
 - 不错的文章链接
     - https://www.jianshu.com/p/a5bc98500cec
     - https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/
@@ -514,3 +545,135 @@ tags:
             - 基数排序： 根据键值的每位数字来分配桶
             - 计数排序： 每个桶只存储单一键值
             - 桶排序： 每个桶存储一定范围的数值
+
+# 查找算法
+
+- 不错的文章链接
+    - https://cloud.tencent.com/developer/article/1407004
+    - https://xie.infoq.cn/article/996cf8899930ae467cc790035
+    - https://www.cnblogs.com/maybe2030/p/4715035.html
+- 前言
+    - 记录常用查找算法,日后方便回顾
+
+- 查找算法分类
+    - 静态查找 动态查找
+        - 静态或者动态都是针对查找表而言的。动态表指查找表中有删除和插入操作的表。
+    - 无需查找 有序查找
+
+- 顺序查找
+    - 时间复杂度为O(n)。
+    ```csharp
+    public static int OrderSearch(int[] array, int value)
+    {
+        if (array == null || array.Length < 1)
+            return -1;
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == value)
+                return i;
+        }
+        return -1;
+    }
+    ```
+
+- 二分查找
+    - 元素必须是有序,如果无序则要先进行排序
+    - 基本思想
+        - 用给定值k先与中间结点的关键字比较，中间结点把线形表分成两个子表，若相等则查找成功；若不相等，再根据k与该中间结点关键字的比较结果确定下一步查找哪个子表，这样递归进行，直到查找到或查找结束发现表中没有这样的结点。
+        > 二分查找的前提条件是需要有序表顺序存储，对于静态查找表，一次排序后不再变化，折半查找能得到不错的效率。但对于需要**频繁执行插入或删除操作的数据集**来说，维护有序的排序会带来不小的工作量，那就**不建议使用**。
+    - 时间复杂度 O(log2n)
+
+    ```csharp
+    // 非递归
+    public static int BinarySearch(int[] array, int value)
+    {
+        if (array == null || array.Length < 1)
+            return -1;
+        int low = 0;
+        int high = array.Length - 1;
+        int mid;
+        while (low <= high)
+        {
+            mid = low +( (high - low)  >> 1); //low+(high-low)/2, 为什么(low +high) / 2会溢出啊？答：两个很大的int相加的话超出 Integer.MAX_VALUE 了
+            if (array[mid] == value)
+            {
+                return mid;
+            }
+            if (array[mid] > value)
+            {
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
+    //递归版本
+    public static int BinarySearch(int[] array, int value, int low, int high)
+    {
+        if (array == null || array.Length < 1)
+            return -1;
+        int mid = low + ((high - low) >> 1);
+        if (array[mid] == value)
+        {
+            return mid;
+        }else if(array[mid] > value)
+        {
+            return BinarySearch(array, value, low, mid - 1);
+        }
+        else
+        {
+            return BinarySearch(array, value, mid + 1, high);
+        }
+    }
+    ```
+
+- 插值运算
+    - 场景: 在英文字典里面查“apple”，你下意识翻开字典是翻前面的书页还是后面的书页呢？如果再让你查“zoo”，你又怎么查？很显然，这里你绝对不会是从中间开始查起，而是有一定目的的往前或往后翻
+    - 基本思想
+        - 基于二分查找算法，将查找点的选择改进为自适应选择，让mid值的变化更靠近关键字key，这样也就间接地减少了比较次数
+        - mid = (low+high)/2 ,  即 mid = low + 1/2*(high-low); 改进为 mid = low+(key-a[low]) / (a[high]-a[low])*(high-low);
+    - 前提条件
+        - 对于表长较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好的多
+    - 时间复杂度均为O(log2(log2n))
+
+    ```csharp
+    public static int BinarySearch(int[] array, int value, int low, int high)
+    {
+        if (array == null || array.Length < 1)
+            return -1;
+        int mid = low+(value-a[low])/(a[high]-a[low])*(high-low);
+        if (array[mid] == value)
+        {
+            return mid;
+        }else if(array[mid] > value)
+        {
+            return BinarySearch(array, value, low, mid - 1);
+        }
+        else
+        {
+            return BinarySearch(array, value, mid + 1, high);
+        }
+    }
+    ```
+
+- 二叉查找树(二叉搜索树, BST)
+    - 基本思想
+        - 二叉查找树是先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围。
+    - 时间复杂度 插入和查找均为O(logn)
+    - 树
+        - 二叉搜索树
+        - 查找树
+        - 红黑树
+        - B树和B+树
+
+- 哈希查找
+    - 基本思想
+        - 如果所有的键都是整数，那么就可以使用一个简单的无序数组来实现：将键作为索引，值即为其对应的值，这样就可以快速访问任意键的值。
+    - 步骤
+        - 用给定的哈希函数构造哈希表
+        - 根据选择的冲突处理方法解决地址冲突,如拉链法
+        - 在哈希表的基础上执行哈希查找
