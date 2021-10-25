@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "常用排序算法汇总"
-subtitle:   "十大排序算法"
+title:      "常用排序,查找算法汇总"
+subtitle:   ""
 date:       2019-11-29
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
@@ -120,7 +120,7 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if (count == 0) return;
+        if count == 1) return;
         int min;
         for (int i = 0; i < count - 1;  i++)
         {
@@ -155,7 +155,7 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if (count == 0) return;
+        if count == 1) return;
         for (int i = 1; i < count; i++)
         {
             for (int j = i; j > 0 && nums[j] < nums[j-1]; j--)
@@ -182,7 +182,7 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if (count == 0) return;
+        if count == 1) return;
         int gap = count / 2;
         while (1 <= gap)
         {
@@ -219,7 +219,7 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if (count == 0) return;
+        if count == 1) return;
         tmp = new int[count];
         MergeSort(nums, 0, count - 1);
     }
