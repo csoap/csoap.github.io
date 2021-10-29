@@ -12,6 +12,97 @@ tags:
 - 环境
     - 语言:C#
 
+- 20 个最常用的、最基础数据结构与算法
+    - 10 个数据结构：数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie 树
+    - 10个算法：递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法
+
+- 栈,用数组实现的栈叫做顺序栈,用链表实现的栈叫做链式栈
+    ```csharp
+    //数组实现的栈
+    class ArrayStack
+    {
+        private string[] items; // 数组
+        private int count; // 栈中元素个数
+        private int max;
+        public ArrayStack(int n)
+        {
+            items = new string[n];
+            count = 0;
+            max = n;
+        }
+
+        public bool Push(string item)
+        {
+            // 空间不够,入栈失败,可以做拓容处理
+            if (count == max) return false;
+            items[count] = item;
+            ++count;
+            return true;
+        }
+
+        public string Pop()
+        {
+            if (count == 0) return null;
+            string tmp = items[count - 1];
+            --count;
+            return tmp;
+        }
+    }
+    ```
+- 队列,用数组实现的
+    ```csharp
+    // 用数组实现的队列
+    public class ArrayQueue {
+        // 数组：items，数组大小：n
+        private String[] items;
+        private int n = 0;
+        // head 表示队头下标，tail 表示队尾下标
+        private int head = 0;
+        private int tail = 0;
+        // 申请一个大小为 capacity 的数组
+        public ArrayQueue(int capacity) {
+            items = new String[capacity];
+            n = capacity;
+        }
+
+        // 入队操作，将 item 放入队尾
+        // 当队列的 tail 指针移动到数组的最右边后，如果有新的数据入队，我们可以将 head 到 tail 之间的数据，整体搬移到数组中 0 到 tail-head 的位置
+        // 避免数据搬移还可以用到循环队列,循环队列判断队列满的公式:，(tail+1)%max=head
+        public boolean enqueue(String item) {
+            // tail == n 表示队列末尾没有空间了
+            if (tail == n) {
+                // tail ==n && head==0，表示整个队列都占满了
+                if (head == 0) return false;
+                // 数据搬移
+                for (int i = head; i < tail; ++i) {
+                    items[i-head] = items[i];
+                }
+                // 搬移完之后重新更新 head 和 tail
+                tail -= head;
+                head = 0;
+            }
+            items[tail] = item;
+            ++tail;
+            return true;
+        }
+        // 出队
+        public String dequeue() {
+            // 如果 head == tail 表示队列为空
+            if (head == tail) return null;
+            String ret = items[head];
+            ++head;
+            return ret;
+        }
+    }
+    ```
+    - 循环队列
+        - 首尾相连，扳成了一个环
+    - 阻塞队列
+        - 基于阻塞队列实现的"生产者 - 消费者模型"
+        - 队列基础上增加了阻塞操作。简单来说，就是在队列为空的时候，从队头取数据会被阻塞。因为此时还没有数据可取，直到队列中有了数据才能返回；如果队列已经满了，那么插入数据的操作就会被阻塞，直到队列中有空闲位置后再插入数据，然后再返回
+    - 并发队列
+        - 线程安全的队列
+        - 直接在 enqueue()、dequeue()方法上加锁，但是锁粒度大并发度会比较低，同一时刻仅允许一个存或者取操作
 - C#基础常用API
     - Random
         ```csharp
@@ -89,12 +180,15 @@ tags:
 
     ![冒泡排序](/img/in-post/post-js-version/sort/bubble_sort.gif)
 
+    - 要排序的数组的初始状态是 4，5，6，3，2，1，其中，有序元素对有 (4，5) (4，6) 两个，所以有序度是 2。n=6，所以排序完成之后终态的满有序度为 n*(n-1)/2=15
+    - 逆序度 = 满有序度 - 有序度, 逆序度表示要进行交换的次数
     ```csharp
     public static void BubbleSort(int[] nums)
     {
         if (nums == null) return;
         int len = nums.Length;
         if (len == 0) return;
+        bool flag = false; //提前退出冒泡循环的标志位
         for (int i = 0; i < len - 1; i++)
         {
             for (int j = 0; j < len - 1 - i; j++)
@@ -102,8 +196,10 @@ tags:
                 if (nums[j] > nums[j + 1])
                 {
                     Swap(nums, j, j + 1);
+                    flag = true;// 表示有数据交换
                 }
             }
+            if (!flag) break; // 没有数据交换，提前退出
         }
     }
     ```
@@ -112,6 +208,7 @@ tags:
         - 最差情况 O(n^2)
         - 平均情况 O(n)
 - 选择排序
+    - 选择排序算法的实现思路有点类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾。
 
     ![选择排序](/img/in-post/post-js-version/sort/select_sort.gif)
 
@@ -120,11 +217,11 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if count == 1) return;
+        if (count == 1) return;
         int min;
         for (int i = 0; i < count - 1;  i++)
         {
-            min = i;
+            min = i; // 寻找后面最小的索引
             for (int j = i + 1; j < count; j++)
             {
                 if (nums[min] > nums[j])
@@ -144,10 +241,15 @@ tags:
         - 最佳情况 O(n^2)
         - 最差 O(n^2)
         - 平均 O(n^2)
+        - 不稳定. 比如 5，8，5，2，9 这样一组数据，使用选择排序算法来排序的话，第一次找到最小元素 2，
+与第一个 5 交换位置，那第一个 5 和中间的 5 顺序就变了，所以就不稳定了
 
 - 插入排序
     - 联想:斗地主抓牌时候插入牌
-
+    - 我们将数组中的数据分为两个区间，已排序区间和未排序区间。初始已排序区间只有一个
+元素，就是数组的第一个元素。插入算法的核心思想是取未排序区间中的元素，在已排序区间中
+找到合适的插入位置将其插入，并保证已排序区间数据一直有序。重复这个过程，直到未排序区
+间中元素为空，算法结束
     ![插入排序](/img/in-post/post-js-version/sort/insert_sort.gif)
 
     ```csharp
@@ -155,7 +257,7 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if count == 1) return;
+        if (count == 1) return;
         for (int i = 1; i < count; i++)
         {
             for (int j = i; j > 0 && nums[j] < nums[j-1]; j--)
@@ -168,11 +270,12 @@ tags:
     /// 优化写法 用临时变量记录标记项,去掉Swap方法
 
     ```
+    
     - 算法分析
         - 最佳情况 O(n), 只有外循环
         - 最差 O(n^2)
         - 平均 O(n^2)
-
+ 
 - 希尔排序
 
     ![插入排序](/img/in-post/post-js-version/sort/shell_sort.png)
@@ -182,8 +285,8 @@ tags:
     {
         if (nums == null) return;
         int count = nums.Length;
-        if count == 1) return;
-        int gap = count / 2;
+        if (count == 1) return;
+        int gap = count >> 1;
         while (1 <= gap)
         {
             // 把距离为 gap 的元素编为一个组，扫描所有组
@@ -217,24 +320,24 @@ tags:
     ```csharp
     public static void SortArray(int[] nums)
     {
-        if (nums == null) return;
+        if (nums == null || nums.Length == 1) return;
         int count = nums.Length;
-        if count == 1) return;
-        tmp = new int[count];
-        MergeSort(nums, 0, count - 1);
+        int[] tmp = new int[count];
+        MergeSort(nums, 0, count - 1, tmp);
     }
 
-    public static void MergeSort(int[] nums, int l, int r)
+    public static void MergeSort(int[] nums, int l, int r, int[] tmp)
     {
         if (l >= r) return;
-        int mid = (l + r) >> 1;
-        MergeSort(nums, l, mid);
-        MergeSort(nums, mid + 1, r);
-        int i = l, j = mid + 1;
-        int cnt = 0;
+        int mid = l + ((r - l) >> 1);
+        MergeSort(nums, l, mid, tmp); // 左边归并排序,使得左子序列有序
+        MergeSort(nums, mid + 1, r, tmp);
+        // 将两个有序子数组合并
+        int i = l, j = mid +1;//左序列指针,//右序列指针
+        int cnt = 0;//临时数组指针
         while (i <= mid && j <= r)
         {
-            if (nums[i] <= nums[j])
+            if (nums[i] < nums[j])
             {
                 tmp[cnt++] = nums[i++];
             }
@@ -251,9 +354,10 @@ tags:
         {
             tmp[cnt++] = nums[j++];
         }
-        for (int k = 0; k < r - l + 1; k++)
+        cnt = 0;
+        while (l <= r)
         {
-            nums[k + l] = tmp[k];
+            nums[l++] = tmp[cnt++];
         }
     }
     ```
@@ -269,12 +373,12 @@ tags:
         - 选定Pivot中心轴
         - 将大于Pivot的数字放在Pivot的右边,将小于Pivotde的数字放在Pivot的左边
         - 分别对左右子序列重复前三步操作
-    
+
     ```csharp
     public static void QuickSort(int[] nums, int low, int high)
     {
         if (low >= high) return;
-        int index = SortUnit(nums, low, high);
+        int index = SortUnit(nums, low, high); // 找寻基准数据的正确索引
         QuickSort(nums, low, index - 1);
         QuickSort(nums, index + 1, high);
     }
@@ -285,9 +389,9 @@ tags:
         while (low < high)
         {
             //从high往前找小于或等于key的值
-            while (low < high && array[high] > key)
+            while (low < high && array[high] >= key)
                 high--;
-            //比key小开等的放左边
+            //比key小等的放左边
             array[low] = array[high];
             //从low往后找大于key的值
             while (low < high && array[low] <= key)
@@ -306,6 +410,23 @@ tags:
         - 最差 O(n^2)
         - 平均 O(nlogn)
 
+    - 归并排序 和快速排序 区别
+        - 归并排序的处理过程是由下到上的，先处理子问题，然后再合并。而快排正好相反，它的处理过程是由上到下的，先分区，然后再处理子问题。归并排序虽然是稳定的、时间复杂度为 O(nlogn) 的排序算法，但是它是非原地排序算法。快速排序通过设计巧妙的原地分区函数，可以实现原地排序，解决了归并排序占用太多内存的问题
+        - 快排,原地,不稳定
+        - 归并, 非原地,稳定
+    - 快排缺点
+        - 如果数据原本就是有序或接近有序,每次分区选择最后一个数据,情况时间复杂度退化为O(n^2),主要问题是选分区点不合理
+    - 如何优化
+        - 三数取中法
+            - 从区间的首、尾、中间，分别取出一个数，然后对比大小，取这 3 个数的中间值作为分区点。这样每间隔某个固定的长度，取数据出来比较，将中间值作为分区点的分区算法，肯定要比单纯取某一个数据更好。但是，如果要排序的数组比较大，那“三数取中”可能就不够了，可能要“五数取中”或者“十数取中
+        - 随机法
+            - 随机法就是每次从要排序的区间中，随机选择一个元素作为分区点
+            - 从概率的角度来看，也不大可能会出现每次分区点都选的很差的情况，所以平均情况下，这样选的分区点是比较好的
+    -  C 语言中 qsort() 的底层实现原理
+        - qsort() 会优先使用归并排序来排序输入数据，因为归并排序的空间复杂度是 O(n)，所以对于小数据量的排序，比如 1KB、2KB 等，归并排序额外需要 1KB、2KB 的内存空间，这个问题不大
+        - 要排序的数据量比较大的时候，qsort() 会改为用快速排序算法来排序
+        - 在快速排序的过程中，当要排序的区间中，元素的个数小于等于 4 时，qsort() 就退化为插入排序
+            - 因为:在小规模数据面前，O(n ) 时间复杂度的算法并不一定比 O(nlogn) 的算法执行时间长
 - 堆排序
     - https://www.bilibili.com/video/BV1K4411X7fq
     - 思路
@@ -380,6 +501,9 @@ tags:
     - 核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数
     - 适用场景
         - 量大但是范围小
+            > 计数排序只能用在数据范围不大的场景中，如果数据范围 k 比要排序的数据 n 大很多，就不适合用计数排序了。而且，计数排序只能给非负整数排序，如果要排序的数据是其他类型的，要将其在不改变相对大小的情况下，转化为非负整数
+
+            > 拿考生这个例子。如果考生成绩精确到小数后一位，我们就需要将所有的分数都先乘以 10，转化成整数，然后再放到 9010 个桶内。再比如，如果要排序的数据中有负数，数据的范围是 [-1000, 1000]，那我们就需要先对每个数据都加 1000，转化成非负整数
             - 某大型企业数万员工年龄排序
             - 如何得到高考名次
     - 步骤
@@ -422,7 +546,7 @@ tags:
 - 桶排序
     - 桶排序 是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定
     - 原理
-        - 假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序
+        - 假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法,如快排
 
     ![桶排序](/img/in-post/post-js-version/sort/bucket_sort.png)
 
@@ -481,6 +605,12 @@ tags:
 - 基数排序
     - 基本思想
         - 基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。
+        - 有时候要排序的数据并不都是等长的, 可以把所有的单词补齐到相同长度,如单词比较,位数不够的可以在后面补 a，因为字母中最小的是 a
+    - 适用范围
+        - 每一位的数据范围不能太大
+        - 需要可以分割出独立的“位”来比较，而且位之间有递进的关系，如果 a 数据的高位比 b 数据大，那剩下的低位就不用比较了
+        - 如:假设我们有 10 万个手机号码，希望将这 10 万个手机号码从小到大排序
+        > 规律:假设要比较两个手机号码 a，b 的大小，如果在前面几位中，a手机号码已经比 b 手机号码大了，那后面的几位就不用看了
     - 步骤
         - 取得数组中的最大数，并取得位数
         - arr为原始数组，从最低位开始取每个位组成radix数组
@@ -608,7 +738,7 @@ tags:
                 low = mid + 1;
             }
         }
-        return low;
+        return -1;
     }
 
     //递归版本
