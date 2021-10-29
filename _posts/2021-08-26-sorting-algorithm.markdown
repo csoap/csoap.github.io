@@ -707,14 +707,25 @@ tags:
     ```
 
 - 二分查找
-    - 元素必须是有序,如果无序则要先进行排序
+    - 应用场景
+        - 如何用最**省内存**的方式实现快速查找
+        - 二分查找只能用在插入、删除操作不频繁，一次排序多次查找的场景中。针对动态变化的数据集合，二分查找将不再适用,推荐使用**二叉树**
+        - 假设我们有 1000 万个整数数据，每个数据占 8 个字节，如何设计数据结构和算法，快速判断某个整数是否出现在这 1000 万数据中？ 我们希望这个功能不要占用太多的内存空间，最多不要超过 100MB
+            - 先排序,然后直接二分查找
+    - 前提
+        - 元素必须是有序,如果无序则要先进行排序 O(nlogn)
+    - 注意要点
+        - 记得考虑有没有**重复数据**
+        - 变形问题
+            - 查找**第一个等于**给定值的元素,最后一个等于,第一个大于等于,最后一个小于,这些变形都要能熟练手写
+
     - 基本思想
         - 用给定值k先与中间结点的关键字比较，中间结点把线形表分成两个子表，若相等则查找成功；若不相等，再根据k与该中间结点关键字的比较结果确定下一步查找哪个子表，这样递归进行，直到查找到或查找结束发现表中没有这样的结点。
         > 二分查找的前提条件是需要有序表顺序存储，对于静态查找表，一次排序后不再变化，折半查找能得到不错的效率。但对于需要**频繁执行插入或删除操作的数据集**来说，维护有序的排序会带来不小的工作量，那就**不建议使用**。
     - 时间复杂度 O(log2n)
 
     ```csharp
-    // 非递归
+    // 非递归,没有重复数据
     public static int BinarySearch(int[] array, int value)
     {
         if (array == null || array.Length < 1)
@@ -722,7 +733,7 @@ tags:
         int low = 0;
         int high = array.Length - 1;
         int mid;
-        while (low <= high)
+        while (low <= high) // 循环退出条件注意是 low<=high，而不是 low<high
         {
             mid = low +( (high - low)  >> 1); //low+(high-low)/2, 为什么(low +high) / 2会溢出啊？答：两个很大的int相加的话超出 Integer.MAX_VALUE 了
             if (array[mid] == value)
@@ -731,21 +742,22 @@ tags:
             }
             if (array[mid] > value)
             {
-                high = mid - 1;
+                high = mid - 1; // 如果写成high = mid,可能造成无限循环
             }
             else
             {
-                low = mid + 1;
+                low = mid + 1; // low = mid,可能造成无限循环
             }
         }
         return -1;
     }
 
-    //递归版本
+    //递归版本,没有重复数据
     public static int BinarySearch(int[] array, int value, int low, int high)
     {
         if (array == null || array.Length < 1)
             return -1;
+        if (low > high) return -1;
         int mid = low + ((high - low) >> 1);
         if (array[mid] == value)
         {
@@ -759,9 +771,93 @@ tags:
             return BinarySearch(array, value, mid + 1, high);
         }
     }
+    // 非递归,有重复,求解的是第一个值等于给定值的元素
+    public static int BinarySearch(int[] a ,int n, int value){
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if ((mid == 0) || (a[mid - 1] != value)){
+                    return mid;
+                }else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    // 非递归,有重复,查找最后一个值等于给定值的元素
+    public int bsearch(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] > value) {
+                high = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if ((mid == n - 1) || (a[mid + 1] != value)){
+                    return mid;
+                }
+                else {
+                    low = mid + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    // 查找第一个大于等于给定值的元素
+    public int bsearch(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] >= value) {
+                if ((mid == 0) || (a[mid - 1] < value)){
+                    return mid;
+                }else{
+                    high = mid - 1;
+                }
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    // 查找最后一个小于等于给定值的元素
+    public int bsearch7(int[] a, int n, int value) {
+    int low = 0;
+    int high = n - 1;
+    while (low <= high) {
+        int mid = low + ((high - low) >> 1);
+        if (a[mid] > value) {
+            high = mid - 1;
+        } else {
+            if ((mid == n - 1) || (a[mid + 1] > value)) return mid;
+            else low = mid + 1;
+        }
+    }
+    return -1;
+    }
     ```
 
-    - 如何用最省内存的方式实现快速查找
+    - 局限性
+        - 二分查找依赖的是顺序表结构，简单点说就是数组,链表不可以,数组**按照下标随机访问数据**的时间复杂度是 O(1)，而链表随机访问的时间复杂度是 O(n)
+        - 二分查找针对的是有序数据
+        - 数据量太小不适合二分查找
+            > 有个例外,数据之间的比较操作非常耗时，不管数据量大小，都推荐使用二分查找.比如，数组中存储的都是长度超过 300 的字符串，如此长的两个字符串之间比对大小，就会非常耗时。我们需要尽可能地减少比较次数，而比较次数的减少会大大提高性能，这个时候二分查找就比顺序遍历更有优势
+        - 数据量太大也不适合二分查找
+            - 二分查找的底层需要依赖数组这种数据结构，而数组为了支持随机访问的特性，要求内存空间连续。比如，我们有 1GB 大小的数据，如果希望用数组来存储，那就需要 1GB 的**连续**内存空间,如果这剩余的 1GB内存空间都是零散的，没有连续的 1GB 大小的内存空间，那照样无法申请一个 1GB 大小的数
+组
 
 - 插值运算
     - 场景: 在英文字典里面查“apple”，你下意识翻开字典是翻前面的书页还是后面的书页呢？如果再让你查“zoo”，你又怎么查？很显然，这里你绝对不会是从中间开始查起，而是有一定目的的往前或往后翻
