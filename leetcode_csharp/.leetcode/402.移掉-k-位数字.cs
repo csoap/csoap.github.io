@@ -6,6 +6,7 @@
 
 // @lc code=start
 public class Solution {
+    //贪心算法 + 双端队列
     public string RemoveKdigits(string num, int k) {
         var stack = new LinkedList<char>(); // 双端队列
         foreach (var digit in num)
