@@ -20,6 +20,7 @@ public class Solution {
 
     private double Helper(double x, int n){
         if (n == 0) return 1.0;
+        if (n == 1) return x;
         double half = Helper(x, n / 2); // 子问题
         // 子问题合并
         return n % 2 == 0 ? half * half : half * half * x;
