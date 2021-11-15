@@ -6,26 +6,28 @@
 
 // @lc code=start
 public class Solution {
-    //回溯法
+    // 回溯法
     public IList<string> GenerateParenthesis(int n) {
         IList<string> res = new List<string>();
-        Helper(res, new StringBuilder(), 0, 0, n);
+        StringBuilder sb = new StringBuilder();
+        Helper(res, sb, 0, 0, n);
         return res;
     }
-    private void Helper(IList<string> res, StringBuilder cur, int open, int close, int max) {
-        if (cur.Length == max * 2){
-            res.Add(cur.ToString());
+
+    public void Helper(IList<string> res, StringBuilder sb, int open, int close, int n){
+        if (sb.Length == n * 2){
+            res.Add(sb.ToString());
             return;
         }
-        if (open < max) {
-            cur.Append("(");
-            Helper(res, cur, open + 1, close, max);
-            cur.Remove(cur.Length - 1, 1);
+        if (open < n) {
+            sb.Append("(");
+            Helper(res, sb, open + 1, close, n);
+            sb.Remove(sb.Length - 1, 1);
         }
-        if (close < open) {
-            cur.Append(")");
-            Helper(res, cur, open , close + 1, max);
-            cur.Remove(cur.Length - 1, 1);
+        if (close < open){
+            sb.Append(")");
+            Helper(res, sb, open, close + 1, n);
+            sb.Remove(sb.Length - 1, 1);
         }
     }
 }
