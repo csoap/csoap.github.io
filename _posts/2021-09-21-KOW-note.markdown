@@ -16,6 +16,8 @@ tags:
 - 声音数据处理
     - ogg, 为啥使用ogg
         - 使用.ogg对音频压缩，其他的音频格式在发布打包时将被作为非压缩的PCM音频格式存储在包内。 对小的音效使用非压缩音频，Unity(从1.6开始)导入时会解压缩所有ogg文件。它让短音效播放时使用非压缩的wav或者aiff文件，这样可以不消耗CPU在解压音频文件上。例如那些急速开枪、脚步等类似的声音。
+        ![音频优化](/img/in-post/post-js-version/music/music_1.png )
+        ![音频优化](/img/in-post/post-js-version/music/music_2.png)
 - 国际化与本地化
 - 日志系统
 - 调试与维护

@@ -122,7 +122,7 @@ tags:
     }
     ```
 - Dictionary
-    - 相对于HashTable，类似于List和ArrayList的关系。它是类型安全的
+    - 相对于HashTable，类似于List和ArrayList的关系。它是类型安全的,非线程安全
     ```csharp
     Dictionary<string, Person> dic = new Dictionary<string, Person>();
     Person person1 = new Person(){name= "张三"};
