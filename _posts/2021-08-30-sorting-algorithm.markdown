@@ -525,38 +525,7 @@ tags:
         - 分片
             - 对于小规模的数据, 可以将这个社交关系存储在内存中,如果是上亿用户就需要分片
                 - 哈希算法数据分片.机器 1 上存储顶点 1，2，3 的邻接表，在机器 2 上，存储顶点 4，5 的邻接表
-# C# 常用方法
-    - Random
-        ```csharp
-        //public virtual int Next(int minValue, int maxValue);
-        Random ran = new Random();
-        int rand1 = ran.Next(100,999); //100至999的随机数
-        int rand2 = ran.Next(); 返回一个大于或等于零而小于2,147,483,647的数
-        ran.NextDouble()返回一个介于 0.0 和 1.0 之间的随机数
-        ```
-    - String
-        - IndexOf(char value, int startIndex);//查找字符索引 startIndex 默认0
-        - Substring(int startIndex, int length)
-        - Insert(int startIndex, string value)
-        - Remove(int startIndex, int count)
-        - ToArray() char[] str1 = str.ToArray();
-        - Contains,ToLower,ToUpper
-    - Array
-        - Array.IndexOf(arr,"d") != -1
-        - arr.Length
-        - Array.Clear(arr)
-        - Array.Sort(arr)
-        - Array.Reverse()
-    - List
-        - List<Wife> list1 = new List<Wife>();
-        - list1.Insert(1, wf1); // 在指定位置插入
-        - list1.Remove(wf1);// 删除指定对象的第一个匹配项
-        - list1.Add(new Wife("aa")); // 将元素添加到末尾
-    - StringBuilder
-        - sb.ToString();// 转字符串
-        - sb.Append("c"); //新增字符
-        - sb.Remove(); // 移除字符
-        
+
 # 排序算法
 
 - 不错的文章链接

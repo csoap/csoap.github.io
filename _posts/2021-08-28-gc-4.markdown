@@ -2,7 +2,7 @@
 layout:     post
 title:      "GC标记-压缩算法"
 subtitle:   "阅读《垃圾回收的算法与实现》一书摘录与思考"
-date:       2021-08-13
+date:       2021-08-28
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:

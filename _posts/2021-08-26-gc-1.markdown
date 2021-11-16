@@ -2,7 +2,7 @@
 layout:     post
 title:      "介绍GC以及GC标记-清除算法"
 subtitle:   "阅读《垃圾回收的算法与实现》一书摘录与思考"
-date:       2019-11-29
+date:       2021-08-26
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:
