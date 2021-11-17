@@ -2,7 +2,7 @@
 layout:     post
 title:      "kow项目流程规范-配置表"
 subtitle:   ""
-date:       2019-11-29
+date:       2020-03-25
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:

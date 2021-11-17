@@ -2,7 +2,7 @@
 layout:     post
 title:      "unity游戏热更新原理笔记"
 subtitle:   "unity游戏热更新"
-date:       2019-11-29
+date:       2021-07-26
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:

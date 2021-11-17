@@ -2,7 +2,7 @@
 layout:     post
 title:      "求职非技术向问题"
 subtitle:   ""
-date:       2021-08-13
+date:       2021-08-24
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:
