@@ -844,6 +844,7 @@ tags:
                 - 检查对象实例，确保它是给定值类型的一个装箱值。将该值从实例复制到值类型变量中
         - 装箱拆箱区别？
             - 在装箱时是不需要显式的类型转换的，不过拆箱需要显式的类型转换
+    - 深拷贝 浅拷贝
     - c#相关知识点：https://www.cnblogs.com/anding
     - ref、out
         - ref指定的参数在函数调用时必须先初始化，而out不用
@@ -1104,6 +1105,8 @@ tags:
         - OnDisable，仅在脚本禁用的时候
         - OnDestory
         - OnApplicationQuit
+    - 特殊目录
+        - resources 目录
     - 插值Lerp运用
         - https://www.cnblogs.com/unity3ds/p/5737152.html
     - 如果不让你用UI组件，在unity中怎么展现一张图片？
