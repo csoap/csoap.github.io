@@ -1106,7 +1106,27 @@ tags:
         - OnDestory
         - OnApplicationQuit
     - 特殊目录
-        - resources 目录
+        - resources
+            - 什么是Resources System
+                - 在项目中的躲过Resources文件夹下存放一个或多个资源文件夹,并且支持unity提供的api对objects进行加载和卸载
+            - 如果resources中的文件结构复杂,内容多,会有什么影响
+                - 每个文件都有大小,在Resources文件夹下的资源都会被编译到包体中
+                - 资源管理上的成本会增加
+                - 构建时间增加(打包)
+                    - Resources文件夹下的Assets和Objects都会被合并到一个序列化文件中去,序列化文件的合并会随着Resources中的资源增加而增加
+                    - 查找数据结构是平衡搜索树,构建时间是O(nlogn),索引的加载时间随着"对象"数量增长而增长
+                    - 序列化文件?
+                        - 该索引包含一个序列化的查找树,该树通过对象的名称解析出对象对应文件的**GUID(meta文件)和localID(资源本身文件)**
+                - 影响游戏的启动时间
+                    - 启动时,对项目中所有需要立刻用到的对象进行**Instance Id实例化(如内置scene中引用),以及Resources文件夹下包含的所有对象都需要实例化Instance Id**
+                    - Instance Id就是通过GUID和localID之前的映射得到的
+            - 什么资源推荐放在Resources下
+                - 该内容在整个游戏生命周期中存在
+                    - 如MonoBehaviour singletons
+                    - ScritableObjects 配置文件
+                    - Loading Prefab
+                - 资源所占内存小
+                - 资源不会热更新
     - 插值Lerp运用
         - https://www.cnblogs.com/unity3ds/p/5737152.html
     - 如果不让你用UI组件，在unity中怎么展现一张图片？
