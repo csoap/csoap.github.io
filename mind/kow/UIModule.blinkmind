@@ -1,0 +1,300 @@
+{
+  "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+  "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+  "focusKey": "ad3534a8-1b19-4eef-a3bc-fe9444f1f54b",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "2828ee14-64ae-4517-a75d-5990f560673c",
+      "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self._dicAllView获取view逻辑文件"
+        },
+        {
+          "type": "DESC",
+          "data": "如果有view逻辑文件,执行view:CloseView\\(\\),没有view逻辑文件则创建dicAllView\\[key\\]"
+        }
+      ]
+    },
+    {
+      "key": "07bfc64e-5fb7-4591-b771-b7265dcf0711",
+      "parentKey": "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "view:Open() 界面真正打开"
+        }
+      ]
+    },
+    {
+      "key": "ad3534a8-1b19-4eef-a3bc-fe9444f1f54b",
+      "parentKey": "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self_dicInOpen[key] = 0"
+        }
+      ]
+    },
+    {
+      "key": "b9b75cef-d281-46f9-99d4-6fe2248402e4",
+      "parentKey": "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf",
+      "subKeys": [
+        "d4498bba-59e6-4343-90ca-b6d0b9a104f9",
+        "515c2173-7f56-42b7-bb97-82c9fb6494dd"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PushToStack"
+        },
+        {
+          "type": "DESC",
+          "data": "仅MainView及PopView类型界面需要入栈且执行后续操作"
+        }
+      ]
+    },
+    {
+      "key": "c28cdd57-8425-4aa1-b673-030ab0f6943d",
+      "parentKey": "280a44c3-eb75-4442-aa67-b5ffc336bf08",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "HierarchyUtil.ExportToTarget(obj, self)导出对象层级到table"
+        }
+      ]
+    },
+    {
+      "key": "9751ca92-14cf-4389-a99a-1890afa52427",
+      "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "mainViewStack,逆序查找界面,并删除"
+        }
+      ]
+    },
+    {
+      "key": "95475d7a-387a-4cab-a3c3-94a9fc3b0dee",
+      "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OpenCheck:功能解锁"
+        }
+      ]
+    },
+    {
+      "key": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "parentKey": null,
+      "subKeys": [
+        "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OpenView"
+        }
+      ]
+    },
+    {
+      "key": "ca88cdd8-a7fb-4889-ae29-6f24effdf43d",
+      "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "view:SetParam(),openParam"
+        }
+      ]
+    },
+    {
+      "key": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
+      "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "subKeys": [
+        "07eab579-15b5-453e-8447-893a5b27bb07",
+        "9751ca92-14cf-4389-a99a-1890afa52427",
+        "2828ee14-64ae-4517-a75d-5990f560673c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GetView(key):获取界面逻辑文件"
+        }
+      ]
+    },
+    {
+      "key": "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf",
+      "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "subKeys": [
+        "b9b75cef-d281-46f9-99d4-6fe2248402e4",
+        "07bfc64e-5fb7-4591-b771-b7265dcf0711",
+        "ad3534a8-1b19-4eef-a3bc-fe9444f1f54b"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "InitView"
+        }
+      ]
+    },
+    {
+      "key": "515c2173-7f56-42b7-bb97-82c9fb6494dd",
+      "parentKey": "b9b75cef-d281-46f9-99d4-6fe2248402e4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnBackStage(true) 处理界面后台逻辑"
+        }
+      ]
+    },
+    {
+      "key": "d4498bba-59e6-4343-90ca-b6d0b9a104f9",
+      "parentKey": "b9b75cef-d281-46f9-99d4-6fe2248402e4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LastView:OnDefocus(view:IsFullCover())--失去焦点,解决特效穿透"
+        }
+      ]
+    },
+    {
+      "key": "280a44c3-eb75-4442-aa67-b5ffc336bf08",
+      "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "subKeys": [
+        "c28cdd57-8425-4aa1-b673-030ab0f6943d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "判断view:IsLoaded()"
+        },
+        {
+          "type": "DESC",
+          "data": "未加载则me.modules.load:LoadUI\\(\\)"
+        }
+      ]
+    },
+    {
+      "key": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "95475d7a-387a-4cab-a3c3-94a9fc3b0dee",
+        "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
+        "ca88cdd8-a7fb-4889-ae29-6f24effdf43d",
+        "280a44c3-eb75-4442-aa67-b5ffc336bf08",
+        "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OpenView(key,param)"
+        }
+      ]
+    },
+    {
+      "key": "07eab579-15b5-453e-8447-893a5b27bb07",
+      "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self_dicInOpen[key] = 1, 界面开启中"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

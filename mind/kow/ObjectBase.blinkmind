@@ -1,0 +1,230 @@
+{
+  "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+  "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+  "focusKey": "89074c93-369e-431e-b6f4-a6026567e621",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "a5390ad1-84e3-49fe-87de-2dfbdaaaf030",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "FixedViewBase"
+        }
+      ]
+    },
+    {
+      "key": "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PopupViewBase"
+        }
+      ]
+    },
+    {
+      "key": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [
+        "89074c93-369e-431e-b6f4-a6026567e621",
+        "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "RenderObject"
+        }
+      ]
+    },
+    {
+      "key": "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SceneViewBase"
+        }
+      ]
+    },
+    {
+      "key": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "parentKey": null,
+      "subKeys": [
+        "082b5b31-b3cf-4423-a25f-29eb29d127d2",
+        "4c963bed-856b-4564-a2c5-e27ce17e4649"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ObjectBase"
+        }
+      ]
+    },
+    {
+      "key": "61e57da3-3381-4606-a9ab-87a64994c924",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "MainViewBase"
+        }
+      ]
+    },
+    {
+      "key": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "subKeys": [
+        "0e8d5c05-1ecd-4061-98bf-22b94e26e687"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PanelBase"
+        }
+      ]
+    },
+    {
+      "key": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "subKeys": [
+        "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
+        "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
+        "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
+        "61e57da3-3381-4606-a9ab-87a64994c924",
+        "573a3300-6349-4909-ab99-1bf0b95649bc",
+        "a5390ad1-84e3-49fe-87de-2dfbdaaaf030"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ViewBase"
+        }
+      ]
+    },
+    {
+      "key": "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIItemBase"
+        }
+      ]
+    },
+    {
+      "key": "573a3300-6349-4909-ab99-1bf0b95649bc",
+      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GuideViewBase"
+        }
+      ]
+    },
+    {
+      "key": "082b5b31-b3cf-4423-a25f-29eb29d127d2",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ModuleBase"
+        }
+      ]
+    },
+    {
+      "key": "89074c93-369e-431e-b6f4-a6026567e621",
+      "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIMask"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}
