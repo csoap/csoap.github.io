@@ -2,7 +2,7 @@
 layout:     post
 title:      "锻炼日志"
 subtitle:   ""
-date:       2021-11-16
+date:       2021-11-24
 author:     "CSoap"
 header-img: "img/home-bg-o.jpg"
 tags:
