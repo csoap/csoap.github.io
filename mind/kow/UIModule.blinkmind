@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": "ad3534a8-1b19-4eef-a3bc-fe9444f1f54b",
+  "focusKey": "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -85,6 +85,21 @@
       ]
     },
     {
+      "key": "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OpenView"
+        }
+      ]
+    },
+    {
       "key": "9751ca92-14cf-4389-a99a-1890afa52427",
       "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
       "subKeys": [],
@@ -114,14 +129,15 @@
       "key": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "parentKey": null,
       "subKeys": [
-        "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa"
+        "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
+        "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16"
       ],
       "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "OpenView"
+          "data": "UIModule"
         }
       ]
     },
@@ -199,6 +215,19 @@
       ]
     },
     {
+      "key": "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CloseView"
+        }
+      ]
+    },
+    {
       "key": "280a44c3-eb75-4442-aa67-b5ffc336bf08",
       "parentKey": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
       "subKeys": [
@@ -219,7 +248,7 @@
     },
     {
       "key": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
-      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "parentKey": "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
       "subKeys": [
         "95475d7a-387a-4cab-a3c3-94a9fc3b0dee",
         "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
@@ -227,7 +256,7 @@
         "280a44c3-eb75-4442-aa67-b5ffc336bf08",
         "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf"
       ],
-      "collapse": false,
+      "collapse": true,
       "style": null,
       "blocks": [
         {
@@ -257,7 +286,7 @@
     "theme": {
       "name": "default",
       "randomColor": true,
-      "background": "rgb(57,60,65)",
+      "background": "#353b49",
       "highlightColor": "#50C9CE",
       "marginH": 60,
       "marginV": 20,
