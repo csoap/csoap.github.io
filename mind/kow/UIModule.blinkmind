@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16",
+  "focusKey": "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -39,6 +39,22 @@
       ]
     },
     {
+      "key": "8aa76e89-4501-48f1-a1c8-46b8814b205f",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "e3d8861f-047d-4f5f-9654-e7e4c0d867a0",
+        "4273f797-dc62-4993-a424-b1520143dbae"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CloseAll()"
+        }
+      ]
+    },
+    {
       "key": "ad3534a8-1b19-4eef-a3bc-fe9444f1f54b",
       "parentKey": "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf",
       "subKeys": [],
@@ -72,6 +88,34 @@
       ]
     },
     {
+      "key": "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "bb71479b-4e19-49b2-b843-1cfe0010c25d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SceneEnter 场景进入界面处理"
+        }
+      ]
+    },
+    {
+      "key": "4273f797-dc62-4993-a424-b1520143dbae",
+      "parentKey": "8aa76e89-4501-48f1-a1c8-46b8814b205f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "重启游戏MeTools.RestartGame()"
+        }
+      ]
+    },
+    {
       "key": "c28cdd57-8425-4aa1-b673-030ab0f6943d",
       "parentKey": "280a44c3-eb75-4442-aa67-b5ffc336bf08",
       "subKeys": [],
@@ -81,21 +125,6 @@
         {
           "type": "CONTENT",
           "data": "HierarchyUtil.ExportToTarget(obj, self)导出对象层级到table"
-        }
-      ]
-    },
-    {
-      "key": "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
-      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-      "subKeys": [
-        "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa"
-      ],
-      "collapse": false,
-      "style": null,
-      "blocks": [
-        {
-          "type": "CONTENT",
-          "data": "OpenView"
         }
       ]
     },
@@ -129,15 +158,19 @@
       "key": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "parentKey": null,
       "subKeys": [
-        "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
-        "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16"
+        "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
+        "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+        "8aa76e89-4501-48f1-a1c8-46b8814b205f",
+        "68cfbb6a-806e-4100-bef4-974aead5a55f",
+        "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
+        "9c2217aa-81b7-407a-98b9-e9ed5e178aa1"
       ],
       "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "UIModule"
+          "data": "OpenView"
         }
       ]
     },
@@ -215,7 +248,7 @@
       ]
     },
     {
-      "key": "7974e8cf-5bd6-4a6f-ac9b-dda8c54d7f16",
+      "key": "68cfbb6a-806e-4100-bef4-974aead5a55f",
       "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "subKeys": [],
       "collapse": false,
@@ -223,7 +256,76 @@
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "CloseView"
+          "data": "CloseStackForReconn()移除全部栈（断线重连用）"
+        }
+      ]
+    },
+    {
+      "key": "f7ffecd6-223e-4f0e-a44f-4c2ed9a5d407",
+      "parentKey": "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "view:CloseView()"
+        }
+      ]
+    },
+    {
+      "key": "48a87975-fb70-4a7b-a019-7b359cf9e65f",
+      "parentKey": "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "仅在栈中需要OnBackStage(false) 处理界面后台逻辑"
+        },
+        {
+          "type": "DESC",
+          "data": "逆序递归mainViewStack，显示所有popView直到最后的mainView也显示并停止递归"
+        }
+      ]
+    },
+    {
+      "key": "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SceneExit"
+        }
+      ]
+    },
+    {
+      "key": "58a25e93-a93f-4543-9ed4-a8277494963d",
+      "parentKey": "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "FocusTop() 聚焦下一个界面"
+        }
+      ]
+    },
+    {
+      "key": "bb71479b-4e19-49b2-b843-1cfe0010c25d",
+      "parentKey": "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "场景切换的时候可以选择是否缓存上个场景窗口栈"
         }
       ]
     },
@@ -248,7 +350,7 @@
     },
     {
       "key": "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
-      "parentKey": "6c5db76d-3382-4e05-af67-2f7b9691a3e3",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "subKeys": [
         "95475d7a-387a-4cab-a3c3-94a9fc3b0dee",
         "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
@@ -256,12 +358,25 @@
         "280a44c3-eb75-4442-aa67-b5ffc336bf08",
         "cf171a66-1ccf-44f6-9ce5-ceb39501fdaf"
       ],
-      "collapse": true,
+      "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
           "data": "OpenView(key,param)"
+        }
+      ]
+    },
+    {
+      "key": "e3d8861f-047d-4f5f-9654-e7e4c0d867a0",
+      "parentKey": "8aa76e89-4501-48f1-a1c8-46b8814b205f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "lua收到cs层传递消息LUA_STOP"
         }
       ]
     },
@@ -277,6 +392,37 @@
           "data": "self_dicInOpen[key] = 1, 界面开启中"
         }
       ]
+    },
+    {
+      "key": "8b6ffa26-b29a-4144-b099-5f76a6690ef7",
+      "parentKey": "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "mainViewStack移除"
+        }
+      ]
+    },
+    {
+      "key": "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "8b6ffa26-b29a-4144-b099-5f76a6690ef7",
+        "f7ffecd6-223e-4f0e-a44f-4c2ed9a5d407",
+        "48a87975-fb70-4a7b-a019-7b359cf9e65f",
+        "58a25e93-a93f-4543-9ed4-a8277494963d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CloseView(key)"
+        }
+      ]
     }
   ],
   "config": {
@@ -286,7 +432,7 @@
     "theme": {
       "name": "default",
       "randomColor": true,
-      "background": "#353b49",
+      "background": "rgb(57,60,65)",
       "highlightColor": "#50C9CE",
       "marginH": 60,
       "marginV": 20,
