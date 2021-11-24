@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": "89074c93-369e-431e-b6f4-a6026567e621",
+  "focusKey": "08616662-c1f4-4714-9c5e-818edcbbcca3",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -31,6 +31,19 @@
         {
           "type": "CONTENT",
           "data": "PopupViewBase"
+        }
+      ]
+    },
+    {
+      "key": "08616662-c1f4-4714-9c5e-818edcbbcca3",
+      "parentKey": "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "AllianceChessScene"
         }
       ]
     },
@@ -68,6 +81,7 @@
       "parentKey": null,
       "subKeys": [
         "082b5b31-b3cf-4423-a25f-29eb29d127d2",
+        "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
         "4c963bed-856b-4564-a2c5-e27ce17e4649"
       ],
       "collapse": false,
@@ -137,6 +151,49 @@
         {
           "type": "CONTENT",
           "data": "UIItemBase"
+        }
+      ]
+    },
+    {
+      "key": "10845be2-cf7d-4ada-8f7a-25aa9a5f13db",
+      "parentKey": "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LoginScene"
+        }
+      ]
+    },
+    {
+      "key": "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [
+        "10845be2-cf7d-4ada-8f7a-25aa9a5f13db",
+        "65b801bb-2366-4c75-a052-818ea9ec56bc",
+        "08616662-c1f4-4714-9c5e-818edcbbcca3"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SceneBase"
+        }
+      ]
+    },
+    {
+      "key": "65b801bb-2366-4c75-a052-818ea9ec56bc",
+      "parentKey": "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "cityScene"
         }
       ]
     },

@@ -1,13 +1,26 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
+  "focusKey": "79e1bc30-56a8-4d34-a3b1-72e6f32489bc",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
+    {
+      "key": "79e1bc30-56a8-4d34-a3b1-72e6f32489bc",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "\n"
+        }
+      ]
+    },
     {
       "key": "2828ee14-64ae-4517-a75d-5990f560673c",
       "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
@@ -163,7 +176,8 @@
         "8aa76e89-4501-48f1-a1c8-46b8814b205f",
         "68cfbb6a-806e-4100-bef4-974aead5a55f",
         "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
-        "9c2217aa-81b7-407a-98b9-e9ed5e178aa1"
+        "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
+        "79e1bc30-56a8-4d34-a3b1-72e6f32489bc"
       ],
       "collapse": false,
       "style": null,
