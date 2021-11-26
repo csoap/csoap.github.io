@@ -1,26 +1,13 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": "79e1bc30-56a8-4d34-a3b1-72e6f32489bc",
+  "focusKey": null,
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
-    {
-      "key": "79e1bc30-56a8-4d34-a3b1-72e6f32489bc",
-      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-      "subKeys": [],
-      "collapse": false,
-      "style": null,
-      "blocks": [
-        {
-          "type": "CONTENT",
-          "data": "\n"
-        }
-      ]
-    },
     {
       "key": "2828ee14-64ae-4517-a75d-5990f560673c",
       "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
@@ -103,15 +90,17 @@
     {
       "key": "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
       "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-      "subKeys": [
-        "bb71479b-4e19-49b2-b843-1cfe0010c25d"
-      ],
+      "subKeys": [],
       "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "SceneEnter 场景进入界面处理"
+          "data": "SceneEnter(sceneID, isback, sceneMainView) 场景进入界面处理"
+        },
+        {
+          "type": "DESC",
+          "data": "目前项目中无isBack = true\nsceneMainView: 场景主界面ViewID,配置在SceneDefine.SceneConfig\\[SceneID\\].sceneView"
         }
       ]
     },
@@ -177,14 +166,15 @@
         "68cfbb6a-806e-4100-bef4-974aead5a55f",
         "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
         "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
-        "79e1bc30-56a8-4d34-a3b1-72e6f32489bc"
+        "9ab33da6-2055-4f49-b2e3-232924d4d0b0",
+        "4994b0c4-b250-4f1b-b434-3716650ad5c2"
       ],
       "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "OpenView"
+          "data": "UIModule"
         }
       ]
     },
@@ -232,6 +222,19 @@
         {
           "type": "CONTENT",
           "data": "InitView"
+        }
+      ]
+    },
+    {
+      "key": "9ab33da6-2055-4f49-b2e3-232924d4d0b0",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ClearCache(),UIModule:Dispose()销毁的时候执行"
         }
       ]
     },
@@ -314,6 +317,10 @@
         {
           "type": "CONTENT",
           "data": "SceneExit"
+        },
+        {
+          "type": "DESC",
+          "data": "* self\\.\\_lastSceneStack.sceneID = sceneID\n* 遍历mainViewStack ，并执行view:closeView\\(\\)\n* 是否需要缓存stack\n   * 插入 self.\\_lastSceneStack.sceneStack\n* self\\.\\_curSceneID = nil\n* self\\.\\_lastScenID = sceneID\n\n\n\n"
         }
       ]
     },
@@ -327,19 +334,6 @@
         {
           "type": "CONTENT",
           "data": "FocusTop() 聚焦下一个界面"
-        }
-      ]
-    },
-    {
-      "key": "bb71479b-4e19-49b2-b843-1cfe0010c25d",
-      "parentKey": "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
-      "subKeys": [],
-      "collapse": false,
-      "style": null,
-      "blocks": [
-        {
-          "type": "CONTENT",
-          "data": "场景切换的时候可以选择是否缓存上个场景窗口栈"
         }
       ]
     },
@@ -378,6 +372,23 @@
         {
           "type": "CONTENT",
           "data": "OpenView(key,param)"
+        }
+      ]
+    },
+    {
+      "key": "4994b0c4-b250-4f1b-b434-3716650ad5c2",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Update(dt)"
+        },
+        {
+          "type": "DESC",
+          "data": "* \n* 每隔1s遍历dicAllView，not v:IsPersistent\\(\\) and dicInOpen\\[k\\]~=1 and not v:IsOpen\\(\\) and v:IsLoaded\\(\\)\n   * 关闭界面时间超过 GlobalDefine.UIPANEL\\_CACHE\\_TIME执行view:Dispose\\(\\)\n\n"
         }
       ]
     },

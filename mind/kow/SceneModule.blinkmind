@@ -1,0 +1,385 @@
+{
+  "rootTopicKey": "c522653c-e834-47dc-8759-29e002682f7b",
+  "editorRootTopicKey": "c522653c-e834-47dc-8759-29e002682f7b",
+  "focusKey": "0c68865b-7149-46bd-93fa-2eb9e9a7d7dd",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "b57af269-a885-4a2a-9614-2d39e810ab56",
+      "parentKey": "38ca6184-e5c5-46f0-97e3-ed3b2cd68aa3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "sceneBackStack(),{sceneid,sceneid} 场景回退栈"
+        }
+      ]
+    },
+    {
+      "key": "c522653c-e834-47dc-8759-29e002682f7b",
+      "parentKey": null,
+      "subKeys": [
+        "38ca6184-e5c5-46f0-97e3-ed3b2cd68aa3",
+        "daa02e88-7018-45ce-94ed-cc3312444c15",
+        "e23f0f24-d91b-4866-96ee-c0431c98fd36",
+        "793ed491-cf6a-4e58-9ddc-8c01b45e4b92",
+        "18503c2f-e7c4-4e56-92d5-ab75a672dfd6",
+        "45696603-1074-4b74-8a20-d8af1e9c3a81",
+        "f1d7062d-a144-4d9f-b462-22af06ecd70b",
+        "f7b48785-63a7-48cc-9e99-a2bc41444c03",
+        "0e47a59e-6e1d-4a24-9d57-3b66b799319c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SceneModule"
+        }
+      ]
+    },
+    {
+      "key": "9820780c-0e1f-4a1b-af3d-154f9313ef88",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "newScene = self:CreateScene()"
+        }
+      ]
+    },
+    {
+      "key": "253b852a-9e64-487d-9284-6dccc6e4f84d",
+      "parentKey": "0e47a59e-6e1d-4a24-9d57-3b66b799319c",
+      "subKeys": [
+        "2c83a008-5d82-4d4c-9055-9f1470ce0ce2"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self._currScene:OnBeforeRelogin()"
+        }
+      ]
+    },
+    {
+      "key": "f1d7062d-a144-4d9f-b462-22af06ecd70b",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " CreateScene"
+        },
+        {
+          "type": "DESC",
+          "data": "* 读取SceneDefine.SceneConfig\\[sceneID\\]场景配置的脚本路径\n   * local sceneClass = import\\(sceneConfig.path, CURRENT\\_MODULE\\_NAME\\)\n   * local newScene = sceneClass.new\\(sceneConfig\\)\n\n"
+        }
+      ]
+    },
+    {
+      "key": "2e871010-adce-4f1d-992e-cce7489871a8",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "更新curScene = newScene"
+        }
+      ]
+    },
+    {
+      "key": "0e47a59e-6e1d-4a24-9d57-3b66b799319c",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [
+        "253b852a-9e64-487d-9284-6dccc6e4f84d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnBeforeRelogin,当前非loginScene重登触发"
+        }
+      ]
+    },
+    {
+      "key": "38ca6184-e5c5-46f0-97e3-ed3b2cd68aa3",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [
+        "ae3ed5e8-ee03-41c5-9654-5281c973fc8b",
+        "b57af269-a885-4a2a-9614-2d39e810ab56"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "属性"
+        }
+      ]
+    },
+    {
+      "key": "f7b48785-63a7-48cc-9e99-a2bc41444c03",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ExitCurrent"
+        },
+        {
+          "type": "DESC",
+          "data": "me\\.modules.ui:SceneExit\\(sceneID, cacheUIStack\\) 处理退出场景的viewStack\nself\\.\\_currScene:Exit\\(\\) 当前场景的退出\nself\\.\\_currScene:Dispose\\(\\) 当前场景的销毁"
+        }
+      ]
+    },
+    {
+      "key": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [
+        "9820780c-0e1f-4a1b-af3d-154f9313ef88",
+        "9fa7a88e-ec41-4182-bc81-1a8c99f72521",
+        "0c68865b-7149-46bd-93fa-2eb9e9a7d7dd",
+        "ae017a83-06b3-4474-b1a6-dfa43545c643",
+        "2e871010-adce-4f1d-992e-cce7489871a8",
+        "ea73805a-0b10-454b-b8d1-fefdfb0360d6"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LoadScene"
+        }
+      ]
+    },
+    {
+      "key": "2c83a008-5d82-4d4c-9055-9f1470ce0ce2",
+      "parentKey": "253b852a-9e64-487d-9284-6dccc6e4f84d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "curScene:Exit()"
+        }
+      ]
+    },
+    {
+      "key": "793ed491-cf6a-4e58-9ddc-8c01b45e4b92",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PopSceneStack， 取上次记录的场景，执行ChangeScene（lastSceneId）"
+        }
+      ]
+    },
+    {
+      "key": "18503c2f-e7c4-4e56-92d5-ab75a672dfd6",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [
+        "4e2412cd-2092-4a5b-bf28-6f49cddec375"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ChangeScene 切换场景"
+        }
+      ]
+    },
+    {
+      "key": "4e2412cd-2092-4a5b-bf28-6f49cddec375",
+      "parentKey": "18503c2f-e7c4-4e56-92d5-ab75a672dfd6",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " 切换场景流程"
+        },
+        {
+          "type": "DESC",
+          "data": "* 业务执行 SceneModule:ChangeScene\\(\\),如me.modules.scene:ChangeScene\\(SceneDefine.SceneIdentity.ALLIANCECHESS, \\{isCross = self.\\_isCross\\}, nil, true\\)\n* 拆解一下ChangeScene\n   * 是否需要过渡界面，如有：me.modules.ui:OpenView\\(ViewID.TRANSITION\\_CITY,param\\)\n   * 过渡界面是否需要延时\n* 执行SceneModule:LoadScene\\(\\)\n\n"
+        }
+      ]
+    },
+    {
+      "key": "ae017a83-06b3-4474-b1a6-dfa43545c643",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LuaHelper.UnloadSceneAB(lastSceneName, false)\nme.modules.resource:ClearLoad() 清理所有异步\nmemodules.resource:ClearPool() 清理所有池子"
+        }
+      ]
+    },
+    {
+      "key": "e23f0f24-d91b-4866-96ee-c0431c98fd36",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Back() 回到上一个场景"
+        }
+      ]
+    },
+    {
+      "key": "9fa7a88e-ec41-4182-bc81-1a8c99f72521",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "lastSceneID = curSceneID，入栈_sceneBackStack"
+        }
+      ]
+    },
+    {
+      "key": "0c68865b-7149-46bd-93fa-2eb9e9a7d7dd",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ExitCurrent()"
+        }
+      ]
+    },
+    {
+      "key": "a38b0e41-270b-4d6f-83d1-4d76a48fe927",
+      "parentKey": "ea73805a-0b10-454b-b8d1-fefdfb0360d6",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.modules.load:LoadScene(self._sceneName, self._sceneFolder, handler(self, self.DoSceneLoaded))"
+        }
+      ]
+    },
+    {
+      "key": "ae3ed5e8-ee03-41c5-9654-5281c973fc8b",
+      "parentKey": "38ca6184-e5c5-46f0-97e3-ed3b2cd68aa3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "_currScene(SceneBase)"
+        }
+      ]
+    },
+    {
+      "key": "daa02e88-7018-45ce-94ed-cc3312444c15",
+      "parentKey": "c522653c-e834-47dc-8759-29e002682f7b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnRelogin()，在重新登陆完成后执行场景的Enter"
+        }
+      ]
+    },
+    {
+      "key": "ea73805a-0b10-454b-b8d1-fefdfb0360d6",
+      "parentKey": "45696603-1074-4b74-8a20-d8af1e9c3a81",
+      "subKeys": [
+        "a38b0e41-270b-4d6f-83d1-4d76a48fe927"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "newScene:Load()"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}
