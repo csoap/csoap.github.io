@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "c522653c-e834-47dc-8759-29e002682f7b",
   "editorRootTopicKey": "c522653c-e834-47dc-8759-29e002682f7b",
-  "focusKey": "0c68865b-7149-46bd-93fa-2eb9e9a7d7dd",
+  "focusKey": "a5107771-d006-4a06-9227-8ff9ed11f646",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -69,6 +69,19 @@
         {
           "type": "CONTENT",
           "data": "self._currScene:OnBeforeRelogin()"
+        }
+      ]
+    },
+    {
+      "key": "a5107771-d006-4a06-9227-8ff9ed11f646",
+      "parentKey": "a38b0e41-270b-4d6f-83d1-4d76a48fe927",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CS层LuaHeler:LoadScene()\nload回调执行 me.modules.ui:SceneEnter(self._sceneID, self._isback, self._MainView)"
         }
       ]
     },
@@ -283,7 +296,9 @@
     {
       "key": "a38b0e41-270b-4d6f-83d1-4d76a48fe927",
       "parentKey": "ea73805a-0b10-454b-b8d1-fefdfb0360d6",
-      "subKeys": [],
+      "subKeys": [
+        "a5107771-d006-4a06-9227-8ff9ed11f646"
+      ],
       "collapse": false,
       "style": null,
       "blocks": [

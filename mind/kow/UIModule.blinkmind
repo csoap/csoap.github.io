@@ -1,13 +1,39 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": null,
+  "focusKey": "7b1ba078-9e9f-4abb-8f86-ba4c37afef43",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
+    {
+      "key": "3a487613-46ea-4ccf-9fa4-f26ee1ea9153",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "IsOpened(key)"
+        }
+      ]
+    },
+    {
+      "key": "fa12d34e-d86c-43f1-b031-81cd2f9d1c77",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "BackToTopView() 回到主界面"
+        }
+      ]
+    },
     {
       "key": "2828ee14-64ae-4517-a75d-5990f560673c",
       "parentKey": "fe1c8231-1c88-4db2-ab76-5004da72c1c4",
@@ -118,6 +144,19 @@
       ]
     },
     {
+      "key": "8fd3699a-b580-4f4e-a669-7c8988d59856",
+      "parentKey": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GetTopViewKey() 获取当前界面key"
+        }
+      ]
+    },
+    {
       "key": "c28cdd57-8425-4aa1-b673-030ab0f6943d",
       "parentKey": "280a44c3-eb75-4442-aa67-b5ffc336bf08",
       "subKeys": [],
@@ -167,7 +206,14 @@
         "fe7e1728-f5fe-41af-95e9-0514b40ed19f",
         "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
         "9ab33da6-2055-4f49-b2e3-232924d4d0b0",
-        "4994b0c4-b250-4f1b-b434-3716650ad5c2"
+        "4994b0c4-b250-4f1b-b434-3716650ad5c2",
+        "3a487613-46ea-4ccf-9fa4-f26ee1ea9153",
+        "32f4eee7-317f-4c30-aa4e-5b65848adbc6",
+        "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
+        "fa12d34e-d86c-43f1-b031-81cd2f9d1c77",
+        "f6f8b780-13c6-46df-87b9-4428f83b2cf5",
+        "e1535a63-8f76-4f2a-9049-67f3678e5f64",
+        "7b1ba078-9e9f-4abb-8f86-ba4c37afef43"
       ],
       "collapse": false,
       "style": null,
@@ -188,6 +234,19 @@
         {
           "type": "CONTENT",
           "data": "view:SetParam(),openParam"
+        }
+      ]
+    },
+    {
+      "key": "7b1ba078-9e9f-4abb-8f86-ba4c37afef43",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "HideDown()"
         }
       ]
     },
@@ -239,6 +298,22 @@
       ]
     },
     {
+      "key": "32f4eee7-317f-4c30-aa4e-5b65848adbc6",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "a6581fa3-2926-4021-aace-7fa496877709",
+        "0f6e2e0f-cd4c-4a75-afeb-29343d7200a9"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "IsTopView(key) 是否是当前界面 "
+        }
+      ]
+    },
+    {
       "key": "515c2173-7f56-42b7-bb97-82c9fb6494dd",
       "parentKey": "b9b75cef-d281-46f9-99d4-6fe2248402e4",
       "subKeys": [],
@@ -248,6 +323,19 @@
         {
           "type": "CONTENT",
           "data": "OnBackStage(true) 处理界面后台逻辑"
+        }
+      ]
+    },
+    {
+      "key": "f6f8b780-13c6-46df-87b9-4428f83b2cf5",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GetRoot() 获取各类型界面的Root节点"
         }
       ]
     },
@@ -265,6 +353,19 @@
       ]
     },
     {
+      "key": "6d5b1768-8a27-4210-b193-a4aac2c1e718",
+      "parentKey": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GetUserDataByViewID(viewId) 获取指定viewID的view:GetUserData(),userData为界面自定义数据"
+        }
+      ]
+    },
+    {
       "key": "68cfbb6a-806e-4100-bef4-974aead5a55f",
       "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "subKeys": [],
@@ -274,6 +375,19 @@
         {
           "type": "CONTENT",
           "data": "CloseStackForReconn()移除全部栈（断线重连用）"
+        }
+      ]
+    },
+    {
+      "key": "0f6e2e0f-cd4c-4a75-afeb-29343d7200a9",
+      "parentKey": "32f4eee7-317f-4c30-aa4e-5b65848adbc6",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "IsMainViewByKey(key) 某个已打开的界面是否是全屏界面接口"
         }
       ]
     },
@@ -308,6 +422,19 @@
       ]
     },
     {
+      "key": "a6581fa3-2926-4021-aace-7fa496877709",
+      "parentKey": "32f4eee7-317f-4c30-aa4e-5b65848adbc6",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "IsPopViewByKey()-某个已打开的界面是否是弹窗界面接口"
+        }
+      ]
+    },
+    {
       "key": "9c2217aa-81b7-407a-98b9-e9ed5e178aa1",
       "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "subKeys": [],
@@ -321,6 +448,32 @@
         {
           "type": "DESC",
           "data": "* self\\.\\_lastSceneStack.sceneID = sceneID\n* 遍历mainViewStack ，并执行view:closeView\\(\\)\n* 是否需要缓存stack\n   * 插入 self.\\_lastSceneStack.sceneStack\n* self\\.\\_curSceneID = nil\n* self\\.\\_lastScenID = sceneID\n\n\n\n"
+        }
+      ]
+    },
+    {
+      "key": "e1535a63-8f76-4f2a-9049-67f3678e5f64",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Back()，关闭当前界面， view:Back()"
+        }
+      ]
+    },
+    {
+      "key": "22cfa49c-60da-4940-bfa4-be138428aa30",
+      "parentKey": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GetTopFullViewID 获取当前全屏界面key,最上层的MainView"
         }
       ]
     },
@@ -415,6 +568,23 @@
         {
           "type": "CONTENT",
           "data": "self_dicInOpen[key] = 1, 界面开启中"
+        }
+      ]
+    },
+    {
+      "key": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "8fd3699a-b580-4f4e-a669-7c8988d59856",
+        "22cfa49c-60da-4940-bfa4-be138428aa30",
+        "6d5b1768-8a27-4210-b193-a4aac2c1e718"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "获取各种View"
         }
       ]
     },
