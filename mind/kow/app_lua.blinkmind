@@ -1,0 +1,568 @@
+{
+  "rootTopicKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+  "editorRootTopicKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+  "focusKey": "bc6f3fdb-1089-40ed-b9ae-e2bc02e8ed8c",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "3219aa11-ff13-48b5-a07c-c525ca1010e4",
+      "parentKey": "a6044ce4-d07f-4a08-a829-78de385678cb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "注册CS发送的安卓返回键 触发消息"
+        }
+      ]
+    },
+    {
+      "key": "1dfcaaf7-af68-4d85-808b-c551edf2839b",
+      "parentKey": "f7ecce37-dac9-4e0f-9b6e-c5f9cf141cfb",
+      "subKeys": [
+        "c3afad90-0b75-4310-b6dd-350dd2351a18",
+        "a6044ce4-d07f-4a08-a829-78de385678cb"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "初始化ModuleManager"
+        }
+      ]
+    },
+    {
+      "key": "0752da21-fb40-4936-9962-d4aa22946879",
+      "parentKey": "61dc4db2-b206-4a90-be79-704444e19efc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UserSetting 保存"
+        }
+      ]
+    },
+    {
+      "key": "426c714b-468f-4813-bb49-c82863bb71f3",
+      "parentKey": "e3871d44-0365-41a0-89bd-68b069c92253",
+      "subKeys": [
+        "61dc4db2-b206-4a90-be79-704444e19efc"
+      ],
+      "collapse": true,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"LUA_APP_STOP\")"
+        }
+      ]
+    },
+    {
+      "key": "33571841-49c3-4611-bc4f-a2b922982594",
+      "parentKey": "7209bbb1-60ce-49a2-8a5a-e1e25eeae59c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"APPLICATION_FOCUS\", focus)"
+        }
+      ]
+    },
+    {
+      "key": "c3afad90-0b75-4310-b6dd-350dd2351a18",
+      "parentKey": "1dfcaaf7-af68-4d85-808b-c551edf2839b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "local ModuleManager = import(\".modules.ModuleManager\", CURRENT_MODULE_NAME) 导入脚本\nself.moduleManager = ModuleManager.new()"
+        }
+      ]
+    },
+    {
+      "key": "99acfc82-a0ee-4645-b1d4-35347bd8d605",
+      "parentKey": "f7ecce37-dac9-4e0f-9b6e-c5f9cf141cfb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LuaHelper.RegisterLuaUpdate(handler(self, self.Update))\nModuleManager.cs 设置luaUpdateFunc，ModuleManager的Update也执行Lua的luaUpdateFunc"
+        }
+      ]
+    },
+    {
+      "key": "3a69f5cb-9c9d-47a5-b734-9c12c98ed201",
+      "parentKey": "55fe19d4-2d8e-4222-b67f-e1e8790fdba4",
+      "subKeys": [
+        "bc6f3fdb-1089-40ed-b9ae-e2bc02e8ed8c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LoginModule.lua监听"
+        }
+      ]
+    },
+    {
+      "key": "f7ecce37-dac9-4e0f-9b6e-c5f9cf141cfb",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "99acfc82-a0ee-4645-b1d4-35347bd8d605",
+        "45fbd8e5-0071-49ab-aec7-a0203da2e934",
+        "1dfcaaf7-af68-4d85-808b-c551edf2839b"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Start()"
+        }
+      ]
+    },
+    {
+      "key": "d3c831ab-ee12-47b7-9a80-b0cf68aefaed",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnDiskStorageLack"
+        }
+      ]
+    },
+    {
+      "key": "419a1ea9-54c0-4597-8e06-8ff0396916e9",
+      "parentKey": "0c0cdfed-0550-416d-b05c-2ecf04b0462b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.modules.login:UserLogout()"
+        }
+      ]
+    },
+    {
+      "key": "2af69481-51bc-4a3a-95b2-e714f81c754d",
+      "parentKey": "e3470094-aac5-4f0e-8d84-7e5b786804ac",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.modules.ui:Back()"
+        }
+      ]
+    },
+    {
+      "key": "81f47f1f-c2cf-4663-a4e9-ad96bad74706",
+      "parentKey": "61dc4db2-b206-4a90-be79-704444e19efc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GlobalSetting保存"
+        }
+      ]
+    },
+    {
+      "key": "2fee3f2d-8076-4587-969e-9c0bddb14b50",
+      "parentKey": "a421bf97-505a-45a1-bdb8-7b7d28e4f68b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self.moduleManager:Update(dt)"
+        }
+      ]
+    },
+    {
+      "key": "a421bf97-505a-45a1-bdb8-7b7d28e4f68b",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "330005dc-5d5c-4f34-8d28-979dd5880160",
+        "2fee3f2d-8076-4587-969e-9c0bddb14b50"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Update()"
+        }
+      ]
+    },
+    {
+      "key": "e3871d44-0365-41a0-89bd-68b069c92253",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "426c714b-468f-4813-bb49-c82863bb71f3",
+        "0b302a5f-16d7-4ed3-8692-275c87f762f9",
+        "8613cda3-e850-4d8a-ba96-1162c0df2325"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Stop(),由CS发送的消息触发"
+        }
+      ]
+    },
+    {
+      "key": "bc6f3fdb-1089-40ed-b9ae-e2bc02e8ed8c",
+      "parentKey": "3a69f5cb-9c9d-47a5-b734-9c12c98ed201",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.modules.scene:ChangeScene(SceneDefine.SceneIdentity.LOGIN)\r\n\r\nme.modules.ui:OpenView(ViewID.LOGIN)"
+        }
+      ]
+    },
+    {
+      "key": "0c0cdfed-0550-416d-b05c-2ecf04b0462b",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "419a1ea9-54c0-4597-8e06-8ff0396916e9",
+        "cd451185-ebb7-4149-9ea6-0912941c099e"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnApplicationQuit \n退出游戏事件"
+        }
+      ]
+    },
+    {
+      "key": "384b8793-709f-4696-b7de-985db83ac2ab",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "d5f148b9-e260-446f-b1be-16dc2ea80d48"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnResDownloadComplete 远程资源下载完毕"
+        }
+      ]
+    },
+    {
+      "key": "61dc4db2-b206-4a90-be79-704444e19efc",
+      "parentKey": "426c714b-468f-4813-bb49-c82863bb71f3",
+      "subKeys": [
+        "81f47f1f-c2cf-4663-a4e9-ad96bad74706",
+        "0752da21-fb40-4936-9962-d4aa22946879"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SettingUtil.Save()"
+        }
+      ]
+    },
+    {
+      "key": "8613cda3-e850-4d8a-ba96-1162c0df2325",
+      "parentKey": "e3871d44-0365-41a0-89bd-68b069c92253",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self.moduleManager:Dispose()"
+        }
+      ]
+    },
+    {
+      "key": "0b302a5f-16d7-4ed3-8692-275c87f762f9",
+      "parentKey": "e3871d44-0365-41a0-89bd-68b069c92253",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.modules.ui:CloseAll()"
+        }
+      ]
+    },
+    {
+      "key": "3169759a-a0de-4db0-aea7-d35e4b2e2ebf",
+      "parentKey": "eb404633-f945-4aad-a21f-fe2591b15990",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"APPLICATION_PAUSE\", pause)"
+        }
+      ]
+    },
+    {
+      "key": "d5f148b9-e260-446f-b1be-16dc2ea80d48",
+      "parentKey": "384b8793-709f-4696-b7de-985db83ac2ab",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"RES_DOWNLOAD_COMPLETE\")"
+        }
+      ]
+    },
+    {
+      "key": "eb404633-f945-4aad-a21f-fe2591b15990",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "3169759a-a0de-4db0-aea7-d35e4b2e2ebf"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnAppPause 前后台切换"
+        }
+      ]
+    },
+    {
+      "key": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "parentKey": null,
+      "subKeys": [
+        "f7ecce37-dac9-4e0f-9b6e-c5f9cf141cfb",
+        "a421bf97-505a-45a1-bdb8-7b7d28e4f68b",
+        "e3871d44-0365-41a0-89bd-68b069c92253",
+        "0c0cdfed-0550-416d-b05c-2ecf04b0462b",
+        "eb404633-f945-4aad-a21f-fe2591b15990",
+        "7209bbb1-60ce-49a2-8a5a-e1e25eeae59c",
+        "e3470094-aac5-4f0e-8d84-7e5b786804ac",
+        "d23ebc27-7eef-41b5-89c1-f05dcabd4868",
+        "384b8793-709f-4696-b7de-985db83ac2ab",
+        "d3c831ab-ee12-47b7-9a80-b0cf68aefaed"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "App.lua"
+        }
+      ]
+    },
+    {
+      "key": "d23ebc27-7eef-41b5-89c1-f05dcabd4868",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "15558c61-2ecb-40e3-9fe9-f7d38ada0e40"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnQualityLvChanged"
+        }
+      ]
+    },
+    {
+      "key": "7209bbb1-60ce-49a2-8a5a-e1e25eeae59c",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "33571841-49c3-4611-bc4f-a2b922982594"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnAppFocus 获得失去焦点"
+        }
+      ]
+    },
+    {
+      "key": "15558c61-2ecb-40e3-9fe9-f7d38ada0e40",
+      "parentKey": "d23ebc27-7eef-41b5-89c1-f05dcabd4868",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "    me.QualityLv = lv\r\n    GameMsg.SendMessage(\"QUALITY_LV_CHANED\", lv)"
+        }
+      ]
+    },
+    {
+      "key": "45fbd8e5-0071-49ab-aec7-a0203da2e934",
+      "parentKey": "f7ecce37-dac9-4e0f-9b6e-c5f9cf141cfb",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " 监听CS发送的APP_MSG"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nLuaHelper.RegisterFunc(LuaEventDefine.APPLICATION_QUIT, handler(self, self.OnApplicationQuit)) -- 退出游戏事件\nLuaHelper.RegisterFunc(LuaEventDefine.APPLICATION_PAUSE, handler(self, self.OnAppPause)) -- 游戏暂停，前后台切换\nLuaHelper.RegisterFunc(LuaEventDefine.APPLICATION_FOCUS, handler(self, self.OnAppFocus)) -- 应用失去、获得焦点\nLuaHelper.RegisterFunc(LuaEventDefine.LUA_STOP, handler(self, self.Stop)) -- 停止Lua虚拟机， 只有重启游戏才会走到\nLuaHelper.RegisterFunc(LuaEventDefine.QUALITY_LV_CHANED, handler(self, self.OnQualityLvChanged)) -- 性能优化等级变化\nLuaHelper.RegisterFunc(LuaEventDefine.RES_DOWNLOAD_COMPLETE, handler(self, self.OnResDownloadComplete)) -- 远程资源全部下载完成\nLuaHelper.RegisterFunc(LuaEventDefine.DISK_STORAGE_LACK, handler(self, self.OnDiskStorageLack)) -- 磁盘空间不足\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "cd451185-ebb7-4149-9ea6-0912941c099e",
+      "parentKey": "0c0cdfed-0550-416d-b05c-2ecf04b0462b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"APPLICATION_QUIT\")"
+        }
+      ]
+    },
+    {
+      "key": "55fe19d4-2d8e-4222-b67f-e1e8790fdba4",
+      "parentKey": "a6044ce4-d07f-4a08-a829-78de385678cb",
+      "subKeys": [
+        "3a69f5cb-9c9d-47a5-b734-9c12c98ed201"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMsg.SendMessage(\"FRAMEWORK_READY\")"
+        }
+      ]
+    },
+    {
+      "key": "a6044ce4-d07f-4a08-a829-78de385678cb",
+      "parentKey": "1dfcaaf7-af68-4d85-808b-c551edf2839b",
+      "subKeys": [
+        "3219aa11-ff13-48b5-a07c-c525ca1010e4",
+        "55fe19d4-2d8e-4222-b67f-e1e8790fdba4"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self.moduleManager:InitModules(callBackFunc)\n执行所有lua Modules的Init,并执行回调"
+        }
+      ]
+    },
+    {
+      "key": "e3470094-aac5-4f0e-8d84-7e5b786804ac",
+      "parentKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
+      "subKeys": [
+        "2af69481-51bc-4a3a-95b2-e714f81c754d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnEscape 处理Android返回键"
+        }
+      ]
+    },
+    {
+      "key": "330005dc-5d5c-4f34-8d28-979dd5880160",
+      "parentKey": "a421bf97-505a-45a1-bdb8-7b7d28e4f68b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "TimerMgr.Update()"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}

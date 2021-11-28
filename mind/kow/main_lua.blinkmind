@@ -1,0 +1,475 @@
+{
+  "rootTopicKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+  "editorRootTopicKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+  "focusKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "f92ce109-a55f-4e4a-af82-a2112599d36c",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [
+        "d738c432-734d-4de1-81ff-992cc746f44d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".modules.globals.init\", CURRENT_MODULE_NAME)\n 全局数据导入 游戏运行过程中可能会被改变的数据"
+        }
+      ]
+    },
+    {
+      "key": "ed5d779c-6f61-4d48-af64-82ba715b27bc",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [
+        "1c24a215-301f-4cd5-a0d2-e6c481f7c87e"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".framework.init\")"
+        }
+      ]
+    },
+    {
+      "key": "d738c432-734d-4de1-81ff-992cc746f44d",
+      "parentKey": "f92ce109-a55f-4e4a-af82-a2112599d36c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UserData = import(\".UserData\") 游戏过程中产生的用户相关数据"
+        }
+      ]
+    },
+    {
+      "key": "30d9bc37-6402-48ee-a23a-f0454d17ec09",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [
+        "6fa179ea-9a90-4bc4-bd39-d43f846ac1ca"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require(\"config\")"
+        }
+      ]
+    },
+    {
+      "key": "d14a1ed1-d8e6-4dc1-90fa-2ae139d41fda",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require 库"
+        },
+        {
+          "type": "DESC",
+          "data": "bit32         = require \"bit32\"\njson         = require\\(\"cjson\"\\)\nrequire\\(\"mathS\"\\)"
+        }
+      ]
+    },
+    {
+      "key": "5d3c2e18-2b0e-4e43-9798-c6d34cff1b97",
+      "parentKey": "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ObjectPool = import(\".ObjectPool\")"
+        }
+      ]
+    },
+    {
+      "key": "8f5ffc68-644a-40ba-8a25-d4159a097678",
+      "parentKey": "547eabb4-9c56-4908-9b8c-2a3c6956b5af",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.SocketTCP = import(\".net.SocketTCP\")\r\nme.SocketTCP_CS = import(\".net.SocketTCP_CS\")\r\nme.SocketKCP_CS = import(\".net.SocketKCP_CS\")"
+        }
+      ]
+    },
+    {
+      "key": "34e9b24e-bc7e-44e9-b0e9-3124abf3ac54",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require(\"game.App\").new():Start()\n引入App 脚本 创建对象，执行Start()"
+        }
+      ]
+    },
+    {
+      "key": "f3d85028-9d4d-4f7d-a9d9-915f6de024d0",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "引入 base脚本"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\n-- 场景基类\nme.SceneBase = import(\".modules.scene.base.SceneBase\", CURRENT_MODULE_NAME)\n-- 场景业务基类\nme.BusinessBase = import(\".modules.scene.base.BusinessBase\")\n-- 摄像机控制基类\nme.CameraControllerBase = import(\".modules.scene.base.CameraControllerBase\")\n-- 场景输入事件管理\nme.SceneTouch = import(\".modules.scene.base.SceneTouch\")\n\n-- 窗口中的子panel基类\n---@type PanelBase\nme.PanelBase = import(\".modules.ui.base.PanelBase\")\n-- UIItem基类\n---@type  UIItemBase\nme.UIItemBase = import(\".modules.ui.base.UIItemBase\")\n-- 窗口基类\n---@type ViewBase\nme.ViewBase = import(\".modules.ui.base.ViewBase\")\n-- 全屏窗口基类\n---@type MainViewBase\nme.MainViewBase = import(\".modules.ui.base.MainViewBase\")\n-- 弹窗基类\n---@type PopupViewBase\nme.PopupViewBase = import(\".modules.ui.base.PopupViewBase\")\n-- 固化类窗口基类\nme.FixedViewBase = import(\".modules.ui.base.FixedViewBase\")\n-- 场景类窗口基类\nme.SceneViewBase = import(\".modules.ui.base.SceneViewBase\")\n-- 弹窗类的遮挡\n---@type UIMask\nme.UIMaskCls        = import(\".modules.ui.base.UIMask\")\n-- 引导类窗口基类\nme.GuideViewBase = import(\".modules.ui.base.GuideViewBase\")\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "1c24a215-301f-4cd5-a0d2-e6c481f7c87e",
+      "parentKey": "ed5d779c-6f61-4d48-af64-82ba715b27bc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.ObjectBase\t\t= import(\".ObjectBase\")\r\nme.ModuleBase\t\t= import(\".ModuleBase\")\r\nme.RenderObject\t    = import(\".RenderObject\")"
+        }
+      ]
+    },
+    {
+      "key": "547eabb4-9c56-4908-9b8c-2a3c6956b5af",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [
+        "8f5ffc68-644a-40ba-8a25-d4159a097678"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "声明Socket"
+        }
+      ]
+    },
+    {
+      "key": "a0d8e771-a72d-49d1-84bc-dfbf354bda71",
+      "parentKey": "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "TimerMgr = import(\".TimerMgr\")"
+        }
+      ]
+    },
+    {
+      "key": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "parentKey": null,
+      "subKeys": [
+        "00e9539b-701d-4dfb-9e44-369e598ad355",
+        "30d9bc37-6402-48ee-a23a-f0454d17ec09",
+        "cf15af0c-5299-4fe5-8545-1d9c13245639",
+        "4d7b1714-c90b-4a21-96a4-854ecc426f9a",
+        "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+        "34e9b24e-bc7e-44e9-b0e9-3124abf3ac54"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "main.lua  lua逻辑入口"
+        }
+      ]
+    },
+    {
+      "key": "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [
+        "5d3c2e18-2b0e-4e43-9798-c6d34cff1b97",
+        "2a2ebf7f-739f-4892-bf71-421cfb2c88b4",
+        "2811ab2d-8fd5-4e80-b844-959bb832ce1b",
+        "a0d8e771-a72d-49d1-84bc-dfbf354bda71"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".util.init\")"
+        }
+      ]
+    },
+    {
+      "key": "6fa179ea-9a90-4bc4-bd39-d43f846ac1ca",
+      "parentKey": "30d9bc37-6402-48ee-a23a-f0454d17ec09",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Config.cs数据写入me"
+        }
+      ]
+    },
+    {
+      "key": "342c5b3c-7939-4ef9-aa55-007701516a60",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".common.init\") 声明公共方法 和 class"
+        },
+        {
+          "type": "DESC",
+          "data": "import\\(\".UnityInc\"\\)\nimport\\(\".class\"\\)\nimport\\(\".string\"\\)\nimport\\(\".table\"\\)\nimport\\(\".common\"\\)\nimport\\(\".handler\"\\)\nimport\\(\".enum\"\\)\nimport\\(\".math\"\\)"
+        }
+      ]
+    },
+    {
+      "key": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [
+        "d14a1ed1-d8e6-4dc1-90fa-2ae139d41fda",
+        "342c5b3c-7939-4ef9-aa55-007701516a60",
+        "682a39e0-624c-4660-9e11-1803fca9d514",
+        "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+        "29910317-cd81-4c54-9905-9e9b304b7933",
+        "ed5d779c-6f61-4d48-af64-82ba715b27bc"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require(\"engine.init\")"
+        }
+      ]
+    },
+    {
+      "key": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [
+        "e9c59bb7-d0e4-4162-8a62-7714fffa0089",
+        "679f5c7f-b621-40a8-9a6c-6b5aeb6d8da6",
+        "547eabb4-9c56-4908-9b8c-2a3c6956b5af",
+        "f3d85028-9d4d-4f7d-a9d9-915f6de024d0",
+        "f92ce109-a55f-4e4a-af82-a2112599d36c",
+        "a4b87e3b-dc4e-484a-92f8-4d4be04558e1"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require(\"game.init\")"
+        }
+      ]
+    },
+    {
+      "key": "a4b87e3b-dc4e-484a-92f8-4d4be04558e1",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".modules.helper.init\", CURRENT_MODULE_NAME)\n各种模块的辅助Helper"
+        }
+      ]
+    },
+    {
+      "key": "ae89854f-2bf9-4bd0-aa08-dd0042f8a54c",
+      "parentKey": "4d7b1714-c90b-4a21-96a4-854ecc426f9a",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "sproto = import(\".spt.sproto\")\r\nsprotoparser = import(\".spt.sprotoparser\")"
+        }
+      ]
+    },
+    {
+      "key": "29910317-cd81-4c54-9905-9e9b304b7933",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".GameMessage.GameMsgDef\")\nGameMsg = import(\".GameMessage.GameMsg\")"
+        }
+      ]
+    },
+    {
+      "key": "682a39e0-624c-4660-9e11-1803fca9d514",
+      "parentKey": "cf15af0c-5299-4fe5-8545-1d9c13245639",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".Debug.GameLog\") 打印日志\n\r\nGameProfiler = import(\".Debug.gameprofiler\") 耗时报告\nTimeCollector = import(\".Debug.TimeCollector\") 时间记录"
+        }
+      ]
+    },
+    {
+      "key": "679f5c7f-b621-40a8-9a6c-6b5aeb6d8da6",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.protoversion = import(\".protocol.define.sprotoversion\") 协议版本号"
+        }
+      ]
+    },
+    {
+      "key": "00e9539b-701d-4dfb-9e44-369e598ad355",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "声明全局表 me和gConstEmptyTable"
+        }
+      ]
+    },
+    {
+      "key": "2811ab2d-8fd5-4e80-b844-959bb832ce1b",
+      "parentKey": "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".Timer\")"
+        }
+      ]
+    },
+    {
+      "key": "2a2ebf7f-739f-4892-bf71-421cfb2c88b4",
+      "parentKey": "c97fbccd-50e6-4b6b-8bba-ab97ff146a2c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "VectorPool = import(\".VectorPool\")"
+        }
+      ]
+    },
+    {
+      "key": "e9c59bb7-d0e4-4162-8a62-7714fffa0089",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " 服务的define"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\ngErrDef = import(\".protocol.define.errDef\")\n---@type itemSourceDef\ngItemSource = import(\".protocol.define.itemSourceDef\")\nserverdef = import(\".protocol.define.serverdef\")\nQuestConditionType = import(\".protocol.define.questCondTypeDef\")\nsummitDef = import(\".protocol.define.summitDef\")\n\nrankDef = import(\".protocol.define.rankDef\")\nvipDef = import(\".protocol.define.vipDef\")\nmailDef = import(\".protocol.define.mailDef\")\n---@type activityDef\nactivityDef = import(\".protocol.define.activityDef\")\n---@type shopDef\nshopDef = import(\".protocol.define.shopDef\")\n---@type redDef\nredDef = import(\".protocol.define.redDef\")\nonoffTypeDef = import(\".protocol.define.onoffTypeDef\")\nkingdomSettingDef = import(\".protocol.define.kingdomSettingDef\")\nglobalSettingDef = import(\".protocol.define.globalSettingDef\")\n\n-- 语言define\nimport(\".protocol.define.language\")\nLanguageDefine = gLanguage\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "4d7b1714-c90b-4a21-96a4-854ecc426f9a",
+      "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+      "subKeys": [
+        "ae89854f-2bf9-4bd0-aa08-dd0042f8a54c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "require(\"externs.init\")"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}
