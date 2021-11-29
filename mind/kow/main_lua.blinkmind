@@ -1,13 +1,26 @@
 {
   "rootTopicKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
   "editorRootTopicKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
-  "focusKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
+  "focusKey": "6113d4c8-b41a-474c-9b93-dc6987487665",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
+    {
+      "key": "e035286a-d572-4fba-9da1-487452fe9159",
+      "parentKey": "3584e4ae-108d-4fb6-a80e-4007c8132c0b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "引入业务相关 Define"
+        }
+      ]
+    },
     {
       "key": "f92ce109-a55f-4e4a-af82-a2112599d36c",
       "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
@@ -35,6 +48,19 @@
         {
           "type": "CONTENT",
           "data": "import(\".framework.init\")"
+        }
+      ]
+    },
+    {
+      "key": "a75b1b6d-be0e-4921-bc8e-6eafae1d4690",
+      "parentKey": "3584e4ae-108d-4fb6-a80e-4007c8132c0b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "引入公共Define"
         }
       ]
     },
@@ -80,6 +106,22 @@
         {
           "type": "DESC",
           "data": "bit32         = require \"bit32\"\njson         = require\\(\"cjson\"\\)\nrequire\\(\"mathS\"\\)"
+        }
+      ]
+    },
+    {
+      "key": "02c351ed-41d0-4709-897a-c87e72f8e787",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [
+        "ccda9604-00b6-4283-a291-73ff58ab2b57",
+        "6113d4c8-b41a-474c-9b93-dc6987487665"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".Data.init\")"
         }
       ]
     },
@@ -219,6 +261,19 @@
       ]
     },
     {
+      "key": "ccda9604-00b6-4283-a291-73ff58ab2b57",
+      "parentKey": "02c351ed-41d0-4709-897a-c87e72f8e787",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "local importMgr = class(\"importMgr\")"
+        }
+      ]
+    },
+    {
       "key": "6fa179ea-9a90-4bc4-bd39-d43f846ac1ca",
       "parentKey": "30d9bc37-6402-48ee-a23a-f0454d17ec09",
       "subKeys": [],
@@ -269,11 +324,30 @@
       ]
     },
     {
+      "key": "9683ecd1-7d54-46e3-b471-17bf7e9ac206",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".utils.init\") 放置一些业务无关的工具类"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nHierarchyUtil = import(\".HierarchyUtil\") -- UI层级导出相关的接口\nGOUtil = import(\".GOUtil\") -- GameObject和Transform的各种接口封装\nSettingUtil = import(\".SettingUtil\")\nStateMachine = import(\".StateMachine.StateMachine\") -- 状态机\nNetUtil = import(\".NetUtil\")\nTimeUtil = import(\".TimeUtil\") -- 游戏内各种时间获取接口\nPoolManager = import(\".PoolManager\") --  对象池管理 纯预制的对象池管理\nUnitUtil = import(\".UnitUtil\") - 游戏内各种单位转换\nPubFunc = import(\".PubFunc\") -- 业务无关的公共函数的封装\nSoundUtil = import(\".SoundUtil\")\nSQLiteUtil = import(\".SQLiteUtil\") -- 当前位置要点\nLogicFunc = import(\".LogicFunc\") -- 逻辑层的一些辅助接口\nimport(\".Ctrl\") -- 声明Ctrl全局表\n\n--多语言\nimport(\".languages.multiLanguage\")\n\n--屏蔽词\nshieldwordsUtil = import(\".shieldewords.shieldwordsUtil\")\n\n--游戏版本号\n---@type GameVersion\nGameVersion = import(\".GameVersion\")\n\n```\n"
+        }
+      ]
+    },
+    {
       "key": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
       "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
       "subKeys": [
         "e9c59bb7-d0e4-4162-8a62-7714fffa0089",
-        "679f5c7f-b621-40a8-9a6c-6b5aeb6d8da6",
+        "3584e4ae-108d-4fb6-a80e-4007c8132c0b",
+        "9683ecd1-7d54-46e3-b471-17bf7e9ac206",
+        "02c351ed-41d0-4709-897a-c87e72f8e787",
         "547eabb4-9c56-4908-9b8c-2a3c6956b5af",
         "f3d85028-9d4d-4f7d-a9d9-915f6de024d0",
         "f92ce109-a55f-4e4a-af82-a2112599d36c",
@@ -285,6 +359,19 @@
         {
           "type": "CONTENT",
           "data": "require(\"game.init\")"
+        }
+      ]
+    },
+    {
+      "key": "6113d4c8-b41a-474c-9b93-dc6987487665",
+      "parentKey": "02c351ed-41d0-4709-897a-c87e72f8e787",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "对外接口,声明公共方法:\nimportData(),unloadData()"
         }
       ]
     },
@@ -341,19 +428,6 @@
       ]
     },
     {
-      "key": "679f5c7f-b621-40a8-9a6c-6b5aeb6d8da6",
-      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
-      "subKeys": [],
-      "collapse": false,
-      "style": null,
-      "blocks": [
-        {
-          "type": "CONTENT",
-          "data": "me.protoversion = import(\".protocol.define.sprotoversion\") 协议版本号"
-        }
-      ]
-    },
-    {
       "key": "00e9539b-701d-4dfb-9e44-369e598ad355",
       "parentKey": "d9df2f33-5ce3-458e-b579-efc5230b6d6d",
       "subKeys": [],
@@ -405,7 +479,7 @@
         },
         {
           "type": "DESC",
-          "data": "```none\ngErrDef = import(\".protocol.define.errDef\")\n---@type itemSourceDef\ngItemSource = import(\".protocol.define.itemSourceDef\")\nserverdef = import(\".protocol.define.serverdef\")\nQuestConditionType = import(\".protocol.define.questCondTypeDef\")\nsummitDef = import(\".protocol.define.summitDef\")\n\nrankDef = import(\".protocol.define.rankDef\")\nvipDef = import(\".protocol.define.vipDef\")\nmailDef = import(\".protocol.define.mailDef\")\n---@type activityDef\nactivityDef = import(\".protocol.define.activityDef\")\n---@type shopDef\nshopDef = import(\".protocol.define.shopDef\")\n---@type redDef\nredDef = import(\".protocol.define.redDef\")\nonoffTypeDef = import(\".protocol.define.onoffTypeDef\")\nkingdomSettingDef = import(\".protocol.define.kingdomSettingDef\")\nglobalSettingDef = import(\".protocol.define.globalSettingDef\")\n\n-- 语言define\nimport(\".protocol.define.language\")\nLanguageDefine = gLanguage\n\n```\n"
+          "data": "```none\ngErrDef = import(\".protocol.define.errDef\")\n---@type itemSourceDef\ngItemSource = import(\".protocol.define.itemSourceDef\")\nserverdef = import(\".protocol.define.serverdef\")\nQuestConditionType = import(\".protocol.define.questCondTypeDef\")\nsummitDef = import(\".protocol.define.summitDef\")\n\nrankDef = import(\".protocol.define.rankDef\")\nvipDef = import(\".protocol.define.vipDef\")\nmailDef = import(\".protocol.define.mailDef\")\n---@type activityDef\nactivityDef = import(\".protocol.define.activityDef\")\n---@type shopDef\nshopDef = import(\".protocol.define.shopDef\")\n---@type redDef\nredDef = import(\".protocol.define.redDef\")\nonoffTypeDef = import(\".protocol.define.onoffTypeDef\")\nkingdomSettingDef = import(\".protocol.define.kingdomSettingDef\")\nglobalSettingDef = import(\".protocol.define.globalSettingDef\")\n\nme.protoversion = import(\".protocol.define.sprotoversion\") 协议版本号\n\n-- 语言define\nimport(\".protocol.define.language\")\nLanguageDefine = gLanguage\n\n```\n"
         }
       ]
     },
@@ -421,6 +495,22 @@
         {
           "type": "CONTENT",
           "data": "require(\"externs.init\")"
+        }
+      ]
+    },
+    {
+      "key": "3584e4ae-108d-4fb6-a80e-4007c8132c0b",
+      "parentKey": "8a935865-de6c-40fc-9bc3-02ee2b0910de",
+      "subKeys": [
+        "a75b1b6d-be0e-4921-bc8e-6eafae1d4690",
+        "e035286a-d572-4fba-9da1-487452fe9159"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".define.init\")"
         }
       ]
     }
@@ -471,5 +561,5 @@
       }
     }
   },
-  "formatVersion": null
+  "formatVersion": "0.0"
 }

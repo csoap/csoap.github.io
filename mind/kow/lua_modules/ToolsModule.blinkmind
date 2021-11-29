@@ -1,0 +1,283 @@
+{
+  "rootTopicKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+  "editorRootTopicKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+  "focusKey": "1dfe3d51-c58d-47a6-9f9b-8eb5a5ab9281",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "81b5773e-90c5-4857-a46b-f337499997d5",
+      "parentKey": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "声明各种通用Item脚本,如:me.CommonGoodsItem = importUIItem(\"CommonGoodsItem\")"
+        }
+      ]
+    },
+    {
+      "key": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [
+        "33cdb924-2689-4bef-9a02-3dfa7bc55535",
+        "7fd05fcd-e1bb-434a-8990-050f6f81295e",
+        "e29a7597-6248-4f07-b655-e832377964d6",
+        "1dfe3d51-c58d-47a6-9f9b-8eb5a5ab9281",
+        "81b5773e-90c5-4857-a46b-f337499997d5"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\".ui.common.init\", CURRENT_MODULE_NAME)"
+        }
+      ]
+    },
+    {
+      "key": "d0508d9c-3571-4c32-b20b-93c5194d64b6",
+      "parentKey": "402c4338-f2e5-4e49-8262-1e9cbce0b77f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameSetting 和 UserSetting"
+        }
+      ]
+    },
+    {
+      "key": "402c4338-f2e5-4e49-8262-1e9cbce0b77f",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [
+        "bc9599b2-d946-4a7a-aa53-c40d7b7e2fa8",
+        "d0508d9c-3571-4c32-b20b-93c5194d64b6"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SettingUtil.Init() 本地缓存"
+        }
+      ]
+    },
+    {
+      "key": "33cdb924-2689-4bef-9a02-3dfa7bc55535",
+      "parentKey": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "NetWait = import(\".NetWait\") 网络等待"
+        }
+      ]
+    },
+    {
+      "key": "1dfe3d51-c58d-47a6-9f9b-8eb5a5ab9281",
+      "parentKey": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CommonItem = import(\".CommonItem\"),导入脚本"
+        }
+      ]
+    },
+    {
+      "key": "7fd05fcd-e1bb-434a-8990-050f6f81295e",
+      "parentKey": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Toast = import(\".Toast\")"
+        }
+      ]
+    },
+    {
+      "key": "6bbe2789-1a91-44dc-87ba-09b6ed1d2f22",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ResetLanguage() 设置多语言"
+        },
+        {
+          "type": "DESC",
+          "data": "local localTb = importData\\(fileName\\) \\-\\- 如fileName 为:local\\_en\nloadData\\[lName\\] = localTb\nlocal updTb = importData\\(updFileName\\) \\-\\- updTb对localTb更新, language\\_upd.en\ni18n\\.load\\(loadData\\)\ni18n\\.setLocale\\(lName\\)\n"
+        }
+      ]
+    },
+    {
+      "key": "efe03619-abd9-491c-ac61-708ac375bc39",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "shieldwordsUtil = shieldwordsUtil.new(me.Language),设置多语言对应屏蔽词库"
+        }
+      ]
+    },
+    {
+      "key": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "parentKey": null,
+      "subKeys": [
+        "717744b3-90b0-4f5d-90d0-25c291ceb180",
+        "402c4338-f2e5-4e49-8262-1e9cbce0b77f",
+        "6bbe2789-1a91-44dc-87ba-09b6ed1d2f22",
+        "efe03619-abd9-491c-ac61-708ac375bc39",
+        "8d0951f0-1772-483a-bb1f-21381131fdff",
+        "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+        "1aefe6ec-fd0a-45ac-bdb6-b36b741fb7a8"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ToolsModule"
+        },
+        {
+          "type": "DESC",
+          "data": "工具管理模块 在所有模块之前初始化 管理工具类的初始化等工作"
+        }
+      ]
+    },
+    {
+      "key": "8d0951f0-1772-483a-bb1f-21381131fdff",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "math.newrandomseed() 随机数种子"
+        }
+      ]
+    },
+    {
+      "key": "717744b3-90b0-4f5d-90d0-25c291ceb180",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SQLiteUtil.Init()"
+        }
+      ]
+    },
+    {
+      "key": "bc9599b2-d946-4a7a-aa53-c40d7b7e2fa8",
+      "parentKey": "402c4338-f2e5-4e49-8262-1e9cbce0b77f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "添加监听触发Save"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nGameMsg.AddMessage(\"SCENE_CHANGED\", nil, SettingUtil.Save)\nGameMsg.AddMessage(\"APPLICATION_PAUSE\", nil, SettingUtil.Save)\nGameMsg.AddMessage(\"APPLICATION_QUIT\", nil, SettingUtil.Save)\nGameMsg.AddMessage(\"LUA_APP_STOP\", nil, SettingUtil.Save)\nGameMsg.AddMessage(\"SETTING_SAVE\", nil, SettingUtil.Save)\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "1aefe6ec-fd0a-45ac-bdb6-b36b741fb7a8",
+      "parentKey": "f39f7340-1124-4e16-bb02-66f5e68420c9",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "注册C#调用的功能（非具体业务）,如cs获取lua 的多语言\nLuaHelper.RegisterFunc(LuaEventDefine.GETLANGUAGETEXT, GetLanguageText)"
+        }
+      ]
+    },
+    {
+      "key": "e29a7597-6248-4f07-b655-e832377964d6",
+      "parentKey": "4f961cab-4584-4c86-b9e5-2cd2f9058316",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ModuleGoto = import(\".ModuleGoto\")"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

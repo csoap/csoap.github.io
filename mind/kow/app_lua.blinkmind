@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
   "editorRootTopicKey": "c1a32445-eb03-4237-97a7-9f43abb19d31",
-  "focusKey": "bc6f3fdb-1089-40ed-b9ae-e2bc02e8ed8c",
+  "focusKey": "cd451185-ebb7-4149-9ea6-0912941c099e",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -564,5 +564,5 @@
       }
     }
   },
-  "formatVersion": null
+  "formatVersion": "0.0"
 }
