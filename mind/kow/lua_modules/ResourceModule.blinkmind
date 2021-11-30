@@ -1,0 +1,249 @@
+{
+  "rootTopicKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+  "editorRootTopicKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+  "focusKey": "f7135e03-dd33-4a9c-b503-54b653b1462e",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "d30a829c-c4f0-44eb-b15f-b298a4d9c9c3",
+      "parentKey": "cb980f3b-cc77-425e-89a4-4e194fabd43b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "没有在使用中，则回收空闲池子"
+        }
+      ]
+    },
+    {
+      "key": "c78d5468-dd66-488a-a4da-56682e64a2be",
+      "parentKey": "cb980f3b-cc77-425e-89a4-4e194fabd43b",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "卸载ab"
+        }
+      ]
+    },
+    {
+      "key": "8c7728cd-291b-4a51-8695-f154bfe8cc52",
+      "parentKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "subKeys": [
+        "55be15fd-629d-462e-815f-de01909c675d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Init()"
+        }
+      ]
+    },
+    {
+      "key": "cb980f3b-cc77-425e-89a4-4e194fabd43b",
+      "parentKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "subKeys": [
+        "d30a829c-c4f0-44eb-b15f-b298a4d9c9c3",
+        "c78d5468-dd66-488a-a4da-56682e64a2be"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ClearPool()"
+        }
+      ]
+    },
+    {
+      "key": "a7d6d3d0-3dba-46af-9efb-a464e8fe672f",
+      "parentKey": "3558b879-223d-47d6-a3b2-c4693293d185",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "预制加载完超过时间没有引用,卸载ab"
+        }
+      ]
+    },
+    {
+      "key": "8d1c4b28-dbf1-4a81-8d1c-2e59f791fb88",
+      "parentKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ctor() 初始化属性"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nlocal _ASYN_SPAWN_MAX_PRE_FRAME = 10 \t-- 异步加载时,每帧最多实例化对象个数\nlocal _POOL_CULL_ABOVE \t\t\t= 20\t-- 缓存数量\nlocal _POOL_DESTORY_PRE_FRAME \t= 5\t\t-- 一次清理N个\nlocal _POOL_DESTORY_DELAY \t\t= 5\t\t-- 定时清理(s)\nlocal _GO_CACHE_TIME\t\t\t= 100\t-- 对象缓存时间(s)\n\nself._id             = 0     -- 回调自增长ID\nself._loadCallbacks = {}     -- 加载回调列表\nself._waitLoad         = {}    -- 等待加载列表\nself._asynTask         = {}     -- 异步加载任务\nself._loadList         = {}\nself._inLoad         = false\n\nself._prefabs         = {}\nself._pools         = {}    -- 空闲池子\nself._usingPools    = {}     -- 被使用中的对象也留一份引用，用来计算prefab是否可以卸载\nself._instances     = {}\nself._lastClearTime = 0\n\n-- 创建池子\nself:InitPool()\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "3558b879-223d-47d6-a3b2-c4693293d185",
+      "parentKey": "6769d015-c6de-4c86-aea2-b36e9bf15c75",
+      "subKeys": [
+        "12cdb963-9fd0-4458-8e15-561fea8be210",
+        "a7d6d3d0-3dba-46af-9efb-a464e8fe672f"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UpdatePool"
+        }
+      ]
+    },
+    {
+      "key": "12cdb963-9fd0-4458-8e15-561fea8be210",
+      "parentKey": "3558b879-223d-47d6-a3b2-c4693293d185",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " 超时回收对象"
+        }
+      ]
+    },
+    {
+      "key": "6769d015-c6de-4c86-aea2-b36e9bf15c75",
+      "parentKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "subKeys": [
+        "7ea84578-cd82-4dff-a285-54144026dec0",
+        "3558b879-223d-47d6-a3b2-c4693293d185"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Update()"
+        }
+      ]
+    },
+    {
+      "key": "f7135e03-dd33-4a9c-b503-54b653b1462e",
+      "parentKey": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CreateAsyn()"
+        }
+      ]
+    },
+    {
+      "key": "55be15fd-629d-462e-815f-de01909c675d",
+      "parentKey": "8c7728cd-291b-4a51-8695-f154bfe8cc52",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "me.ResourceItem = import(\".resource.ResourceItem\", CURRENT_MODULE_NAME)"
+        }
+      ]
+    },
+    {
+      "key": "dd6c4b13-bf6c-47ce-8463-d9684fdd3d9d",
+      "parentKey": null,
+      "subKeys": [
+        "8d1c4b28-dbf1-4a81-8d1c-2e59f791fb88",
+        "8c7728cd-291b-4a51-8695-f154bfe8cc52",
+        "6769d015-c6de-4c86-aea2-b36e9bf15c75",
+        "cb980f3b-cc77-425e-89a4-4e194fabd43b",
+        "f7135e03-dd33-4a9c-b503-54b653b1462e"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ResourceModule"
+        }
+      ]
+    },
+    {
+      "key": "7ea84578-cd82-4dff-a285-54144026dec0",
+      "parentKey": "6769d015-c6de-4c86-aea2-b36e9bf15c75",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UpdateAsynLoad()"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}

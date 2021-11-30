@@ -1,0 +1,239 @@
+{
+  "rootTopicKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+  "editorRootTopicKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+  "focusKey": "8ff21ce4-8529-4b5a-88dc-c5ce6ddfb533",
+  "extData": {},
+  "topics": [
+    {
+      "key": "0ffe9303-40d9-4c68-99f9-cf566db28029",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ClearData(),重登时执行所有ctrl:ClearData()"
+        }
+      ]
+    },
+    {
+      "key": "8260bef0-232a-4101-aa64-37df9121d856",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OpenModuleView(),打开业务场景会判断是否协议Init完毕\n否则等待数据到才打开界面"
+        }
+      ]
+    },
+    {
+      "key": "12515598-40aa-473e-a598-16be2ef79087",
+      "parentKey": "330633d3-1c3e-40cf-8e07-d89afac94406",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "heartbeat:Logout()"
+        }
+      ]
+    },
+    {
+      "key": "9de7983f-2f5e-4458-b97d-dcd566cb2d96",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [
+        "8ff21ce4-8529-4b5a-88dc-c5ce6ddfb533",
+        "3475af4d-02a3-436a-86aa-4c2a620eabde"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Init()"
+        }
+      ]
+    },
+    {
+      "key": "7b7c0eec-0e58-4a31-91ec-53f9c5dbdd88",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "EnterGame(), 正式进入游戏,gameInMsgDefine初始化必执行\n请求所有ctrl:EnterGame()"
+        }
+      ]
+    },
+    {
+      "key": "8ff21ce4-8529-4b5a-88dc-c5ce6ddfb533",
+      "parentKey": "9de7983f-2f5e-4458-b97d-dcd566cb2d96",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "创建GameTop对象,负责游戏整体状态的运转"
+        }
+      ]
+    },
+    {
+      "key": "f2ac9fed-6535-46be-99a9-ea3c7245db98",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LogicInit()创建所有业务ctrl对象,并ctrl:Init()"
+        }
+      ]
+    },
+    {
+      "key": "dcf185db-99d3-4031-8cc5-e6762d3dec09",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "RequestInitData() 请求gameInMsgDefine的协议"
+        }
+      ]
+    },
+    {
+      "key": "330633d3-1c3e-40cf-8e07-d89afac94406",
+      "parentKey": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "subKeys": [
+        "12515598-40aa-473e-a598-16be2ef79087",
+        "caf23a7e-8678-486c-8d86-b1da523f4d0f",
+        "d5401153-1d0a-44d8-b7b7-6126db4b5572"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Logout()逻辑层登出"
+        }
+      ]
+    },
+    {
+      "key": "caf23a7e-8678-486c-8d86-b1da523f4d0f",
+      "parentKey": "330633d3-1c3e-40cf-8e07-d89afac94406",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Ctrl.mailCtrl:Logout()"
+        }
+      ]
+    },
+    {
+      "key": "d5401153-1d0a-44d8-b7b7-6126db4b5572",
+      "parentKey": "330633d3-1c3e-40cf-8e07-d89afac94406",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "TimerMgr.RemoveAllCenterData()"
+        }
+      ]
+    },
+    {
+      "key": "3475af4d-02a3-436a-86aa-4c2a620eabde",
+      "parentKey": "9de7983f-2f5e-4458-b97d-dcd566cb2d96",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "创建PlayerTop对象,逻辑ctrl相关"
+        }
+      ]
+    },
+    {
+      "key": "a77ee842-c46d-4a6f-8371-06e4f475ce42",
+      "parentKey": null,
+      "subKeys": [
+        "9de7983f-2f5e-4458-b97d-dcd566cb2d96",
+        "f2ac9fed-6535-46be-99a9-ea3c7245db98",
+        "dcf185db-99d3-4031-8cc5-e6762d3dec09",
+        "0ffe9303-40d9-4c68-99f9-cf566db28029",
+        "7b7c0eec-0e58-4a31-91ec-53f9c5dbdd88",
+        "330633d3-1c3e-40cf-8e07-d89afac94406",
+        "8260bef0-232a-4101-aa64-37df9121d856"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LogicModule逻辑模块"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}
