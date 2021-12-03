@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": "10c086ab-a557-49ed-a624-7ca53dcf482e",
+  "focusKey": "4c68ea7a-6bf5-4054-a800-fdc98eea4d49",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -216,7 +216,9 @@
       "key": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
       "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
       "subKeys": [
-        "0e8d5c05-1ecd-4061-98bf-22b94e26e687"
+        "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+        "6b4564de-78fa-41d5-aafb-3a02a683fc72",
+        "4c68ea7a-6bf5-4054-a800-fdc98eea4d49"
       ],
       "collapse": false,
       "style": null,
@@ -244,7 +246,6 @@
       "key": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
       "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
       "subKeys": [
-        "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
         "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
         "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
         "61e57da3-3381-4606-a9ab-87a64994c924",
@@ -261,19 +262,6 @@
       ]
     },
     {
-      "key": "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
-      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
-      "subKeys": [],
-      "collapse": false,
-      "style": null,
-      "blocks": [
-        {
-          "type": "CONTENT",
-          "data": "UIItemBase"
-        }
-      ]
-    },
-    {
       "key": "98d284c7-14db-4c1a-b7e6-833d32d42740",
       "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
       "subKeys": [],
@@ -283,6 +271,19 @@
         {
           "type": "CONTENT",
           "data": "login"
+        }
+      ]
+    },
+    {
+      "key": "4c68ea7a-6bf5-4054-a800-fdc98eea4d49",
+      "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "各种Item"
         }
       ]
     },
@@ -394,6 +395,19 @@
         {
           "type": "DESC",
           "data": "* 组件\n   * RawImage\n   * BlurTextureOnce 模糊贴图生成脚本\n* ctor\n   * HierarchyUtil\\.ExportToTarget\\(go, self\\)\n   * 点击监听\n* Dispose\\(\\)\n   * 模糊节点隐藏\n   * 释放模糊贴图 并移除监听\n* Show\\(viewKey, modal, clickFunc\\) modal 为 ViewPopModal.Blur ,则创建模糊贴图\n* AutuClose\\(\\) 设置点击mask是否自动关闭弹窗\n\n"
+        }
+      ]
+    },
+    {
+      "key": "6b4564de-78fa-41d5-aafb-3a02a683fc72",
+      "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIItemBase"
         }
       ]
     },
