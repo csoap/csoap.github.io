@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
   "editorRootTopicKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
-  "focusKey": "7b1ba078-9e9f-4abb-8f86-ba4c37afef43",
+  "focusKey": "6ae2fe13-0c27-477f-889e-3c95dcf27160",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -199,6 +199,7 @@
       "key": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
       "parentKey": null,
       "subKeys": [
+        "5b9d2be6-df57-4cce-8265-3bb78bc78e41",
         "a1cc7ccb-e9f1-455f-a76d-980c4e2d46fa",
         "bf8dbd46-55c7-41ab-8764-7d2a9ec636dc",
         "8aa76e89-4501-48f1-a1c8-46b8814b205f",
@@ -353,6 +354,23 @@
       ]
     },
     {
+      "key": "7b928a4d-227a-4979-8f91-19a95bd20278",
+      "parentKey": "5b9d2be6-df57-4cce-8265-3bb78bc78e41",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "初始化声明"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nself._viewCfg = {}                -- 已使用窗口的配置缓存\nself._dicAllView = {}            -- kv结构存储界面\nself._mainViewStack = {}        -- main层级下的窗口栈 支持导航\nself._dicInOpen = {}            -- 标记打开中的界面 0 未锁定 1 锁定中\nself._loadingUI = {}\nself._lastCacheCheckTime = 0     -- 最后检查是否清理缓存的时间\nself._curSceneID = 0            -- 当前场景ID\nself._isClosingAll = false        -- 正在關閉所有界面\nself._lastSceneStack = {sceneID = nil, sceneStack={}}        -- 场景切换的时候可以选择是否缓存上个场景窗口栈\nself._uiLoadingMask = nil\n\nlocal roots = {}\nself._viewRoots = roots\nroots[ViewType.MAIN]  = GOUtil.GetChild(me.UIRoot, \"main\")\nroots[ViewType.POPUP] = GOUtil.GetChild(me.UIRoot, \"main\")\nroots[ViewType.FIXED] = GOUtil.GetChild(me.UIRoot, \"fixed\")\nroots[ViewType.GUIDE] = GOUtil.GetChild(me.UIRoot, \"guide\")\n\n```\n"
+        }
+      ]
+    },
+    {
       "key": "6d5b1768-8a27-4210-b193-a4aac2c1e718",
       "parentKey": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
       "subKeys": [],
@@ -362,6 +380,19 @@
         {
           "type": "CONTENT",
           "data": "GetUserDataByViewID(viewId) 获取指定viewID的view:GetUserData(),userData为界面自定义数据"
+        }
+      ]
+    },
+    {
+      "key": "6ae2fe13-0c27-477f-889e-3c95dcf27160",
+      "parentKey": "5b9d2be6-df57-4cce-8265-3bb78bc78e41",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self:CreateLoadingMask() 加载loading预制"
         }
       ]
     },
@@ -465,6 +496,19 @@
       ]
     },
     {
+      "key": "1cfc1282-a377-43fe-9e9b-a54f228f8846",
+      "parentKey": "5b9d2be6-df57-4cce-8265-3bb78bc78e41",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CommonItem.Init()\n初始化直接加载所有公共预制,暂时只支持commonitems目录,Path=\"ui/panel/commonitems/\""
+        }
+      ]
+    },
+    {
       "key": "22cfa49c-60da-4940-bfa4-be138428aa30",
       "parentKey": "1eda84d4-77d0-4dd4-a9ae-2edd394c27fb",
       "subKeys": [],
@@ -474,6 +518,23 @@
         {
           "type": "CONTENT",
           "data": "GetTopFullViewID 获取当前全屏界面key,最上层的MainView"
+        }
+      ]
+    },
+    {
+      "key": "5b9d2be6-df57-4cce-8265-3bb78bc78e41",
+      "parentKey": "f2c25ca5-3e40-4a52-adfb-65df61f80002",
+      "subKeys": [
+        "7b928a4d-227a-4979-8f91-19a95bd20278",
+        "1cfc1282-a377-43fe-9e9b-a54f228f8846",
+        "6ae2fe13-0c27-477f-889e-3c95dcf27160"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Init()"
         }
       ]
     },

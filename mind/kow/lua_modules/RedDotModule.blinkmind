@@ -1,0 +1,1055 @@
+{
+  "rootTopicKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+  "editorRootTopicKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+  "focusKey": "649b37c3-4a81-4cfa-b303-ea599d57adef",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "075fd3f5-fa66-42a1-b5a0-d488f0211f8d",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [
+        "2ff50506-8224-48b6-8931-c966be4ab0dc"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "RegisterRedDotItem() 表现层Open()注册红点"
+        }
+      ]
+    },
+    {
+      "key": "f5593171-10a6-46da-88b8-c3f9e44799f3",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [
+        "899a50a7-e406-40cb-a49c-4fd683d0854c",
+        "158effcd-4ee9-4b31-a212-caf04707aeec",
+        "331df3c4-3e4b-4730-ba8a-5b559f4d1e31"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Init"
+        }
+      ]
+    },
+    {
+      "key": "f0020fe8-4ea7-440f-8ef6-047631cf51db",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [
+        "9e727306-0e18-488e-ac82-b53d55784c83"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnRedDotItemUpdate 通知 实例管理 变化\n什么时候触发?RedTreeNode需要也派发父节点触发"
+        }
+      ]
+    },
+    {
+      "key": "331df3c4-3e4b-4730-ba8a-5b559f4d1e31",
+      "parentKey": "f5593171-10a6-46da-88b8-c3f9e44799f3",
+      "subKeys": [
+        "dcd79eb7-0cb5-4b78-b9b5-81e81de9140d",
+        "0d1baa0b-d8d4-4414-9d09-f301f1809dee"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "初始化树"
+        }
+      ]
+    },
+    {
+      "key": "c46a589d-b205-4087-be35-161bf1846e3e",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [
+        "e181e1bf-084e-4c76-8cf3-dcdb5397cd4e"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "业务触发:OnRedDotUpdate 红点数量变化"
+        }
+      ]
+    },
+    {
+      "key": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "parentKey": null,
+      "subKeys": [
+        "649b37c3-4a81-4cfa-b303-ea599d57adef",
+        "f5593171-10a6-46da-88b8-c3f9e44799f3",
+        "c46a589d-b205-4087-be35-161bf1846e3e",
+        "f0020fe8-4ea7-440f-8ef6-047631cf51db",
+        "14d0eeec-3336-4adc-8f92-ce956cae5576",
+        "075fd3f5-fa66-42a1-b5a0-d488f0211f8d",
+        "ef2058a7-b126-43f9-975e-2fbd108135fc"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "RedDotModule"
+        }
+      ]
+    },
+    {
+      "key": "9e727306-0e18-488e-ac82-b53d55784c83",
+      "parentKey": "f0020fe8-4ea7-440f-8ef6-047631cf51db",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "itemMgr:GenerateOne(key) 实例化一个key对应的所有界面\nitemMgr:DisposeOne(key) 释放一个key对应的所有界面"
+        }
+      ]
+    },
+    {
+      "key": "ef2058a7-b126-43f9-975e-2fbd108135fc",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UnRegisterRedDotItem()表现层Close()销毁红点"
+        }
+      ]
+    },
+    {
+      "key": "022a01c5-64d2-443c-a963-e84d0ca79e6e",
+      "parentKey": "14d0eeec-3336-4adc-8f92-ce956cae5576",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "OnServerRedDotCountChange()服务器红点模块刷新"
+        }
+      ]
+    },
+    {
+      "key": "899a50a7-e406-40cb-a49c-4fd683d0854c",
+      "parentKey": "f5593171-10a6-46da-88b8-c3f9e44799f3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "添加监听"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nGameMsg.AddMessage(\"RED_DOT_UPDATE\", self, self.OnRedDotUpdate)  --红点数据变化\n--红点实例数据变化(由RedTreeNode红点数量变化且需要通知父节点时发送)\nGameMsg.AddMessage(\"RED_DOT_ITEM_UPDATE\", self, self.OnRedDotItemUpdate)\nGameMsg.AddMessage(\"ON_SERVER_UPDATE_RED_DOT\", self, self.OnServerRedDotCountChange) -- 当服务端更新红点数据时\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "158effcd-4ee9-4b31-a212-caf04707aeec",
+      "parentKey": "f5593171-10a6-46da-88b8-c3f9e44799f3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "初始化字段"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nself._itemMap = {}\n---@field _redDotMap table<string,RedTreeNode>\nself._redDotMap = {}            -- 所有红点节点的Map\n---@field _redDotMap table<string,int> ,int: 功能点枚举\nself._functionUnlockMap = {}    -- 功能解锁Map\nself._targetModule = {}\n\n```\n"
+        }
+      ]
+    },
+    {
+      "key": "649b37c3-4a81-4cfa-b303-ea599d57adef",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "import(\"RedTreeNode\")\nimport(\"RedDotItemMgr\") 真正执行红点注册,预制创建 销毁"
+        },
+        {
+          "type": "TOPOLOGY",
+          "data": {
+            "nodes": [
+              {
+                "id": "2acaa387",
+                "name": "interfaceClass",
+                "tags": [],
+                "rect": {
+                  "x": 28,
+                  "y": 42,
+                  "width": 375,
+                  "height": 331,
+                  "center": {
+                    "x": 215.5,
+                    "y": 207.5
+                  },
+                  "ex": 403,
+                  "ey": 373
+                },
+                "lineWidth": 1,
+                "rotate": 0,
+                "offsetRotate": 0,
+                "globalAlpha": 1,
+                "dash": 0,
+                "strokeStyle": "#7e1212",
+                "fillStyle": "#ffffba",
+                "font": {
+                  "color": "#222",
+                  "fontFamily": "Arial",
+                  "fontSize": 12,
+                  "lineHeight": 1.5,
+                  "fontStyle": "normal",
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                  "textBaseline": "middle",
+                  "background": ""
+                },
+                "animateStart": 0,
+                "animateCycleIndex": 0,
+                "lineDashOffset": 0,
+                "text": "RedTreeNode 数据层,红点节点对象",
+                "textOffsetX": 0,
+                "textOffsetY": 0,
+                "animateType": "",
+                "data": "",
+                "zRotate": 0,
+                "anchors": [
+                  {
+                    "x": 28,
+                    "y": 207.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 215.5,
+                    "y": 42,
+                    "direction": 1
+                  },
+                  {
+                    "x": 403,
+                    "y": 207.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 215.5,
+                    "y": 373,
+                    "direction": 3
+                  }
+                ],
+                "rotatedAnchors": [
+                  {
+                    "x": 28,
+                    "y": 207.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 215.5,
+                    "y": 42,
+                    "direction": 1
+                  },
+                  {
+                    "x": 403,
+                    "y": 207.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 215.5,
+                    "y": 373,
+                    "direction": 3
+                  }
+                ],
+                "animateDuration": 0,
+                "animateFrames": [],
+                "borderRadius": 0,
+                "iconSize": null,
+                "imageAlign": "center",
+                "gradientAngle": 0,
+                "gradientRadius": 0.01,
+                "paddingTop": 40,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingLeftNum": 0,
+                "paddingRightNum": 0,
+                "paddingTopNum": 40,
+                "paddingBottomNum": 0,
+                "textRect": {
+                  "x": 28,
+                  "y": 42,
+                  "width": 375,
+                  "height": 40,
+                  "center": {
+                    "x": 215.5,
+                    "y": 62
+                  },
+                  "ex": 403,
+                  "ey": 82
+                },
+                "fullTextRect": {
+                  "x": 28,
+                  "y": 42,
+                  "width": 375,
+                  "height": 40,
+                  "center": {
+                    "x": 215.5,
+                    "y": 62
+                  },
+                  "ex": 403,
+                  "ey": 82
+                },
+                "iconRect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "center": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "ex": 0,
+                  "ey": 0
+                },
+                "children": [
+                  {
+                    "id": "b102361c",
+                    "name": "text",
+                    "tags": [],
+                    "rect": {
+                      "x": 28,
+                      "y": 82,
+                      "width": 375,
+                      "height": 146,
+                      "center": {
+                        "x": 215.5,
+                        "y": 155
+                      },
+                      "ex": 403,
+                      "ey": 228
+                    },
+                    "lineWidth": 1,
+                    "rotate": 0,
+                    "offsetRotate": 0,
+                    "globalAlpha": 1,
+                    "dash": 0,
+                    "strokeStyle": "",
+                    "fillStyle": "",
+                    "font": {
+                      "color": "#222",
+                      "fontFamily": "Arial",
+                      "fontSize": 12,
+                      "lineHeight": 1.5,
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                      "textAlign": "left",
+                      "textBaseline": "top",
+                      "background": ""
+                    },
+                    "animateStart": 0,
+                    "animateCycleIndex": 0,
+                    "lineDashOffset": 0,
+                    "text": "1. 红点数量管理\n2. 红点父子节点关系管理\n\n- self._moduleType = moduleType -- 节点名字\n- self._childCount = 0 -- 子节点数量\n- self._redCount = 0 -- 红点数量 (自身+子节点所有红点数量)\n- self._selfRedCount = 0 -- 自身节点红点数量",
+                    "textOffsetX": 0,
+                    "textOffsetY": 0,
+                    "animateType": "",
+                    "data": "",
+                    "zRotate": 0,
+                    "anchors": [],
+                    "rotatedAnchors": [],
+                    "animateDuration": 0,
+                    "animateFrames": [],
+                    "borderRadius": 0,
+                    "iconSize": null,
+                    "imageAlign": "center",
+                    "gradientAngle": 0,
+                    "gradientRadius": 0.01,
+                    "paddingTop": 10,
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "rectInParent": {
+                      "x": 0,
+                      "y": 0,
+                      "width": "100%",
+                      "height": "50%",
+                      "rotate": 0
+                    },
+                    "paddingLeftNum": 10,
+                    "paddingRightNum": 10,
+                    "paddingTopNum": 10,
+                    "paddingBottomNum": 10,
+                    "textRect": {
+                      "x": 38,
+                      "y": 186.5,
+                      "width": 355,
+                      "height": 31.5,
+                      "center": {
+                        "x": 215.5,
+                        "y": 202.25
+                      },
+                      "ex": 393,
+                      "ey": 218
+                    },
+                    "fullTextRect": {
+                      "x": 38,
+                      "y": 92,
+                      "width": 355,
+                      "height": 126,
+                      "center": {
+                        "x": 215.5,
+                        "y": 155
+                      },
+                      "ex": 393,
+                      "ey": 218
+                    },
+                    "iconRect": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "center": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "ex": 0,
+                      "ey": 0
+                    },
+                    "parentId": "2acaa387"
+                  },
+                  {
+                    "id": "54185b15",
+                    "name": "text",
+                    "tags": [],
+                    "rect": {
+                      "x": 28,
+                      "y": 228,
+                      "width": 375,
+                      "height": 146,
+                      "center": {
+                        "x": 215.5,
+                        "y": 301
+                      },
+                      "ex": 403,
+                      "ey": 374
+                    },
+                    "lineWidth": 1,
+                    "rotate": 0,
+                    "offsetRotate": 0,
+                    "globalAlpha": 1,
+                    "dash": 0,
+                    "strokeStyle": "",
+                    "fillStyle": "",
+                    "font": {
+                      "color": "#222",
+                      "fontFamily": "Arial",
+                      "fontSize": 12,
+                      "lineHeight": 1.5,
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                      "textAlign": "left",
+                      "textBaseline": "top",
+                      "background": ""
+                    },
+                    "animateStart": 0,
+                    "animateCycleIndex": 0,
+                    "lineDashOffset": 0,
+                    "text": "+ SetParent(node): 设置父节点\n+ AddChild(node): 加子节点\n+ RemoveChild(moduleType)\n+ UpdateCount(count, key) 刷新 redCount和selfRedCount\n+ OnRedDotUpdate() 来自RedDotModule发送的刷新,当前数量有变化才通知 父节点,减少不必要的刷新\n\n",
+                    "textOffsetX": 0,
+                    "textOffsetY": 0,
+                    "animateType": "",
+                    "data": "",
+                    "zRotate": 0,
+                    "anchors": [],
+                    "rotatedAnchors": [],
+                    "animateDuration": 0,
+                    "animateFrames": [],
+                    "borderRadius": 0,
+                    "iconSize": null,
+                    "imageAlign": "center",
+                    "gradientAngle": 0,
+                    "gradientRadius": 0.01,
+                    "paddingTop": 10,
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "rectInParent": {
+                      "x": 0,
+                      "y": "50%",
+                      "width": "100%",
+                      "height": "50%",
+                      "rotate": 0
+                    },
+                    "paddingLeftNum": 10,
+                    "paddingRightNum": 10,
+                    "paddingTopNum": 10,
+                    "paddingBottomNum": 10,
+                    "textRect": {
+                      "x": 38,
+                      "y": 332.5,
+                      "width": 355,
+                      "height": 31.5,
+                      "center": {
+                        "x": 215.5,
+                        "y": 348.25
+                      },
+                      "ex": 393,
+                      "ey": 364
+                    },
+                    "fullTextRect": {
+                      "x": 38,
+                      "y": 238,
+                      "width": 355,
+                      "height": 126,
+                      "center": {
+                        "x": 215.5,
+                        "y": 301
+                      },
+                      "ex": 393,
+                      "ey": 364
+                    },
+                    "iconRect": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "center": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "ex": 0,
+                      "ey": 0
+                    },
+                    "parentId": "2acaa387"
+                  }
+                ]
+              },
+              {
+                "id": "28cb23bb",
+                "name": "interfaceClass",
+                "tags": [],
+                "rect": {
+                  "x": 481,
+                  "y": 42,
+                  "width": 399,
+                  "height": 327,
+                  "center": {
+                    "x": 680.5,
+                    "y": 205.5
+                  },
+                  "ex": 880,
+                  "ey": 369
+                },
+                "lineWidth": 1,
+                "rotate": 0,
+                "offsetRotate": 0,
+                "globalAlpha": 1,
+                "dash": 0,
+                "strokeStyle": "#7e1212",
+                "fillStyle": "#ffffba",
+                "font": {
+                  "color": "#222",
+                  "fontFamily": "Arial",
+                  "fontSize": 12,
+                  "lineHeight": 1.5,
+                  "fontStyle": "normal",
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                  "textBaseline": "middle",
+                  "background": ""
+                },
+                "animateStart": 0,
+                "animateCycleIndex": 0,
+                "lineDashOffset": 0,
+                "text": "RedDotItemMgr 表现层,负责界面实例管理",
+                "textOffsetX": 0,
+                "textOffsetY": 0,
+                "animateType": "",
+                "data": "",
+                "zRotate": 0,
+                "anchors": [
+                  {
+                    "x": 481,
+                    "y": 205.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 680.5,
+                    "y": 42,
+                    "direction": 1
+                  },
+                  {
+                    "x": 880,
+                    "y": 205.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 680.5,
+                    "y": 369,
+                    "direction": 3
+                  }
+                ],
+                "rotatedAnchors": [
+                  {
+                    "x": 481,
+                    "y": 205.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 680.5,
+                    "y": 42,
+                    "direction": 1
+                  },
+                  {
+                    "x": 880,
+                    "y": 205.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 680.5,
+                    "y": 369,
+                    "direction": 3
+                  }
+                ],
+                "animateDuration": 0,
+                "animateFrames": [],
+                "borderRadius": 0,
+                "iconSize": null,
+                "imageAlign": "center",
+                "gradientAngle": 0,
+                "gradientRadius": 0.01,
+                "paddingTop": 40,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingLeftNum": 0,
+                "paddingRightNum": 0,
+                "paddingTopNum": 40,
+                "paddingBottomNum": 0,
+                "textRect": {
+                  "x": 481,
+                  "y": 42,
+                  "width": 399,
+                  "height": 40,
+                  "center": {
+                    "x": 680.5,
+                    "y": 62
+                  },
+                  "ex": 880,
+                  "ey": 82
+                },
+                "fullTextRect": {
+                  "x": 481,
+                  "y": 42,
+                  "width": 399,
+                  "height": 40,
+                  "center": {
+                    "x": 680.5,
+                    "y": 62
+                  },
+                  "ex": 880,
+                  "ey": 82
+                },
+                "iconRect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 0,
+                  "height": 0,
+                  "center": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "ex": 0,
+                  "ey": 0
+                },
+                "children": [
+                  {
+                    "id": "0738c578",
+                    "name": "text",
+                    "tags": [],
+                    "rect": {
+                      "x": 481,
+                      "y": 82,
+                      "width": 399,
+                      "height": 144,
+                      "center": {
+                        "x": 680.5,
+                        "y": 154
+                      },
+                      "ex": 880,
+                      "ey": 226
+                    },
+                    "lineWidth": 1,
+                    "rotate": 0,
+                    "offsetRotate": 0,
+                    "globalAlpha": 1,
+                    "dash": 0,
+                    "strokeStyle": "",
+                    "fillStyle": "",
+                    "font": {
+                      "color": "#222",
+                      "fontFamily": "Arial",
+                      "fontSize": 12,
+                      "lineHeight": 1.5,
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                      "textAlign": "left",
+                      "textBaseline": "top",
+                      "background": ""
+                    },
+                    "animateStart": 0,
+                    "animateCycleIndex": 0,
+                    "lineDashOffset": 0,
+                    "text": "self._moduleType = moduleType -- 节点名字\nself._keyMap[key][target] 记录红点父节点，target对象，用于生成item\nself._itemMap[key][target] 记录红点实例对象",
+                    "textOffsetX": 0,
+                    "textOffsetY": 0,
+                    "animateType": "",
+                    "data": "",
+                    "zRotate": 0,
+                    "anchors": [],
+                    "rotatedAnchors": [],
+                    "animateDuration": 0,
+                    "animateFrames": [],
+                    "borderRadius": 0,
+                    "iconSize": null,
+                    "imageAlign": "center",
+                    "gradientAngle": 0,
+                    "gradientRadius": 0.01,
+                    "paddingTop": 10,
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "rectInParent": {
+                      "x": 0,
+                      "y": 0,
+                      "width": "100%",
+                      "height": "50%",
+                      "rotate": 0
+                    },
+                    "paddingLeftNum": 10,
+                    "paddingRightNum": 10,
+                    "paddingTopNum": 10,
+                    "paddingBottomNum": 10,
+                    "textRect": {
+                      "x": 491,
+                      "y": 185,
+                      "width": 379,
+                      "height": 31,
+                      "center": {
+                        "x": 680.5,
+                        "y": 200.5
+                      },
+                      "ex": 870,
+                      "ey": 216
+                    },
+                    "fullTextRect": {
+                      "x": 491,
+                      "y": 92,
+                      "width": 379,
+                      "height": 124,
+                      "center": {
+                        "x": 680.5,
+                        "y": 154
+                      },
+                      "ex": 870,
+                      "ey": 216
+                    },
+                    "iconRect": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "center": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "ex": 0,
+                      "ey": 0
+                    },
+                    "parentId": "28cb23bb"
+                  },
+                  {
+                    "id": "c898744a",
+                    "name": "text",
+                    "tags": [],
+                    "rect": {
+                      "x": 481,
+                      "y": 226,
+                      "width": 399,
+                      "height": 144,
+                      "center": {
+                        "x": 680.5,
+                        "y": 298
+                      },
+                      "ex": 880,
+                      "ey": 370
+                    },
+                    "lineWidth": 1,
+                    "rotate": 0,
+                    "offsetRotate": 0,
+                    "globalAlpha": 1,
+                    "dash": 0,
+                    "strokeStyle": "",
+                    "fillStyle": "",
+                    "font": {
+                      "color": "#222",
+                      "fontFamily": "Arial",
+                      "fontSize": 12,
+                      "lineHeight": 1.5,
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                      "textAlign": "left",
+                      "textBaseline": "top",
+                      "background": ""
+                    },
+                    "animateStart": 0,
+                    "animateCycleIndex": 0,
+                    "lineDashOffset": 0,
+                    "text": "+ Init(moduleType):初始化红点信息\n+ Dispose()  将self._items中的CommonItem归还\n+ RegisterOne 注册\n+ UnRegisterOne反注册\n+ GenerateOne 生成item\n+ DisposeOne 释放item且取消父节点引用redDotItem:ManualDispose(),",
+                    "textOffsetX": 0,
+                    "textOffsetY": 0,
+                    "animateType": "",
+                    "data": "",
+                    "zRotate": 0,
+                    "anchors": [],
+                    "rotatedAnchors": [],
+                    "animateDuration": 0,
+                    "animateFrames": [],
+                    "borderRadius": 0,
+                    "iconSize": null,
+                    "imageAlign": "center",
+                    "gradientAngle": 0,
+                    "gradientRadius": 0.01,
+                    "paddingTop": 10,
+                    "paddingBottom": 10,
+                    "paddingLeft": 10,
+                    "paddingRight": 10,
+                    "rectInParent": {
+                      "x": 0,
+                      "y": "50%",
+                      "width": "100%",
+                      "height": "50%",
+                      "rotate": 0
+                    },
+                    "paddingLeftNum": 10,
+                    "paddingRightNum": 10,
+                    "paddingTopNum": 10,
+                    "paddingBottomNum": 10,
+                    "textRect": {
+                      "x": 491,
+                      "y": 329,
+                      "width": 379,
+                      "height": 31,
+                      "center": {
+                        "x": 680.5,
+                        "y": 344.5
+                      },
+                      "ex": 870,
+                      "ey": 360
+                    },
+                    "fullTextRect": {
+                      "x": 491,
+                      "y": 236,
+                      "width": 379,
+                      "height": 124,
+                      "center": {
+                        "x": 680.5,
+                        "y": 298
+                      },
+                      "ex": 870,
+                      "ey": 360
+                    },
+                    "iconRect": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "center": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "ex": 0,
+                      "ey": 0
+                    },
+                    "parentId": "28cb23bb"
+                  }
+                ]
+              }
+            ],
+            "lines": [],
+            "lineName": "curve",
+            "fromArrowType": "",
+            "toArrowType": "triangleSolid",
+            "scale": 1,
+            "locked": 0
+          }
+        }
+      ]
+    },
+    {
+      "key": "dcd79eb7-0cb5-4b78-b9b5-81e81de9140d",
+      "parentKey": "331df3c4-3e4b-4730-ba8a-5b559f4d1e31",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "构造所有节点及父子关系"
+        }
+      ]
+    },
+    {
+      "key": "14d0eeec-3336-4adc-8f92-ce956cae5576",
+      "parentKey": "f4daf28f-84b4-4ef7-b4c6-ccc56dd0717f",
+      "subKeys": [
+        "022a01c5-64d2-443c-a963-e84d0ca79e6e",
+        "ae6e60bd-0b58-4474-87e0-03ff72ca0f54"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "服务端红点"
+        }
+      ]
+    },
+    {
+      "key": "39d04cfd-4c28-41b6-9a98-e2d4439894e8",
+      "parentKey": "2ff50506-8224-48b6-8931-c966be4ab0dc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "mgr注册红点,创建红点"
+        }
+      ]
+    },
+    {
+      "key": "e181e1bf-084e-4c76-8cf3-dcdb5397cd4e",
+      "parentKey": "c46a589d-b205-4087-be35-161bf1846e3e",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "获取self._redDotMap[moduleType]的TreeNode\nnode:OnRedDotUpdate(count,key)"
+        }
+      ]
+    },
+    {
+      "key": "0d1baa0b-d8d4-4414-9d09-f301f1809dee",
+      "parentKey": "331df3c4-3e4b-4730-ba8a-5b559f4d1e31",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "self._redDotMap[moduleType] = {node = redTreeNode}\nself._functionUnlockMap[redDotDetail.unlockType] = moduleType"
+        }
+      ]
+    },
+    {
+      "key": "ae6e60bd-0b58-4474-87e0-03ff72ca0f54",
+      "parentKey": "14d0eeec-3336-4adc-8f92-ce956cae5576",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "reqRedReadRid() 请求某一个点已读"
+        }
+      ]
+    },
+    {
+      "key": "2ff50506-8224-48b6-8931-c966be4ab0dc",
+      "parentKey": "075fd3f5-fa66-42a1-b5a0-d488f0211f8d",
+      "subKeys": [
+        "39d04cfd-4c28-41b6-9a98-e2d4439894e8"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "创建 RedDotItemMgr 对象池"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

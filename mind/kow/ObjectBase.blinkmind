@@ -1,13 +1,39 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": "08616662-c1f4-4714-9c5e-818edcbbcca3",
+  "focusKey": "4c68ea7a-6bf5-4054-a800-fdc98eea4d49",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
+    {
+      "key": "59123926-50eb-4be3-9e16-be0a9d316349",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "gate"
+        }
+      ]
+    },
+    {
+      "key": "c2c5c12d-3f7e-470d-b407-84bb5ad2c473",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PlayerTop"
+        }
+      ]
+    },
     {
       "key": "a5390ad1-84e3-49fe-87de-2dfbdaaaf030",
       "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
@@ -18,6 +44,36 @@
         {
           "type": "CONTENT",
           "data": "FixedViewBase"
+        }
+      ]
+    },
+    {
+      "key": "2aa2138b-5685-43a1-bcfa-16ef804160b0",
+      "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "SpineItem"
+        }
+      ]
+    },
+    {
+      "key": "ea9af41d-d9c5-4322-9c50-a40b0c2c4ba6",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "BusinessBase 带生命周期的业务base"
+        },
+        {
+          "type": "DESC",
+          "data": "\\-\\-业务真正开始的地方\nBusinessBase:OnStart\\(\\) end\n\\-\\-业务结束的地方进行一些清理工作\nBusinessBase:OnEnd\\(\\) end\nBusinessBase:Update\\(dt\\) end"
         }
       ]
     },
@@ -52,6 +108,9 @@
       "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
       "subKeys": [
         "89074c93-369e-431e-b6f4-a6026567e621",
+        "f19a0c18-522c-48b0-ab2d-649912f54f30",
+        "2aa2138b-5685-43a1-bcfa-16ef804160b0",
+        "ecc173b7-a8fa-4ad9-90b8-b2cd248a02da",
         "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d"
       ],
       "collapse": false,
@@ -60,6 +119,10 @@
         {
           "type": "CONTENT",
           "data": "RenderObject"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor\n   * 从对象池创建空节点go\n   * 设置父节点,重置坐标和缩放\n   * self\\.gameObject = go,  self.transform = go.transform\n* Dispose\\(\\)\n   * PoolManager\\.RecycleEmptyGO\\(self.gameObject\\)\n   * self\\.gameObject = nil , self.transform = nil\n* SetActiveEx\\(\\) 提供给ViewBases, 不是真正的隐藏\n\n```none\nif show then\n    self.transform:SetLocalPositionEx(0, 0, 0)\nelse\n    self.transform:SetLocalPositionEx(10000, 10000, 0)\nend\n\n```\n* 一堆trasfrom的导出接口\n   * SetActive\\(flag\\)\n   * SetParent\\(parent\\)\n   * SetObjectName\\(name\\)\n   * SetLocalScaleVal\\(value\\)\n   * SetSiblingIndex\\(indx\\), SetAsLastSibling\\(\\), SetAsFirstSibling\\(\\)\n   * ﻿SetLocalPosition\\(pos\\) ,SetPositionFromTarget\\(target\\),SetPivot\\(povotX,pivotY\\)\n   * SetAnchoredPosition\\(x, y, z\\)\n   * SetAutoFitRect\\(\\)\n\n"
         }
       ]
     },
@@ -81,8 +144,15 @@
       "parentKey": null,
       "subKeys": [
         "082b5b31-b3cf-4423-a25f-29eb29d127d2",
+        "ea9af41d-d9c5-4322-9c50-a40b0c2c4ba6",
         "eaf76b0b-61c2-48c2-aced-c8b56162c55e",
-        "4c963bed-856b-4564-a2c5-e27ce17e4649"
+        "4c963bed-856b-4564-a2c5-e27ce17e4649",
+        "10c086ab-a557-49ed-a624-7ca53dcf482e",
+        "7757cbc1-0174-4fe4-894b-dbbd05a7d883",
+        "3dcf961a-eaab-4eda-8248-c374593fb19a",
+        "c2c5c12d-3f7e-470d-b407-84bb5ad2c473",
+        "59123926-50eb-4be3-9e16-be0a9d316349",
+        "98d284c7-14db-4c1a-b7e6-833d32d42740"
       ],
       "collapse": false,
       "style": null,
@@ -90,6 +160,10 @@
         {
           "type": "CONTENT",
           "data": "ObjectBase"
+        },
+        {
+          "type": "DESC",
+          "data": "游戏中的所有对象统一管理类\n* 属性```none\nself._subitems=nil\n-- 为了调用的效率，外部有直接使用__isDispose参数\nself.__isDispose = nil            -- 为了检查哪些类被调用了Dispose 但是还在被引用\nself.__effectDatas = nil\nself.__showEff = true\n\n```\n\n\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-方法\n* Dispose\\(\\)```none\nGameMsg.RemoveMessageByTarget(self)\nself:RemoveAllListener()\nself:___ClearSubItems()\nHierarchyUtil.RemoveFromTarget(self)\n\n```\n* ManualDispose\\(\\) 移除父类中自己的引用并调用Dispose\\(\\)\n* AddSubItem\\(target:ObjectBase\\) 添加子项\n* \\_\\_AddParentItem\\(parent:Object\\)  添加父亲\n* \\_\\_\\_ClearSubItems\\(\\) 清除所有子项\n* \\_\\_RemoveSubItem\\(item\\) 移除某个子项以及对应特效effectData\n* 监听\n   * AddEventListener\\(id, target, listener\\)  添加时间监听\n   * DispatchEvent\\(id, ...\\) 派发带参事件 fu\\(target, ...\\)\n   * RemoveAllListener\\(\\) 移除所有监听\n\n"
         }
       ]
     },
@@ -107,10 +181,44 @@
       ]
     },
     {
+      "key": "7757cbc1-0174-4fe4-894b-dbbd05a7d883",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [
+        "3bb67cbd-550d-4f9f-89b8-074efd02092d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LogicCtrlBase"
+        },
+        {
+          "type": "DESC",
+          "data": "所有数据逻辑控制类均继承本基类\n* ctor\n\n```\nself._isDataInitMap = { }     -- 数据是否初始化\nself._needIniMsgs = nil      -- 需要初始化的消息列表  处理模块详细数据的初始化情况 非登录消息\n\n```\n* 提供给业务ctrl继承\n   * Init\\(\\) \\-\\- 初始化\n   * EnterGame\\(\\) \\-\\- 初始化数据完成之后 进入游戏\n   * ClearData\\(\\) \\-\\-清除数据，断线重连的时候会调用这个接口进行清除数据\\-\n* ClearInitMsgFlag\\(\\)\n* AddNeedIniMsg\\(msgid, key\\) \\-\\- 添加需要初始化的协议  一个ctrl文件中有多个需要初始化的协议使用\n* SetMsgInited\\(msgid, key\\)  \\-\\- 收到消息 打标记\n\n"
+        }
+      ]
+    },
+    {
+      "key": "10c086ab-a557-49ed-a624-7ca53dcf482e",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "EffectData"
+        }
+      ]
+    },
+    {
       "key": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
       "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
       "subKeys": [
-        "0e8d5c05-1ecd-4061-98bf-22b94e26e687"
+        "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+        "6b4564de-78fa-41d5-aafb-3a02a683fc72",
+        "4c68ea7a-6bf5-4054-a800-fdc98eea4d49"
       ],
       "collapse": false,
       "style": null,
@@ -122,10 +230,22 @@
       ]
     },
     {
+      "key": "3dcf961a-eaab-4eda-8248-c374593fb19a",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameTop"
+        }
+      ]
+    },
+    {
       "key": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
       "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
       "subKeys": [
-        "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
         "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
         "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
         "61e57da3-3381-4606-a9ab-87a64994c924",
@@ -142,15 +262,28 @@
       ]
     },
     {
-      "key": "45c265f5-f7fb-43a2-b510-e31ed9f825c8",
-      "parentKey": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
+      "key": "98d284c7-14db-4c1a-b7e6-833d32d42740",
+      "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
       "subKeys": [],
       "collapse": false,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "UIItemBase"
+          "data": "login"
+        }
+      ]
+    },
+    {
+      "key": "4c68ea7a-6bf5-4054-a800-fdc98eea4d49",
+      "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "各种Item"
         }
       ]
     },
@@ -175,12 +308,16 @@
         "65b801bb-2366-4c75-a052-818ea9ec56bc",
         "08616662-c1f4-4714-9c5e-818edcbbcca3"
       ],
-      "collapse": false,
+      "collapse": true,
       "style": null,
       "blocks": [
         {
           "type": "CONTENT",
           "data": "SceneBase"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor\n\n```\nself._sceneType = sceneConfig.stype\nself._sceneID  = sceneConfig.id\nself._sceneName = sceneConfig.scene\nself._sceneFolder = sceneConfig.sceneFolder\nself._loadState = LoadState.NONE\nself._sceneMusic = sceneConfig.music\nself._MainView = sceneConfig.sceneView\n\nself.SceneRoot = nil            -- 根节点 Transform类型\nself._isEnter = false\n\nself._businessCollect = {} -- 业务集合\nself._sceneParam = nil         -- 切换场景 外部传进来的参数\n\n```\n\n* AddBusiness\\(path\\) 新增业务逻辑\n   * new 业务类 并插入self.\\_businessCollect\n* Enter\\(\\) 执行 进入场景操作\n* Exit\\(\\) 执行退出场景操作\n*  OnEnter\\(\\) 进入场景回调 给子类继承\n* OnExit\\(\\) 退出场景回调 给子类继承\n* OnStart\\(\\)\n   * 遍历self.\\_businessCollect\\[i\\]:OnStart\\(\\)\n* OnEnd\\(\\) \n   * ﻿遍历self.\\_businessCollect\\[i\\]:OnStart\\(\\)\n* Update\\(t\\)\n   * 遍历self.\\_businessCollect\\[i\\]:Update\\(dt\\)\n* OnLoaded\\(\\) 场景加载完成回调,\n   * HierarchyUtil\\.ExportToTarget\\(root, self\\)\n   * 初始化字段赋值\n* Load\\(\\) 加载场景操作\n   * me\\.modules.load:LoadScene\\(self.\\_sceneName, self.\\_sceneFolder, handler\\(self, self.DoSceneLoaded\\)\\)\n   * 加载完毕执行 OnLoaded回调\n   * 延迟一帧执行ui的进入场景 me.modules.ui:SceneEnter\\(self.\\_sceneID, self.\\_isback, self.\\_MainView\\)\n\n"
         }
       ]
     },
@@ -211,6 +348,23 @@
       ]
     },
     {
+      "key": "3bb67cbd-550d-4f9f-89b8-074efd02092d",
+      "parentKey": "7757cbc1-0174-4fe4-894b-dbbd05a7d883",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ActivityCtrlBase"
+        },
+        {
+          "type": "DESC",
+          "data": "\\-\\- 设置单次活动周期内是已进入\nfunction ActivityCtrlBase:SetFirstOfLife\\(base\\)\n```\nif base == nil then\n    return\nend\nlocal key = SettingDefine.COMMON_ACTIVITY_FIRSTOFLIFE..base.pid\nSettingUtil.SetUserValue(key, base.id)\nActivityHelper.UpdateRedDotOfEntrance(base.type, base.subType, base.id)\n\n```\nend\n\n\\-\\- 单次活动周期内是否未进入过\nfunction ActivityCtrlBase:HasFirstOfLife\\(base\\)\n```\nlocal key = SettingDefine.COMMON_ACTIVITY_FIRSTOFLIFE..base.pid\nlocal lastActID = SettingUtil.GetUserValue(key, nil)\nreturn lastActID==nil or lastActID ~= base.id\n\n```\nend"
+        }
+      ]
+    },
+    {
       "key": "082b5b31-b3cf-4423-a25f-29eb29d127d2",
       "parentKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
       "subKeys": [],
@@ -220,6 +374,10 @@
         {
           "type": "CONTENT",
           "data": "ModuleBase"
+        },
+        {
+          "type": "DESC",
+          "data": "* Dispose\\(\\) 重写销毁函数,ModuleBase不需要执行父类的Dispose\\(\\)\n* IsInit\\(\\) 是否已初始化\n* Init\\(\\) 设置已初始化\n* Update\\(dt\\) 提供给子类继承\n* Logout\\(\\)断线登出 提供给子类继承\n\n"
         }
       ]
     },
@@ -232,7 +390,58 @@
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "UIMask"
+          "data": "UIMask,模糊贴图"
+        },
+        {
+          "type": "DESC",
+          "data": "* 组件\n   * RawImage\n   * BlurTextureOnce 模糊贴图生成脚本\n* ctor\n   * HierarchyUtil\\.ExportToTarget\\(go, self\\)\n   * 点击监听\n* Dispose\\(\\)\n   * 模糊节点隐藏\n   * 释放模糊贴图 并移除监听\n* Show\\(viewKey, modal, clickFunc\\) modal 为 ViewPopModal.Blur ,则创建模糊贴图\n* AutuClose\\(\\) 设置点击mask是否自动关闭弹窗\n\n"
+        }
+      ]
+    },
+    {
+      "key": "6b4564de-78fa-41d5-aafb-3a02a683fc72",
+      "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIItemBase"
+        }
+      ]
+    },
+    {
+      "key": "f19a0c18-522c-48b0-ab2d-649912f54f30",
+      "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "FashionSpineItem 领主时装"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor\n\n```\nself.bodyPath = nil\nself.headPath = nil\n\n```\n* Dispose\n   * BodyDispose\\(\\) HeadDispose\\(\\)\n* Show\\(bodyPath, headPath\\)\n   * me\\.modules.resource:CreateAsyn\\(abpath, name, handler\\(self, self.OnLoadComplete\\), async\\) \n   * 异步加载bodySpine,加载完成隐藏节点并加载HeadSpine\\(\\),\n   * 都加载完毕,设置两个spine的层级及spine:Replay\\(\\)\n\n"
+        }
+      ]
+    },
+    {
+      "key": "ecc173b7-a8fa-4ad9-90b8-b2cd248a02da",
+      "parentKey": "4c963bed-856b-4564-a2c5-e27ce17e4649",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "FrameAnimationItem 组帧动画组件"
+        },
+        {
+          "type": "DESC",
+          "data": "组件:SpriteAnimationCtr"
         }
       ]
     }
@@ -240,7 +449,7 @@
   "config": {
     "readOnly": false,
     "allowUndo": true,
-    "layoutDir": 0,
+    "layoutDir": 2,
     "theme": {
       "name": "default",
       "randomColor": true,
