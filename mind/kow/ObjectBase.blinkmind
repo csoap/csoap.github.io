@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": "4c68ea7a-6bf5-4054-a800-fdc98eea4d49",
+  "focusKey": null,
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -177,6 +177,10 @@
         {
           "type": "CONTENT",
           "data": "MainViewBase"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor\n\n```none\nself:SetViewType(ViewDefine.ViewType.MAIN)\nself._optimizationCamera = true\n--全屏类窗口才默认自动播放动画\nself._autoPlayOpenAni = true\nself._manualMotion = false -- 菜单移动动画\nself._needNavigation = true\n\n```\n* OnLoaded（）\n   * self:\\_SetTab\\(\\) ， 如果有self.DynamicTab节点则创建 BottomTabGroup组件\n   * self:SetTopFrame\\(\\)\n      * \\_SetTop\\(\\)\n      * SetBtnBack\\(\\)\n* OnEnabled（）\n   * self\\.\\_munalMotion 为false, 预制上有PanelContent和ImgSceneBG导出节点,执行菜单移入动画﻿\n* OnFocus\\(\\)\n* SetTop\\(title, showHelp\\) 界面设置标题和   \n\n"
         }
       ]
     },
@@ -226,6 +230,10 @@
         {
           "type": "CONTENT",
           "data": "PanelBase"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor\n\n```none\nHierarchyUtil.ExportToTarget(go, self)\nself._isOpen = false\nself._isFocus = false\n-- 是否允许增加子panel 默认是不允许的，只有view和view的子panel允许，Item不允许\nself._canAddChild = false\nself._childPanel = nil\n-- 只有继承了UIItemBase的Item类，并且是通过GenerateXXX接口实例化出来的，才会加入_childItem\n-- _childItem在窗口或子窗口打开 关闭的时候，会被调用OnItemOpen 和OnItemClose\nself._childItem = nil\nself._autoPlayOpenAni = false\nself._openAni = nil --animation\n\n```\n\n* Open\\(\\)\n   * self\\.gameObject:SetActive\\(true\\); self.\\_isOpen = true\n   * 如果self.\\_canAddChild 执行 OnOpenSubItem\\(\\)\n   * 执行 OnOpen\\(\\)回调\n* Close\\(\\)\n   * self\\.gameObject:SetActive\\(false\\); self.\\_isOpen = false\n   * 如果self.\\_canAddChild 执行CloseSubPanel\\(\\)和OnCloseSubItem\\(\\)\n* CloseSubPanel\\(\\)\n   * 遍历打开的 子panel并关闭\n* OnFocus\\(\\)\n   * self\\.\\_isFocus = true ; self:SetAutoActiveEffDatas\\(true\\) \\-\\- 聚焦特效\n   * 遍历self.\\_\\_childPanel:OnFocus\\(\\)\n   *  遍历Self.\\_childItem:OnFocus\\(\\)\n* OnDefocus\\(\\) 失焦同上\n* SetAutoActiveEffDatas\\(\\) 遍历self.\\_\\_effectDatas 执行effectData:SetAutoActiveEff\\(show\\)\n* HideView\\(\\) 隐藏窗口，提供继承\n* ShowView   唤醒窗口， 提供继承\n* AddChildPanel\\(panelCls, obj, parent, param\\) 添加子窗口\n* GenerateAsynItem\\(cls, name, parent, onLoaded\\)  生成一个异步Item\n* RecycleAsnyItem\\(item\\) 回收异步创建的Item\n* GenerateOne\\(cls, prefab, parent, param\\) 生成一个Item， 有池子则从池子创建，没有则直接实例化，通过InstantiateItem\\(\\)\n* GenerateItemList\\(itemTable, count, cls, prefab, parent, param\\) 通过GenerateOne生成一个Item列表\n   * 循环判断itemTable数量少于count，则GenerateOne\\(\\)\n   * 循环判断itemTable数量大于count，则RecycleOne\\(\\)\n* InstantiateItem\\(cls, prefab, parent, param\\) 实例化一个Item\n* RecycleAll\\(\\) 回收全部Item\n* RecycleOne\\(\\) 回收一个Item，判断有无池子，没有则创建\n   * pool:Push\\(item\\)\n   * item:SetActive\\(false\\)\n* GenerateScript\\(cls, obj, noExport, param\\) 生成一个脚本对象，不会实例化对象\n\n"
         }
       ]
     },
@@ -246,9 +254,9 @@
       "key": "0e8d5c05-1ecd-4061-98bf-22b94e26e687",
       "parentKey": "c6cc313f-8cc7-4f99-b6f1-3f677c51c18d",
       "subKeys": [
-        "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
-        "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
         "61e57da3-3381-4606-a9ab-87a64994c924",
+        "6c2e330a-48b0-4a3c-8b5a-1a93230e8da4",
+        "e953c1aa-ad40-4279-bc73-d3c62b3d56aa",
         "573a3300-6349-4909-ab99-1bf0b95649bc",
         "a5390ad1-84e3-49fe-87de-2dfbdaaaf030"
       ],
@@ -258,6 +266,10 @@
         {
           "type": "CONTENT",
           "data": "ViewBase"
+        },
+        {
+          "type": "DESC",
+          "data": "* ctor```none\nself._viewKey        = nil                         -- 窗口的key，ViewID中定义\nself._panelName        = nil                         -- 窗口预制的名字\nself._openParams    = nil                         -- 窗口打开参数\nself._isHide        = false                        -- 窗口是否被隐藏\nself._loadState     = LoadState.NONE             -- 加载状态\nself._persistent    = false                        -- 通过SetPersistent()接口设置窗口是否常驻，永远在cache里\nself._closeTime     = 0                            -- 窗口关闭时间\nself._viewType        = ViewDefine.ViewType.MAIN     -- UI类型，主窗口，弹窗，固定窗口\nself.__abPath         = nil                        -- AB路径\nself._needNavigation = false                    -- 是否进入堆栈列表\nself._optimizationCamera = false                -- 是否隐藏场景相关\nself._optimizationVisible = true                -- 优化可见\nself._userData = nil                            --界面自定义数据\nself._viewAsynLoad = false\nself:SetCanAddChild() -- self._canAddChild = true\n\n```\n* Open\\(\\)\n\n```none\nself._isOpen = true\nself._isHide = false\nself:SetActive(true)\nself:SetAsLastSibling()\nself:OnOpenSubItem()\nself:OnOpen(self._openParams)\nself:OnEnabled()\nif me.modules.ui:IsTopView(self._viewKey) then\n    self:OnFocus()\nend\n\n```\n* Dispose\\(\\)\n   * me\\.modules.load:UnloadAB\\(self.\\_\\_abPath\\) 卸载AB\n   * ViewBase\\.super.Dispose\\(self\\)\n   * GameObject\\.Destroy\\(obj\\)\n* Close\\(\\)  me.modules.ui:CloseView\\(self.\\_viewKey\\)\n* Back\\(\\) 手机返回键关闭窗口\n* Load\\(\\)\n\n```none\nself._loadState = LoadState.LOADING\nself._timeColl = TimeCollector.Start()\nself.__abPath = me.modules.load:LoadUI(self._panelName, handler(self, self.OnLoadComplete), self._viewAsynLoad)\n\n```\n* OnLoadComplete\\(\\)\n   * local obj = ﻿GOUtil.InstantiateUI\\(data, parent\\)\n   * HierachyUtil\\.ExportToTarget\\(obj, self\\)\n*  声明周期接口\n   * OnLoaded\\(\\) 加载完成\n   * OnOpen\\(\\)\n   * OnClose\\(\\)\n   * OnEnabled\\(\\)\n   * OnFocus\\(\\)\n   * OnDefocus\\(\\)\n   * OnBack\\(\\) 回退\n\n"
         }
       ]
     },
@@ -408,6 +420,10 @@
         {
           "type": "CONTENT",
           "data": "UIItemBase"
+        },
+        {
+          "type": "DESC",
+          "data": "```none\nfunction UIItemBase:IsItemOpen()\n\treturn  self._isOnItemOpen\nend\n\n-- 窗口或子窗口打开的时候通知底下的Item\nfunction UIItemBase:OnItemOpen()\n\tself._isOnItemOpen = true\n\tself:OnOpenSubItem() -- 父类接口\nend\n\n-- 窗口或子窗口关闭的时候 通知底下的Item\nfunction UIItemBase:OnItemClose()\n\tself:OnCloseSubItem() -- 父类接口\n\tself._isOnItemOpen = false\nend\n\n```\n"
         }
       ]
     },
