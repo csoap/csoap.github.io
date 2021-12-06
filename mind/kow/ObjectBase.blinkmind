@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": null,
+  "focusKey": "3dcf961a-eaab-4eda-8248-c374593fb19a",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -31,6 +31,10 @@
         {
           "type": "CONTENT",
           "data": "PlayerTop"
+        },
+        {
+          "type": "DESC",
+          "data": "由LogicModule创建实例\n在LogicModule发起"
         }
       ]
     },
@@ -247,6 +251,10 @@
         {
           "type": "CONTENT",
           "data": "GameTop"
+        },
+        {
+          "type": "DESC",
+          "data": "由LogicModule实例\n"
         }
       ]
     },
