@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
   "editorRootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
-  "focusKey": "6ee14930-3207-436e-a038-9e59769c789b",
+  "focusKey": "8904385d-b21d-4696-b36d-aef9ed0ae8bb",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -138,7 +138,8 @@
         "4fc69a39-fb02-412c-9c7d-8eac2e1e1968",
         "02671c69-e779-4e55-a601-a63ed13d92d0",
         "cbebcb24-e00b-41df-a075-41f554bc691f",
-        "8904385d-b21d-4696-b36d-aef9ed0ae8bb"
+        "8904385d-b21d-4696-b36d-aef9ed0ae8bb",
+        "67e62325-f30e-4e91-853f-08820bb2ebe1"
       ],
       "collapse": false,
       "style": null,
@@ -270,6 +271,19 @@
         {
           "type": "CONTENT",
           "data": "从ab中读取atlas_tp_padding.asset\n写入图集集合,在内存中存在\n设置SDImage Padding\n"
+        }
+      ]
+    },
+    {
+      "key": "6bfa0055-0c64-4cef-8359-78c97d111e5d",
+      "parentKey": "67e62325-f30e-4e91-853f-08820bb2ebe1",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "LuaModule:StartGame()"
         }
       ]
     },
@@ -9196,6 +9210,21 @@
         {
           "type": "CONTENT",
           "data": "PrepareGame()"
+        }
+      ]
+    },
+    {
+      "key": "67e62325-f30e-4e91-853f-08820bb2ebe1",
+      "parentKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
+      "subKeys": [
+        "6bfa0055-0c64-4cef-8359-78c97d111e5d"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "ModuleMgr:StartGame()"
         }
       ]
     },
