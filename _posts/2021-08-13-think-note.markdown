@@ -830,6 +830,26 @@ tags:
         - 最先被执行的构造函数，且在一个类里只允许有一个无参的静态构造函数
         - 执行顺序：静态变量>静态构造函数>实例变量>实例构造函数
     - 装箱、拆箱
+        
+        ```csharp
+        //csharp代码
+        object objValue = 4;// 装箱操作将整形数字常量4装箱成引用类型object变量objValue
+        int value = (int)ojbValue;//拆箱操作，将存储到堆上的引用变量objValue存储到局部整形值类型变量value中
+
+        //ILd代码,装箱过程
+        .locals init (
+        [0] object objValue,
+        [1] int32 'value'
+        ) //上面IL声明两个局部变量object类型的objValue和int32类型的value变量
+        IL_0000: nop
+        IL_0001: ldc.i4.4 //将整型数字4压入栈
+        IL_0002: box [mscorlib]System.Int32 //执行IL box指令，在内存堆中申请System.Int32类型需要的堆空间
+        IL_0007: stloc.0 //弹出堆栈上的变量，将它存储到索引为0的局部变量中
+        IL_0008: ldloc.0//将索引为0的局部变量（即objValue变量）压入栈
+        IL_0009: unbox.any [mscorlib]System.Int32 //执行IL 拆箱指令unbox.any 将引用类型object转换成System.Int32类型
+        IL_000e: stloc.1 //将栈上的数据存储到索引为1的局部变量即value
+        ```
+
         - 装箱
             - 是什么？
                 - 把值类型转换成引用类型
@@ -844,7 +864,6 @@ tags:
                 - 检查对象实例，确保它是给定值类型的一个装箱值。将该值从实例复制到值类型变量中
         - 装箱拆箱区别？
             - 在装箱时是不需要显式的类型转换的，不过拆箱需要显式的类型转换
-    - 深拷贝 浅拷贝
     - c#相关知识点：https://www.cnblogs.com/anding
     - ref、out
         - ref指定的参数在函数调用时必须先初始化，而out不用
@@ -1062,6 +1081,22 @@ tags:
         - 深克隆
             - 无论原型对象的成员变量是值类型还是引用类型，都将复制一份给克隆对象
             - C#语言中，如果需要实现深克隆，可以通过序列化(Serialization)等方式来实现
+            - lua
+                ```lua
+                function DeepCopy(t)
+                    if nil == t then return nil end
+                    local result = ()
+                    for k, v in pairs(t) do
+                        if "table" == type(v) then
+                            result[k] = DeepCopy(v)
+                        else
+                            result[k] = v
+                        end
+                    end
+                    return result
+                end
+
+                ```
     - property与attribute的区别
         - property是属性，用于存取类的字段
         - attribute是特性，用来标识类，方法等的附加性质。
@@ -1391,6 +1426,10 @@ tags:
         - 死锁问题，lua的引用和unity 的引用互相等待对方释放，可能造成内存溢出
     - lua协程
     - 元表、元方法
+    - 如何实现面向对象
+        - metatable,在一个table中，如果索引一个元素(元素或方法)未能找到，解释器会去该table下的metatable中的__index元素中去寻找
+        - 云风, 定义了一个函数 class(classname, super) ,用这个函数，我们就可以方便的在lua 中定义类
+        - class内部实现了构造函数ctor和new方法,new方法为创建对象时候创建实例并自动调用ctor方法
     - lua代码的性能瓶颈定位与优化
         - CPU
             - CPU 代码分支预测器

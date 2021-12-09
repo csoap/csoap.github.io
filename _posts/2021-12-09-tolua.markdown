@@ -1,0 +1,45 @@
+---
+layout:     post
+title:  "tolua源码分析"
+subtitle:   ""
+date:       2021-12-09
+author:     "CSoap"
+header-img: "img/post-bg-js-module.jpg"
+tags:
+    - tolua
+---
+
+- 简介
+	- lua#是Unity静态绑定lua的一个解决方案，它通过C#提供的反射信息分析代码并生成包装的类。它，可以自动生成用于在lua中访问Unity的绑定代码，并把C#中的常量、变量、函数、属性、类以及枚举暴露给lua
+	- ToLua基于LuaInterface，LuaInterface是一个实现lua和微软.Net平台的CLR混合编程的开源库，使得lua脚本可以实例化CLR对象，访问属性，调用方法甚至使用lua函数来处理事件
+- Generate All 流程
+	```csharp
+	
+    static void GenLuaAll()
+    {
+        if (EditorApplication.isCompiling)
+        {
+            EditorUtility.DisplayDialog("警告", "请等待编辑器完成编译再执行此功能", "确定");
+            return;
+        }
+
+        beAutoGen = true;
+        GenLuaDelegates();
+        AssetDatabase.Refresh();
+        GenerateClassWraps();
+        GenLuaBinder();
+        beAutoGen = false;
+    }
+	```
+	- GenLuaDelegates()
+		- CustomSetttings内需要导出注册到lua的类型列表以及附加委托类型,生成委托绑定的代码
+	- GenerateClassWraps(),生成类的绑定代码
+	- GenLuaBinder() 生成向lua注册C#的绑定代码,代码存放在LuaBinder.cs文件
+- 启动代码
+	```lua
+	void Start() {
+		lua = new LuaState();  // 启动1:创建tolua提供的LuaState对象。              
+		lua.Start();           // 启动2:虚拟机初始化。
+		LuaBinder.Bind(lua);   // 启动3:Lua-c#中间层wrap文件们分别向虚拟机注册自己。
+	}
+	```
