@@ -1,13 +1,26 @@
 {
   "rootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
   "editorRootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
-  "focusKey": "8904385d-b21d-4696-b36d-aef9ed0ae8bb",
+  "focusKey": "104b9af3-17fc-446f-ae3a-5149a40d7851",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
     }
   },
   "topics": [
+    {
+      "key": "e9f9f7e3-4521-4d7b-b73a-aa8b1b9067e4",
+      "parentKey": "6bfa0055-0c64-4cef-8359-78c97d111e5d",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "补偿方案:热更时候如果luaupdate下载失败,重新下载"
+        }
+      ]
+    },
     {
       "key": "255e540e-3bb3-4129-8e43-379726dac3f4",
       "parentKey": "02671c69-e779-4e55-a601-a63ed13d92d0",
@@ -18,6 +31,19 @@
         {
           "type": "CONTENT",
           "data": "QualityModule"
+        }
+      ]
+    },
+    {
+      "key": "104b9af3-17fc-446f-ae3a-5149a40d7851",
+      "parentKey": "637fe384-8900-47bc-8db3-8da22a603ff4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "lua虚拟机 执行main.lua"
         }
       ]
     },
@@ -48,6 +74,23 @@
         {
           "type": "DESC",
           "data": "* 必须等LoadModule初始化完成才开始加载Lua\n   * 如果有lua热更文件:luaupdate.unity3d,则通过LoadModule异步加载\n   * 通过LoadModule异步加载toluaout.unity3d\n   * 通过LoadModule异步加载luaout.unity3d\n*  都加载完毕\n\n"
+        }
+      ]
+    },
+    {
+      "key": "637fe384-8900-47bc-8db3-8da22a603ff4",
+      "parentKey": "6bfa0055-0c64-4cef-8359-78c97d111e5d",
+      "subKeys": [
+        "f0f809fc-6a70-4eae-996c-89afa77c3c11",
+        "ace56105-5a1e-42f8-ac64-787378a6a410",
+        "104b9af3-17fc-446f-ae3a-5149a40d7851"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "StartLua()"
         }
       ]
     },
@@ -147,6 +190,19 @@
         {
           "type": "CONTENT",
           "data": "GameMain"
+        }
+      ]
+    },
+    {
+      "key": "ace56105-5a1e-42f8-ac64-787378a6a410",
+      "parentKey": "637fe384-8900-47bc-8db3-8da22a603ff4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameMain新增LuaLooper组件"
         }
       ]
     },
@@ -277,7 +333,10 @@
     {
       "key": "6bfa0055-0c64-4cef-8359-78c97d111e5d",
       "parentKey": "67e62325-f30e-4e91-853f-08820bb2ebe1",
-      "subKeys": [],
+      "subKeys": [
+        "e9f9f7e3-4521-4d7b-b73a-aa8b1b9067e4",
+        "637fe384-8900-47bc-8db3-8da22a603ff4"
+      ],
       "collapse": false,
       "style": null,
       "blocks": [
@@ -329,7 +388,7 @@
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "InitFramework进度条重跑"
+          "data": "InitFramework()进度条重跑\nModuleMgr:Init()"
         }
       ]
     },
@@ -9240,6 +9299,19 @@
         {
           "type": "CONTENT",
           "data": "GameABInfoMgr.Instance.InitRemoteRes();"
+        }
+      ]
+    },
+    {
+      "key": "f0f809fc-6a70-4eae-996c-89afa77c3c11",
+      "parentKey": "637fe384-8900-47bc-8db3-8da22a603ff4",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "开启Lua虚拟机"
         }
       ]
     }
