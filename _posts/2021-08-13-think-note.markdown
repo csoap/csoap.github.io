@@ -1167,6 +1167,8 @@ tags:
     - 如果不让你用UI组件，在unity中怎么展现一张图片？
     - 高速移动的物体发生collider穿透怎么解决
     - UGUI 和 NGUI有什么区别
+    - UGUI的Sprite和Texture关系
+        - UGUI开发时使用的是Sprite对象,Sprite只是在Texture上又封装了一层数据结构,包含Sprite大小以及九宫格区域.
     - 描述一下UGUI的渲染过程？如一个界面是ugui是如何展示出来的
     - ugui如何减少drawcall？可以联想到ugui造成drawcall源码原理
     - 讲讲项目中的事件触发器
