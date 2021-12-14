@@ -8,7 +8,7 @@ header-img: "img/home-bg-o.jpg"
 tags:
     -lua
 ---
-- 总结自公司项目组主程分享课题：《Unity下Lua开发注意事项》，并归纳其他知识点进行总结笔记
+- 总结自分享课题：《Unity下Lua开发注意事项》，并归纳其他知识点进行总结笔记
 
 - 不错的文章链接,建议反复阅读
     - https://www.cnblogs.com/zwywilliam/p/5999924.html
