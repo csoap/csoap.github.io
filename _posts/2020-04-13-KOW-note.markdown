@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "KOW项目的技术选型"
+title:      "KOW的技术指标总结"
 subtitle:   ""
 date:       2020-04-13
 author:     "CSoap"
@@ -18,6 +18,8 @@ tags:
         - 使用.ogg对音频压缩，其他的音频格式在发布打包时将被作为非压缩的PCM音频格式存储在包内。 对小的音效使用非压缩音频，Unity(从1.6开始)导入时会解压缩所有ogg文件。它让短音效播放时使用非压缩的wav或者aiff文件，这样可以不消耗CPU在解压音频文件上。例如那些急速开枪、脚步等类似的声音。
         ![音频优化](/img/in-post/post-js-version/music/music_1.png )
         ![音频优化](/img/in-post/post-js-version/music/music_2.png)
+- 字体
+    - 后缀 ttf
 - 国际化与本地化
 - 日志系统
 - 调试与维护
@@ -28,3 +30,36 @@ tags:
 - 网络协议
     - 网络游戏，首先要考虑的是如何与服务器进行通信。作为SLG类型，对于响应速度需求并不会像FPS或者MOBA类型那么的强烈。所以就挑选了TCP的方式进行连接。然后，使用了Sproto作为协议的载体进行消息传递和RPC封装。
 - git 分支管理
+- 引擎
+    - 2017.4.39 和 2020.3.21
+- UI
+    - 出图规范
+    - 图集
+        - Unity运行时动态图集的实现https://edu.uwa4d.com/course-intro/0/152
+            - 道具图标2048太大有额外的内存浪费，有什么优化方案
+                - 一个页面不会有太多的散图，把多张散图渲染到同一张RenderTexture，然后截取 RT 里的 UV 来显示
+    - 宽高比例
+        - 标准宽高 640 * 1136  iPhone5 (包括5/5C/5S)
+        - 最小宽高比 1.775f
+        - 最大宽高比 2.02f
+        - 640 * 1136
+- ab包
+    - 压缩策略
+        - 安卓使用lz4+lzma
+        - ios 使用lz4
+- 内存
+    - 内存峰值
+- 耗时
+    - 最大ab sound_voice_npc_en 11.9M 解压耗时1.08ms
+        - luaout.untiy3d  12.8M 解压耗时 3.44ms
+        - 最大场景ab 4.8M
+        - 特效最大 2.7M
+        - 模型最大2M
+        - 图集最大 ui_atlas_tp_common_n.unity3d 1.58M 2024 * 2024
+        - 加载龙岛ab 耗时93.9ms
+    - 监控手段
+        - load界面耗时超过100ms打印日志
+        - 实例化耗时、onloaded耗时、加载后逻辑耗时超过50ms耗时打印日志
+        - adb shell dumpsys meminfo com.onemt.and.kc.test,查看当前应用内存 pss total就是内存总占用
+            - 刚登陆内存占用290M，进入主城546M，打开多个界面785M
+    - 加载resources下的remoteablist文件耗时300ms 异步

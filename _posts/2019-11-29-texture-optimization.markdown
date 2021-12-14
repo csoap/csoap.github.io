@@ -159,12 +159,12 @@ tags:
     - 举例：rgba8888 表示的是通道 rgba 每个通道都占用 8bit 那么也就是一个像素占用了 4bytes。故，图片大小若为 1014x1024，则大小=1024x1024x4/1024/1024 = 4M
     - 例如：以一张1024X1024的贴图为例 ---->1byte=8bit
         - RGBA32 Bit：表示每个像素占用32bit 4byte，内存大小 = 1024 X 1024 X 4 = 4M
-        - RGBA16 Bit：表示每个像素占用16bit 2byte，内存大小 = 1024 X 1024 X 2= 2M
-        - RGB ETC1 4Bit： 表示每个像素占用4bit 0.5byte，内存大小 = 1024 X 1024 X 0.5= 0.5M
-        - RGBA ETC2 8Bit： 表示每个像素占用8bit 1byte，内存大小 = 1024 X 1024 X 1= 1M
-        - RGBA PVRTC 4Bit： 表示每个像素占用4bit 0.5byte，内存大小 = 1024 X 1024 X 0.5= 0.5M
-        - RGBA ASTC 4X4 block : 表示每个像素占用8bit 1byte，内存大小 = 1024 X 1024 X 1= 1M
-        - RGBA ASTC 8X8 block : 表示每个像素占用8bit 0.25byte，内存大小 = 1024 X 1024 X 0.25= 0.25M
+        - RGBA16 Bit：表示每个像素占用16bit 2byte，内存大小 = 1024 X 1024 X 2= 2M
+        - RGB ETC1 4Bit： 表示每个像素占用4bit 0.5byte，内存大小 = 1024 X 1024 X 0.5= 0.5M
+        - RGBA ETC2 8Bit： 表示每个像素占用8bit 1byte，内存大小 = 1024 X 1024 X 1= 1M
+        - RGBA PVRTC 4Bit： 表示每个像素占用4bit 0.5byte，内存大小 = 1024 X 1024 X 0.5= 0.5M
+        - RGBA ASTC 4X4 block : 表示每个像素占用8bit 1byte，内存大小 = 1024 X 1024 X 1= 1M
+        - RGBA ASTC 8X8 block : 表示每个像素占用8bit 0.25byte，内存大小 = 1024 X 1024 X 0.25= 0.25M
 
 - OpenGL支持非二次幂纹理的底层原理是什么？
     - 这个问题其实与GPU的寻址方式（地址对齐要求）有关，并非是图形API层面的限制
