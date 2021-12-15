@@ -24,6 +24,8 @@ tags:
         - 优点：LZ4格式的好处在于解压缩的时间相对要短。运行文件以chunk或者piece的方式加载，只解压一个chunk文件，而无需解压bundle中其余不相关的chunk。
     - 不压缩 BuildAssetBundleOptions.UncompressedAssetBundle
         - 无压缩的打包，加载的文件更大，但是时间更快(省去解压的时间)
+    - kow策略
+        - ab包压缩策略，安卓使用lz4+lzma，iOS使用lz4
 - 分包策略
     - 对包的大小和数量进行一个平衡。所有资源打成一个包，一个资源打一个包，都是比较极端的做法
     - 打成一个包的缺点

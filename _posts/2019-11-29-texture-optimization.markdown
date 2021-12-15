@@ -232,3 +232,68 @@ tags:
     - 2的次方要求极端情况会导致ETC2（4的倍数要求，但考虑到如果要使用PVRTC）的内存占用变得很大，这种情况选择ETC2还是RGBA16？
         - 2的次方的要求极端情况会导致宽高都扩大接近一倍（比如：300*300往大的变会变成512*512），这样算下来多数情况如果带Alpha，512*512的ETC2-RGBA比300*300的RGBA16的内存占用还要高。
         - 话说300*300这种，你可以选择搞成256*256，但是整体肯定还是推荐压缩的格式，大部分情况下都比RGBA16要好一些（内存消耗+效果整体考虑）
+
+- 实践
+    - kow
+        - 检查目录
+            - 关闭生成小贴图
+            - 过滤模式：双线性插值（使用这个）
+                - 单点插值，如果我们把Filter Mode改为Point，可以看到画面明显变得锐化了。仔细观察图像中每个物体的边缘，由原来的模糊变为块状化了。但画质依然不好，可以看出有明显的锯齿
+                - 三线性过滤 - 纹理取样的平均值，也混合mipmap等级。
+            - 可读写：否
+            - 例子
+                - 舞会 12个舞者模型 256* 256
+                - 12个舞者模型，占用6M内存左右
+                - 平均每个角色占用0.5M， 优化前一个角色占用3M以上（大概）
+            ```csharp
+            public static void CheckTextureSetting()
+            {
+                string[] folders = {"Assets/Art/spine", "Assets/Data/atlas_tp"};
+                string[] objs = AssetDatabase.FindAssets("t:Texture", folders);
+                int len = objs.Length;
+                for(int i=0; i<len;i++)
+                {
+                    string guid = objs[i];
+                    string strFile = AssetDatabase.GUIDToAssetPath (guid);
+
+                    EditorUtility.DisplayProgressBar("检查图片设置",strFile, (i+1.0f)/len);
+                    TextureImporter importer = TextureImporter.GetAtPath (strFile) as TextureImporter;
+                    bool bChange = false;
+                    if(importer.mipmapEnabled)
+                    {
+                        importer.mipmapEnabled = false;
+                        bChange = true;
+                    }
+                    if(importer.filterMode != FilterMode.Bilinear)
+                    {
+                        importer.filterMode = FilterMode.Bilinear;
+                        bChange = true;
+                    }
+                    if(importer.mipmapEnabled != false)
+                    {
+                        importer.mipmapEnabled = false;
+                        bChange = true;
+                    }
+                    if(importer.isReadable != false)
+                    {
+                        importer.isReadable = false;
+                        bChange = true;
+                    }
+                    if(importer.alphaSource != TextureImporterAlphaSource.None)
+                    {
+                        importer.alphaSource = TextureImporterAlphaSource.None;
+                        bChange = true;
+                    }
+                    if(importer.textureCompression != TextureImporterCompression.Compressed)
+                    {
+                        importer.textureCompression = TextureImporterCompression.Compressed;
+                        bChange = true;
+                    }
+                    if(bChange)
+                    {
+                        importer.SaveAndReimport();
+                    }
+                }
+                EditorUtility.ClearProgressBar();
+            }
+            ```

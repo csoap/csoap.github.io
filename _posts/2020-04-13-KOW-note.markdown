@@ -49,10 +49,19 @@ tags:
         - ios 使用lz4
 - 内存
     - 内存峰值
+        - 刚登陆内存占用290M，进入主城546M，打开多个界面785M
+            - 刚进入主城贴图内存占用100M， Meshes 1.2M，Materials 占用167KB，舞会场景12个模型Meshs内存占用2.6M，
+        - 对比lol手游 匹配界面942M 游戏界面1.2G
+        - 对比竞品
+            - 叫我大掌柜
+                - 包 474.1M，刚进入主界面内存 807M
+            - 极品芝麻官
+                - 包 477.4M 刚进入主界面390M内存
+        - music（city.ogg） + sound 10.4M内存, city.ogg大小为1.45M
 - 耗时
     - 最大ab sound_voice_npc_en 11.9M 解压耗时1.08ms
         - luaout.untiy3d  12.8M 解压耗时 3.44ms
-        - 最大场景ab 4.8M
+        - 最大场景ab 主城 4.8M
         - 特效最大 2.7M
         - 模型最大2M
         - 图集最大 ui_atlas_tp_common_n.unity3d 1.58M 2024 * 2024
@@ -61,5 +70,4 @@ tags:
         - load界面耗时超过100ms打印日志
         - 实例化耗时、onloaded耗时、加载后逻辑耗时超过50ms耗时打印日志
         - adb shell dumpsys meminfo com.onemt.and.kc.test,查看当前应用内存 pss total就是内存总占用
-            - 刚登陆内存占用290M，进入主城546M，打开多个界面785M
     - 加载resources下的remoteablist文件耗时300ms 异步
