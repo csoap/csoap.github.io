@@ -14,6 +14,38 @@ tags:
     - https://www.cnblogs.com/zwywilliam/p/5999924.html
     - https://www.cnblogs.com/zwywilliam/p/5999980.html
     - https://www.cnblogs.com/zwywilliam/p/5992737.html
+
+- 为什么使用lua热更
+    - 之前Unity不支持热更新
+    - UWA之前分享过 Android平台热更新解决方案，直接替换dll是一种解决方式(但iOS上因为使用IL2CPP故而无法实现，而且这事本质上为商业原因而非技术问题)
+    - 考虑到以前项目有不少同事之前写的是Cocos2d-lua，而且也有对应后端框架如Skynet，因此立下项的时候考虑使用Unity+lua的方式来开发
+
+- lua热更方案对比
+    - https://blog.csdn.net/UWA4D/article/details/54344393
+    - 比对：slua，ulua（不再维护，跳至tolua），tolua
+    - 设备
+        - 作者钱康来
+        - 在 Android上对高、中、低配置的三款设备
+            - 低端设备：三星 S3（Android OS 4.3）
+            - 中端设备：红米 Note2（Android OS 5.0.2）
+            - 高端设备：三星S6（Android OS 6.0.1）
+        - iOS上对armv7和arm64的两款设备
+            - armv7设备：iPhone 4s （OS 7.1.2）
+            - arm64设备：iPhone 5s（OS 9.3.5）
+    - 总结
+        - 在Android设备上
+            - 测试用例主要是大量的向量操作，slua较为占优
+            - 测试用力主要是组件属性的赋值，和GameObject的创建等，tolua占用
+            - 而ulua在中高端设备上基本介于两者之间，但在低端机上则有较为明显的性能问题
+        - ios
+            - tolua的性能表现最好
+    - ILRuntime 原理
+        - C#代码在编写后，是需要执行编译的，才能起效，这样如果在手机端，没有对应的编译环境，那么对应的c#代码就无法实现热更。ILRuntime实现的基础，也是基于AssetBundle的资源热更新方式，将需要热更新的c#代码打包成DLL，放在工程的StreamingAssets下，在每次完成资源打包后，对应的DLL会被作为资源热更新出去。这样就规避了编译相关的环节，实现了热更
+    - tolua对比ILRuntime
+        - 无论是ILRuntime还是toLua都是市面上有在用到的热更方案。直观上来讲，都可以通过把代码放在StreamingAssets中，从而达到热更的目的
+        - 一般Unity都是C#编写的，所以单看迁移成本，ILRuntime是完胜
+
+
 - Unity+Lua，性能注意点
     - lua跟c#交互时的性能
     - lua代码本身的性能，CPU & 内存
