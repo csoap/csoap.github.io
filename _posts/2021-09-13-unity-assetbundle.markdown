@@ -25,7 +25,7 @@ tags:
     - 不压缩 BuildAssetBundleOptions.UncompressedAssetBundle
         - 无压缩的打包，加载的文件更大，但是时间更快(省去解压的时间)
     - kow策略
-        - ab包压缩策略，安卓使用lz4+lzma，iOS使用lz4
+        - ab包压缩策略，安卓,iOS使用lz4 +gzip
 - 分包策略
     - 对包的大小和数量进行一个平衡。所有资源打成一个包，一个资源打一个包，都是比较极端的做法
     - 打成一个包的缺点
