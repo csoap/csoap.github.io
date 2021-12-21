@@ -25,21 +25,31 @@ tags:
     - 项目:SLG(已上线处于数据调优阶段)
     - 一面
         - 如何实现链表的快速查询(回答多级链表)
+        - 还有什么查找算法
     - 二面 主程
 - 完美世界(北京)
     - 项目:二次元卡牌
     - 快速排序
     - 备注:
         - 技术面 + 制作人面
-        - hr 双面
+        - hr 双人面
 - 光宇游戏(北京)
     - 变量a,b在不用其他辅助变量交换值
     - 实现斐波那契的几种做法
     - C#
         - string StringBuilder区别 以及对应线程安全
+            - string 线程安全, stringbuilder线程不安全,频繁拼接用stringbuffer
         - ref out
+            - https://blog.csdn.net/qiaoquan3/article/details/51201398
         - struct class
+            - https://www.cnblogs.com/gsk99/archive/2010/12/13/1904552.html
+            - class和struct最本质的区别是class是引用类型，而struct是值类型
+            - class
+                - new一个类的实例时，在堆栈（stack）上存放该实例在托管堆（managed heap）中的地址，而实例的值保存在托管堆（managed heap）中
+            - struct
+                - struct实例在创建时分配在线程的堆栈（stack）上，它本身存储了值
         - 接口和 抽象类
+            - https://www.cnblogs.com/lidaying5/p/10515251.html
         - try catch finally,try中return,finally是否会执行,为何会执行finally(当时回答会)
         - 堆内存,栈内存, 整形能否存在堆内存中(如int a 放在某个对象中即可)
     - lua
@@ -49,5 +59,9 @@ tags:
     - unity
         - unity生命周期(按顺序)
         - overdraw (是什么? 怎么做)
+            - https://blog.csdn.net/yu1368072332/article/details/85676537
+            - what
+                - 在unity中，每次CPU准备数据并通知GPU的过程就称之为一个DrawCall。
+                - 具体过程就是：设置颜色-->绘图方式-->顶点坐标-->绘制-->结束，所以在绘制过程中，如果能在一次DrawCall完成所有绘制就会大大提高运行效率，进而达到优化的目的。
         - drawcall(是什么? 怎么做)
     - a,b两个变量在不借助其他变量,如何交换值
