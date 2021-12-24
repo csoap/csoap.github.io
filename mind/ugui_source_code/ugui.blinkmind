@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "32bead20-fa98-483b-91e4-68179050cd55",
   "editorRootTopicKey": "32bead20-fa98-483b-91e4-68179050cd55",
-  "focusKey": "93a7219f-d02b-4618-9649-849c98eb1e21",
+  "focusKey": "6c18cb82-3f21-421d-8046-e40e983ef9e0",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -2396,7 +2396,7 @@
         },
         {
           "type": "DESC",
-          "data": "* 相同图集的Sprite是如何合并DrawCall\n   * 原理:每个Mesh都需要给顶点设置UV信息,也就是说只需要将图集上的某个区域分别抠出来贴到Mesh正确的区域即可\n   *  观察Image的OnPopulateMesh\\(\\) 填充mesh方法\n      * UGUI通过 Sprites.DataUtility.GetOuterUV\\(activeSprite\\) 获取Sprite的UV信息\n      * 填充 顶点 颜色 UV\n      * 填充三角形顶点序列\n\n"
+          "data": "* 相同图集的Sprite是如何合并DrawCall\n   * 原理:每个Mesh都需要给顶点设置UV信息,也就是说只需要将图集上的某个区域分别抠出来贴到Mesh正确的区域即可\n   * 观察Image的OnPopulateMesh\\(\\) 填充mesh方法\n      * UGUI通过 Sprites.DataUtility.GetOuterUV\\(activeSprite\\) 获取Sprite的UV信息\n      * 填充 顶点 颜色 UV\n      * 填充三角形顶点序列\n\n"
         }
       ]
     },
@@ -4900,7 +4900,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -4959,29 +4959,7 @@
                   },
                   "ex": 424,
                   "ey": 354
-                },
-                "dockWatchers": [
-                  {
-                    "x": 364,
-                    "y": 334
-                  },
-                  {
-                    "x": 304,
-                    "y": 314
-                  },
-                  {
-                    "x": 424,
-                    "y": 314
-                  },
-                  {
-                    "x": 424,
-                    "y": 354
-                  },
-                  {
-                    "x": 304,
-                    "y": 354
-                  }
-                ]
+                }
               },
               {
                 "id": "ac6fbf69",
@@ -5073,7 +5051,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -5132,29 +5110,7 @@
                   },
                   "ex": 603,
                   "ey": 235
-                },
-                "dockWatchers": [
-                  {
-                    "x": 543,
-                    "y": 215
-                  },
-                  {
-                    "x": 483,
-                    "y": 195
-                  },
-                  {
-                    "x": 603,
-                    "y": 195
-                  },
-                  {
-                    "x": 603,
-                    "y": 235
-                  },
-                  {
-                    "x": 483,
-                    "y": 235
-                  }
-                ]
+                }
               },
               {
                 "id": "28c68e32",
@@ -5246,7 +5202,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -5305,29 +5261,7 @@
                   },
                   "ex": 617,
                   "ey": 334
-                },
-                "dockWatchers": [
-                  {
-                    "x": 557,
-                    "y": 314
-                  },
-                  {
-                    "x": 497,
-                    "y": 294
-                  },
-                  {
-                    "x": 617,
-                    "y": 294
-                  },
-                  {
-                    "x": 617,
-                    "y": 334
-                  },
-                  {
-                    "x": 497,
-                    "y": 334
-                  }
-                ]
+                }
               },
               {
                 "id": "0d6b8078",
@@ -5419,7 +5353,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -5478,29 +5412,7 @@
                   },
                   "ex": 603,
                   "ey": 473
-                },
-                "dockWatchers": [
-                  {
-                    "x": 543,
-                    "y": 453
-                  },
-                  {
-                    "x": 483,
-                    "y": 433
-                  },
-                  {
-                    "x": 603,
-                    "y": 433
-                  },
-                  {
-                    "x": 603,
-                    "y": 473
-                  },
-                  {
-                    "x": 483,
-                    "y": 473
-                  }
-                ]
+                }
               },
               {
                 "id": "7e4afd4b",
@@ -5592,7 +5504,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -5689,7 +5601,7 @@
                     "animateDuration": 0,
                     "animateFrames": [],
                     "borderRadius": 0,
-                    "iconSize": null,
+                    "iconSize": 0,
                     "imageAlign": "center",
                     "gradientAngle": 0,
                     "gradientRadius": 0.01,
@@ -5746,28 +5658,6 @@
                     },
                     "parentId": "7e4afd4b"
                   }
-                ],
-                "dockWatchers": [
-                  {
-                    "x": 160.5,
-                    "y": 152
-                  },
-                  {
-                    "x": 19,
-                    "y": 12
-                  },
-                  {
-                    "x": 302,
-                    "y": 12
-                  },
-                  {
-                    "x": 302,
-                    "y": 292
-                  },
-                  {
-                    "x": 19,
-                    "y": 292
-                  }
                 ]
               },
               {
@@ -5818,7 +5708,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -5865,8 +5755,7 @@
                   },
                   "ex": 0,
                   "ey": 0
-                },
-                "elementRendered": false
+                }
               },
               {
                 "id": "e3ca6187",
@@ -5958,7 +5847,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -6055,7 +5944,7 @@
                     "animateDuration": 0,
                     "animateFrames": [],
                     "borderRadius": 0,
-                    "iconSize": null,
+                    "iconSize": 0,
                     "imageAlign": "center",
                     "gradientAngle": 0,
                     "gradientRadius": 0.01,
@@ -6111,28 +6000,6 @@
                       "ey": 0
                     },
                     "parentId": "e3ca6187"
-                  }
-                ],
-                "dockWatchers": [
-                  {
-                    "x": 1001,
-                    "y": 152
-                  },
-                  {
-                    "x": 840,
-                    "y": 5
-                  },
-                  {
-                    "x": 1162,
-                    "y": 5
-                  },
-                  {
-                    "x": 1162,
-                    "y": 299
-                  },
-                  {
-                    "x": 840,
-                    "y": 299
                   }
                 ]
               },
@@ -6226,7 +6093,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -6323,7 +6190,7 @@
                     "animateDuration": 0,
                     "animateFrames": [],
                     "borderRadius": 0,
-                    "iconSize": null,
+                    "iconSize": 0,
                     "imageAlign": "center",
                     "gradientAngle": 0,
                     "gradientRadius": 0.01,
@@ -6379,28 +6246,6 @@
                       "ey": 0
                     },
                     "parentId": "5dcd1d62"
-                  }
-                ],
-                "dockWatchers": [
-                  {
-                    "x": 933,
-                    "y": 525.5
-                  },
-                  {
-                    "x": 764,
-                    "y": 307
-                  },
-                  {
-                    "x": 1102,
-                    "y": 307
-                  },
-                  {
-                    "x": 1102,
-                    "y": 744
-                  },
-                  {
-                    "x": 764,
-                    "y": 744
                   }
                 ]
               },
@@ -6494,7 +6339,7 @@
                 "animateDuration": 0,
                 "animateFrames": [],
                 "borderRadius": 0,
-                "iconSize": null,
+                "iconSize": 0,
                 "imageAlign": "center",
                 "gradientAngle": 0,
                 "gradientRadius": 0.01,
@@ -6591,7 +6436,7 @@
                     "animateDuration": 0,
                     "animateFrames": [],
                     "borderRadius": 0,
-                    "iconSize": null,
+                    "iconSize": 0,
                     "imageAlign": "center",
                     "gradientAngle": 0,
                     "gradientRadius": 0.01,
@@ -6647,28 +6492,6 @@
                       "ey": 0
                     },
                     "parentId": "4a41dd7c"
-                  }
-                ],
-                "dockWatchers": [
-                  {
-                    "x": 223,
-                    "y": 607.5
-                  },
-                  {
-                    "x": 112,
-                    "y": 453
-                  },
-                  {
-                    "x": 334,
-                    "y": 453
-                  },
-                  {
-                    "x": 334,
-                    "y": 762
-                  },
-                  {
-                    "x": 112,
-                    "y": 762
                   }
                 ]
               }
@@ -6757,8 +6580,7 @@
                   "id": "ac6fbf69"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "19b297ee",
@@ -6843,8 +6665,7 @@
                   "id": "28c68e32"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "15ae009c",
@@ -6929,8 +6750,7 @@
                   "id": "0d6b8078"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "b7fc2a8a",
@@ -7015,8 +6835,7 @@
                   "id": "d71604d3"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "55a5e5ff",
@@ -7101,8 +6920,7 @@
                   "id": "e3ca6187"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "c06d5c29",
@@ -7187,8 +7005,7 @@
                   "id": "5dcd1d62"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               },
               {
                 "id": "372fe68b",
@@ -7273,8 +7090,7 @@
                   "id": "0d6b8078"
                 },
                 "fromArrow": "",
-                "toArrow": "triangleSolid",
-                "textRect": null
+                "toArrow": "triangleSolid"
               }
             ],
             "lineName": "curve",
