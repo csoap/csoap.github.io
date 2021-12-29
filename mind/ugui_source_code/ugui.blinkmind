@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "32bead20-fa98-483b-91e4-68179050cd55",
   "editorRootTopicKey": "32bead20-fa98-483b-91e4-68179050cd55",
-  "focusKey": "6c18cb82-3f21-421d-8046-e40e983ef9e0",
+  "focusKey": "fcbd1ac1-0af7-4456-a5d3-cbdef584cc88",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -21,7 +21,7 @@
         },
         {
           "type": "DESC",
-          "data": "* 链接:[https://zhuanlan.zhihu.com/p/136505882](https://zhuanlan.zhihu.com/p/136505882)\n* Mask\n   * Mask的原理,看MasableGraphic.cs, Graphics.cs脚本\n      * Mask利用模板缓存,你记录了一个ID,被裁切元素也有模板缓存的ID,并且和Mask里的比较,相同才会被渲染\n      * 因为模板缓冲可以提供模板的区域,所以被遮挡的图片会被裁切显示\n   * 缺点:如果要让Mask节点下的元素裁切,多占用一个DrawCall,因为这些元素需要一个新的Shader参数进行渲染\n* Mask\n   * 过程:\n      * Canvas\\.willRenderCanvases\\(\\)在PerformUpdate中调用ClipperRegistery,instance.Cull\\(\\);\n         * ClipperRegistery\\.instance.Cull\\(\\) 原理:遍历界面中的每个Masd2D组件:PerformClipping\\(\\)\n            * 需要找到所有需要裁切的UI元素,因为Image和Text都继承了IClippable接口,进行剔除\n      * ReckMask2D会将RectTransform的区域u\\_ClipRect传入Shader,RectMask2D不需要模板 ,效率更高\n         * 在shader的Frage处理像素中,被裁掉的区域 是将color.a变为透明\n\n"
+          "data": "* 链接:[https://zhuanlan.zhihu.com/p/136505882](https://zhuanlan.zhihu.com/p/136505882)\n* Mask\n   * Mask的原理,看MasableGraphic.cs, Graphics.cs脚本\n      * Mask利用模板缓存,你记录了一个ID,被裁切元素也有模板缓存的ID,并且和Mask里的比较,相同才会被渲染\n      * 因为模板缓冲可以提供模板的区域,所以被遮挡的图片会被裁切显示\n   * 缺点:如果要让Mask节点下的元素裁切,多占用一个DrawCall,因为这些元素需要一个新的Shader参数进行渲染\n* RectMask2D\n   * 过程:\n      * Canvas\\.willRenderCanvases\\(\\)在PerformUpdate中调用ClipperRegistery,instance.Cull\\(\\);\n         * ClipperRegistery\\.instance.Cull\\(\\) 原理:遍历界面中的每个Masd2D组件:PerformClipping\\(\\)\n            * 需要找到所有需要裁切的UI元素,因为Image和Text都继承了IClippable接口,进行剔除\n      * ReckMask2D会将RectTransform的区域u\\_ClipRect传入Shader,RectMask2D不需要模板 ,效率更高\n         * 在shader的Frage处理像素中,被裁掉的区域 是将color.a变为透明\n\n"
         }
       ]
     },

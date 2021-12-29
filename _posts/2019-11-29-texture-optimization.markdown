@@ -222,6 +222,11 @@ tags:
         - 如何操作
     - 其他策略？
         - 在玩家焦点区域的纹理可以选择高清，其它区域设置为低清晰，通过动态的LOD来做优化
+- 在一个空工程里面，我放了几张大图2048*2048的，采用ETC2 4bits的格式压缩的时候单张大小为2MB，采用ASTC 6X6压缩的时候单张大小是1.8MB
+    - 按照我的理解：采用ASTC压缩格式打出的APK应该更小才对，可是事实和我预想的相反：采用ETC2压缩打出的APK为21.1MB；采用ASTC压缩打出的APK为25.7MB， 为什么？
+        - 占用包体的大小和在Editor下的Preview界面看到的大小是两回事
+        - Preview界面看到的大小是ASTC或者ETC2格式的资源的大小，而打包后，会对资源进行进一步的压缩（LZ4或LZMA）。只能说明ETC2压缩成LZ4后占用的包体大小确实比ASTC压缩成LZ4后占用的大小更小，至于原因就要看具体压缩算法的实现了
+        - 可以用AssetBundle来验证，如果打AssetBundle包时选择NoCompression，那么确实ASTC格式的比ETC2格式的AssetBundle包更小。如果选择LZ4或LZMA压缩，那么ETC2格式的AssetBundle包比ASTC格式的AssetBundle包要小
 - 其他问题
     - 贴图设置
         - Read/Write Enable
