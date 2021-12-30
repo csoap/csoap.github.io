@@ -37,7 +37,9 @@ tags:
     - 图集
         - Unity运行时动态图集的实现https://edu.uwa4d.com/course-intro/0/152
             - 道具图标2048太大有额外的内存浪费，有什么优化方案
-                - 一个页面不会有太多的散图，把多张散图渲染到同一张RenderTexture，然后截取 RT 里的 UV 来显示
+                - 如果图量远超单屏显示量，那比较实际的是自己实现动态图集
+                    - 一个页面不会有太多的散图，把多张散图渲染到同一张RenderTexture，然后截取 RT 里的 UV 来显示
+                - 对于大多数游戏，如果不是常驻画面的界面，以现在机器的性能，忍受一下DrawCall也非不可
     - 宽高比例
         - 标准宽高 640 * 1136  iPhone5 (包括5/5C/5S)
         - 最小宽高比 1.775f
@@ -69,7 +71,7 @@ tags:
     - 监控手段
         - load界面耗时超过100ms打印日志
         - 实例化耗时、onloaded耗时、加载后逻辑耗时超过50ms耗时打印日志
-        - adb shell dumpsys meminfo com.onemt.and.kc.test,查看当前应用内存 pss total就是内存总占用
+        - adb shell dumpsys meminfo com.onemt.and.kc.test,查看当前应用内存 pss total就是内存总占用, Reserved Total 和 Used Total 为Unity引擎在内存方面的总体分配量和总体使用量
     - 加载resources下的remoteablist文件耗时300ms 异步
 - 模型
    - 舞会 12个舞者模型 256* 256

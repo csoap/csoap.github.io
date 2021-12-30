@@ -32,6 +32,16 @@ tags:
     - 快速排序
     - 备注:
         - 技术面 + 制作人面
+            - unity如何编译脚本
+                - 默认情况下，Unity 几乎将所有游戏脚本都编译到预定义 程序集 Assembly-CSharp.dll 中
+                    - 每次更改一个脚本时，Unity 都必须重新编译所有其他脚本
+                    - 所有脚本都针对所有平台进行编译
+                - 怎么优化编译速度
+                    - 打包DLL
+                        - 把部分代码打包成dll，就像DOTween这种插件直接提供了dll一样， 缺点：处理不同的宏和DLL引用
+                    - 利用Unity多阶段编译（分四步编译），四个阶段：https://docs.unity3d.com/cn/2017.4/Manual/ScriptCompileOrderFolders.html
+                        - 插件Mad Compile Time Optimizer
+                        - 只要将不常修改的代码放到特定文件夹就完事儿了其实…这里我选择的是Standard Assets文件夹。这样唯一的一个限制是Standard Assets里的代码无法引用外面的代码，不过这里全是放的插件
         - hr 双人面
 - 光宇游戏(北京)
     - 变量a,b在不用其他辅助变量交换值
