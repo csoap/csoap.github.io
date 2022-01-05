@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "editorRootTopicKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
-  "focusKey": "3dcf961a-eaab-4eda-8248-c374593fb19a",
+  "focusKey": "6c447df3-dbbb-41f5-be8b-02e7f0a888d1",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -167,7 +167,7 @@
         },
         {
           "type": "DESC",
-          "data": "游戏中的所有对象统一管理类\n* 属性```none\nself._subitems=nil\n-- 为了调用的效率，外部有直接使用__isDispose参数\nself.__isDispose = nil            -- 为了检查哪些类被调用了Dispose 但是还在被引用\nself.__effectDatas = nil\nself.__showEff = true\n\n```\n\n\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-方法\n* Dispose\\(\\)```none\nGameMsg.RemoveMessageByTarget(self)\nself:RemoveAllListener()\nself:___ClearSubItems()\nHierarchyUtil.RemoveFromTarget(self)\n\n```\n* ManualDispose\\(\\) 移除父类中自己的引用并调用Dispose\\(\\)\n* AddSubItem\\(target:ObjectBase\\) 添加子项\n* \\_\\_AddParentItem\\(parent:Object\\)  添加父亲\n* \\_\\_\\_ClearSubItems\\(\\) 清除所有子项\n* \\_\\_RemoveSubItem\\(item\\) 移除某个子项以及对应特效effectData\n* 监听\n   * AddEventListener\\(id, target, listener\\)  添加时间监听\n   * DispatchEvent\\(id, ...\\) 派发带参事件 fu\\(target, ...\\)\n   * RemoveAllListener\\(\\) 移除所有监听\n\n"
+          "data": "游戏中的所有对象统一管理类\n* 属性\\`\\`\\`noneself\\.\\_subitems=nil\\-\\- 为了调用的效率，外部有直接使用\\_\\_isDispose参数self\\.\\_\\_isDispose = nil            \\-\\- 为了检查哪些类被调用了Dispose 但是还在被引用self\\.\\_\\_effectDatas = nilself\\.\\_\\_showEff = true\n\n```\n\n\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-方法\n* Dispose\\(\\)```none\nGameMsg.RemoveMessageByTarget(self)\nself:RemoveAllListener()\nself:___ClearSubItems()\nHierarchyUtil.RemoveFromTarget(self)\n\n```\n* ManualDispose\\(\\) 移除父类中自己的引用并调用Dispose\\(\\)\n* AddSubItem\\(target:ObjectBase\\) 添加子项\n* \\_\\_AddParentItem\\(parent:Object\\)  添加父亲\n* \\_\\_\\_ClearSubItems\\(\\) 清除所有子项\n* \\_\\_RemoveSubItem\\(item\\) 移除某个子项以及对应特效effectData\n* 监听\n   * AddEventListener\\(id, target, listener\\)  添加时间监听\n   * DispatchEvent\\(id, ...\\) 派发带参事件 fu\\(target, ...\\)\n   * RemoveAllListener\\(\\) 移除所有监听\n\n"
         }
       ]
     },

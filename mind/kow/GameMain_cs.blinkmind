@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
   "editorRootTopicKey": "82f630ea-ecf3-4d9f-a669-fe71e61f503c",
-  "focusKey": "2439dd7f-e85f-4a0e-9062-b0514b21fbab",
+  "focusKey": "6ee14930-3207-436e-a038-9e59769c789b",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -488,7 +488,7 @@
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "RemoteRedModule 初始化下载远程资源"
+          "data": "RemoteResModule 初始化下载远程资源"
         },
         {
           "type": "DESC",
