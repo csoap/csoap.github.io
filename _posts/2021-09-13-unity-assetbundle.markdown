@@ -9,9 +9,16 @@ tags:
     - assetbundle
 ---
 
+- 推荐文章链接:https://blog.uwa4d.com/archives/USparkle_Addressable3.html
+
 ![ab内存引用](/img/in-post/post-js-version/ab_1.png "ab内存引用")
 
 - 注：CreateFromFile 已改为LoadFromFile
+
+- ab的结构
+    - AssetBundle就像传统的压缩包一样，由两个部分组成：包头和数据段。
+    - 包头:包含有关AssetBundle的信息，比如标识符、压缩类型和内容清单。清单是一个以Objects name为键的查找表。每个条目都提供一个字节索引，用来指示该Objects在AssetBundle数据段的位置。在大多数平台上，这个查找表是用平衡搜索树实现的。具体来说，Windows和OSX派生平台（包括iOS）都采用了红黑树。因此，构建清单所需的时间会随着AssetBundle中Assets的数量增加而线性增加
+    - 数据段:包含通过序列化AssetBundle中的Assets而生成的原始数据
 
 - 压缩格式
     - LZMA格式。默认格式 BuildAssetBundleOptions.None
@@ -35,18 +42,20 @@ tags:
     - 例如游戏中每个怪物都需要打成一个包，因为每个怪物之间是独立的
     - 游戏的基础UI，可以打成一个包，因为他们在各个界面都会出现
 - assetbundle加载
+    - AssetBundle.LoadFromMemory(Async)
+        - 是从托管代码的字节数组里加载AssetBundle,此API消耗的最大内存量将至少是AssetBundle的两倍：本机内存中的一个副本，和LoadFromMemory(Async)从托管字节数组中复制的一个副本
+    - AssetBundle.LoadFromFile(Async)
+        - 本地存储（如硬盘或SD卡）加载未压缩或LZ4压缩格式的AssetBundle
+        - 目前版本最推荐的加载本地AssetBundle的方式，从性能上目前是最好的，内存占用相比new www也要小
+        - LoadFromFile 与LoadFromFileAsync对比
+            - LoadFromFile
+                - 同步加载，return 直接返回AssetBundle对象
+            - LoadFromFileAsync
+                - 异步加载，return 返回AssetBundleCreateRequest对象
+            - 同步加载，直接就返回了资源的AssetBundle；异步加载，则返回了异步加载的追踪对象AssetBundleCreateRequest。追踪对象，用于之后进行资源异步加载情况跟踪，被协程轮询判断是否已经异步加载完毕，若完成了可从追踪对象里获取加载资源。
     - new www
         - 优点:即可网络加载又可加载本地
         - 缺点：缺点是这种方式加载资源，所占的内存要比LoadFromFile高，相比LoadFromFile加载速度也会要慢一些。
-    - AssetBundle.LoadFromFiles
-        - 目前版本最推荐的加载本地AssetBundle的方式，从性能上目前是最好的，内存占用相比new www也要小
-    - LoadFromFile 与LoadFromFileAsync对比
-        - LoadFromFile
-            - 同步加载，return 直接返回AssetBundle对象
-        - LoadFromFileAsync
-            - 异步加载，return 返回AssetBundleCreateRequest对象
-        - 同步加载，直接就返回了资源的AssetBundle；异步加载，则返回了异步加载的追踪对象AssetBundleCreateRequest。追踪对象，用于之后进行资源异步加载情况跟踪，被协程轮询判断是否已经异步加载完毕，若完成了可从追踪对象里获取加载资源。
-
     - 综上所述，推荐大家使用www来下载由多个AB包压缩生成的压缩包，下载然后解压到本地后再通过LoadFromFile来加载，这样的做法又快又高效，资源还小
 - assets加载
     - 用AssetBundle.Load(同Resources.Load) 这才会从AssetBundle的内存镜像里读取并创建一个Asset对象，创建Asset对象同时也会分配相应内存用于存放(反序列化)。如果多次Load同名对象，除第一次外都只会返回已经生成的Asset对象，也就是说多次Load一个Asset并不会生成多个副本（singleton）
