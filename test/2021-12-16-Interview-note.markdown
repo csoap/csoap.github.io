@@ -244,6 +244,32 @@ tags:
     - a b c 界面 关闭问题, 再打开已打开的界面如何处理
     - 通用跳转, 多种限制条件如何处理
     - 需要有ios经验
+    - astc的算法
+- 叠纸 上海 ARPG 22.1.20 18:00
+    - unity
+        - 编辑器的 按钮和文本的名字
+            - GUILayout.Label GUILayout.Button
+        - 编辑视图如何使用
+        - assetbundle 的概念
+        - ECS 有了解过吗
+    - lua
+        - ipars 和pars遍历区别
+        - 如何实现面向对象
+    - c#
+        - LIST 数组 遍历的时候删除,没回答出来
+        - 除了通过new还有创建对象的方法吗
+            - new()、Activator.CreateInstance<T>()、(T)Assembly.Load(_assemblyPath).CreateInstance(_assemblyPath + _typeName)
+        - 不知道类的类型,如何在运行后创建类的实例
+        - 代码是如何托管的
+        - 哪些是托管的数据
+        - 文件句柄需要自己释放吗 释放的api,回答close
+            - 非文件句柄如何始放,回答 设为null
+    - 算法
+        - aabb包围盒 计算 如何计算两个是否相交
+        - 多个物体如何找到哪个和我相交
+- 吉比特 厦门 模拟经营 22.1.21 11:00
+    - 面试体验不好, 问的问题不够水平 还喜欢做一些抓头发各种动作..
+    - 3个人的客户端团队 , 服务端客户端都是用c#
 - 软性问题
     - 自我介绍思考
         - 引导到工作内容,取得什么成就
