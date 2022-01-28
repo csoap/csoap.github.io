@@ -145,7 +145,7 @@ tags:
             - 可以用来表征或计算两个向量之间的夹角，以及在b向量在a向量方向上的投影
     - 叉乘, 结果是向量
         - 公式
-        ![叉乘公式](/img/in-post/post-js-version/shader/shader_2.png)
+        ![叉乘公式](/img/in-post/post-js-version/shader/shader_2.png)   
         - a X b的长度等于a和b的模的乘积再乘以他们之间夹角的正弦值
             - |a X b| = |a||b|sinθ
 

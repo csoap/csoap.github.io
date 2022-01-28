@@ -62,15 +62,17 @@ tags:
         - struct class
             - https://www.cnblogs.com/gsk99/archive/2010/12/13/1904552.html
             - class和struct最本质的区别是class是引用类型，而struct是值类型
-            - class
-                - new一个类的实例时，在堆栈（stack）上存放该实例在托管堆（managed heap）中的地址，而实例的值保存在托管堆（managed heap）中
-            - struct
-                - struct实例在创建时分配在线程的堆栈（stack）上，它本身存储了值
+                - class:new一个类的实例时，在堆栈（stack）上存放该实例在托管堆（managed heap）中的**地址**，而实例的值保存在托管堆（managed heap）中
+                - struct:struct实例在创建时分配在线程的堆栈（stack）上，它本身存储了值
+            - class是引用类型，class可以设为null。但是我们不能将struct设为null,因为它是值类型
+            - struct 不可以有初始化器，class可以有初始化器, 如 sttuct:   public int A = 90; 错误语法
+            - class 可以有明显的无参数构造器，但是Struct不可以
         - 接口和 抽象类
             - https://www.cnblogs.com/lidaying5/p/10515251.html
             - 抽象类主要用来规定某些类的基本特征
             - 接口主要用来表示不同类之间的共有特征
         - try catch finally,try中return,finally是否会执行,为何会执行finally(当时回答会)
+            - https://www.cnblogs.com/huangshuqiang/p/7850468.html
         - 堆内存,栈内存, 整形能否存在堆内存中(如int a 放在某个对象中即可)
     - lua
         - local 实现机制
@@ -80,8 +82,10 @@ tags:
             - 黑色：不回收的对象
         - lua 元表, 应用的场景
         - lua ： . 语法糖
+            - lua中使用“:”定义的函数会自动传入一个名为self的变量
     - unity
         - unity生命周期(按顺序)
+            - reset awake onEnable start fixedUpdate (yield WaitForFixedUpdate) update (yield null and WaiForSeconds) lateUpdate OnWillRenderObject OnGUI (yield WaitForEndOfFrame) OnDisable OnDestory
         - drawcall (是什么? 怎么做)
             - https://blog.csdn.net/yu1368072332/article/details/85676537
             - what
@@ -100,7 +104,7 @@ tags:
         - lua开发注意规范
         - lua 元表设计配置优化，前后对比（需要数据）
         - lua 如果分析性能
-            - luaprofiler,的实现原理
+            - luaprofiler的实现原理
         - 资源怎么划分，ab管理（什么时候卸载）
         - ab如何分包
         - 初始化加载资源里面有什么内容
@@ -132,7 +136,7 @@ tags:
         - 渲染了解多少,比如光栅化过程
         - 擅长的方向,ui 动画 渲染 都可以? 也就ui擅长些,需要有一个**擅长**的方向
         - 业务模块哪个功能你觉得设计的比较好? 战车,对象池 对象封装继承
-        - 数学这块运用的多吗,向量,四元数等
+        - 数学这块运用的多吗,向量,**四元数**等
         - 还是比较注重口头描述
 
         - 总结
@@ -168,8 +172,7 @@ tags:
             - 骨骼的动画数据保存在一个 json 或 skel文件里面
             -  骨骼动画使用差值算法计算中间帧,更流畅
         - 优化
-            - 原来导出的spine数据是.json格式，加载、分析数据慢, .json加载速度100ms
-            - 现在采用二进制的binary导出为.skel格式，加载速度能提高80~90%,.skel加载速度17ms
+            - 原来导出的spine数据是.json格式，加载、分析数据慢, .json加载速度100ms, 现在采用二进制的binary导出为.skel格式，加载速度能提高80~90%,.skel加载速度17ms
             - 异步加载
             - 提高读取效率, 池子
                 - 当遇到重复的Spine动画时，直接把上次加载的数据返回即可
@@ -189,7 +192,7 @@ tags:
                     - 磁盘大小,未优化2565KB,优化后777KB
                     - 运行时内存：未优化为4.45MB，优化后为1.84MB，优化率达到58%；
                     - 加载耗时：未优化为6.32ms，优化后为1.18ms，优化率达到81%；
-                - 字段名优化：内存优化效果显著, 项目已做完,
+                - 字段名优化：内存优化效果显著, 项目已做完, 没用用这个方案(**将Key和Value分离**)
                     - 运行内存1022.46KB，加载耗时：1.09ms，相比默认值提取优化率达到46%
                 - 客户端 服务端表格分离
                 - 把指向table的值都用一个表存起来，去除重复的table存储
@@ -199,7 +202,7 @@ tags:
 
             - 自己思考何时卸载配置表会合理
             - lua和c# 配置共同存在c中
-        - lua 内存占用大小
+        - lua 内存占用大小 luaprofiler
             - 登陆界面12M,主城25M,疯狂打开多个界面33M
             - Mono:主城134M,打开多个界面200M,后面持续下降到185M左右
         - 如何避免全局变量污染
@@ -227,7 +230,7 @@ tags:
                 - 贴图占用200M
         - 代码规范
         - 资源工具 资源管理
-            - 初始化清单,以及不卸载的资源
+            - 初始化清单,以及不卸载的资源(DontDestroyOnLoad)
         - 红点
             - 实现原理
             - 刷新如何监测,比如某一个帧只支持刷新红点的数量,以及几帧之内支持的红点重复刷新
@@ -239,43 +242,86 @@ tags:
         - EmmyLua 拓展,有没有做过拓展
 - 厦门飞鱼科技 神仙道3 22.1.19 主程
     - 服务端经历做了哪些
-    - spine动画,spine 多个回调动画怎么做, spine的回调api是什么
+    - spine动画,spine 多个回调动画怎么做, spine的回调api是什么 animationState.end = callbakc
     - 战斗界面 如果网络差 影响交互体验,有没有提前表现处理
     - a b c 界面 关闭问题, 再打开已打开的界面如何处理
     - 通用跳转, 多种限制条件如何处理
     - 需要有ios经验
     - astc的算法
 - 叠纸 上海 ARPG 22.1.20 18:00
-    - unity
-        - 编辑器的 按钮和文本的名字
-            - GUILayout.Label GUILayout.Button
-        - 编辑视图如何使用
-        - assetbundle 的概念
-        - ECS 有了解过吗
-    - lua
-        - ipars 和pars遍历区别
-        - 如何实现面向对象
-    - c#
-        - LIST 数组 遍历的时候删除,没回答出来
-        - 除了通过new还有创建对象的方法吗
-            - new()、Activator.CreateInstance<T>()、(T)Assembly.Load(_assemblyPath).CreateInstance(_assemblyPath + _typeName)
-        - 不知道类的类型,如何在运行后创建类的实例
-        - 代码是如何托管的
-        - 哪些是托管的数据
-        - 文件句柄需要自己释放吗 释放的api,回答close
-            - 非文件句柄如何始放,回答 设为null
-    - 算法
-        - aabb包围盒 计算 如何计算两个是否相交
-        - 多个物体如何找到哪个和我相交
+    - 一面
+        - unity
+            - 编辑器的 按钮和文本的名字
+                - GUILayout.Label GUILayout.Button
+            - 编辑视图如何使用
+            - assetbundle 的概念
+            - ECS 有了解过吗
+        - lua
+            - ipars 和pars遍历区别
+            - 如何实现面向对象
+                - Lua实现OOP的关键在于通过table模拟Class的抽象以及数据封装，通过metatable模拟继承特性
+        - c#
+            - struct class
+            - LIST 数组 遍历的时候删除,没回答出来
+                - 表被删除后会被重新索引，后面的元素会向前移动，这就是为什么循环删除第一个总能删除整个表的原因
+            - 除了通过new还有创建对象的方法吗
+                - new()、Activator.CreateInstance<T>()、(T)Assembly.Load(_assemblyPath).CreateInstance(_assemblyPath + _typeName)
+            - 不知道类的类型,如何在运行后创建类的实例
+            - 代码是如何托管的
+            - 哪些是托管的数据
+            - 文件句柄需要自己释放吗 释放的api,回答close
+                - 非文件句柄如何始放,回答 设为null
+        - 算法
+            - aabb包围盒 计算 如何计算两个是否相交
+            - 多个物体如何找到哪个和我相交
+    - 二面
+        - 活动框架怎么设计
+        - drawcall,overdraw,batches ,setPasscall 概念
+            - setpasscall
+                - 它大致代表的是摄像机照射范围内，所有GameObject所包含的Material种类数量
+            - batches
+                - 但是batches出奇的高，结果也会导致draw call 过高
+            - batch 高 dracall 也会高,回答不一定
+        - 红点如何实现
+    - 二面挂了 反馈
+        - 1.对于自己提出的解决了难点问题：系统难点和技术难点这两方面问题了解不够深入，解决应该还有更好的方案，思考深度可以继续增加
+        - 2.对于通用设计而言，设计模式(活动框架的设计模式)及数据结构还需要增强
 - 吉比特 厦门 模拟经营 22.1.21 11:00
     - 面试体验不好, 问的问题不够水平 还喜欢做一些抓头发各种动作..
     - 3个人的客户端团队 , 服务端客户端都是用c#
+    - loopscrollview content 如何计算
+        - https://www.bilibili.com/read/cv9158106/
 - 厦门吉比特 一面 22.1.21 11：00
     - 感觉面试官水平低
+    - 制作人+hr面 22.1.25 11:00
 - funplus 广州 slg 22.1.21 16：00
-    - 两个技术官面试
-    - 问题大同小异
-    - canvas用的投影形式是什么
+    - 一面 项目组主程 + 中台技术负责人
+        - 问题大同小异
+        - canvas用的render mode是什么, 答:摄像机
+            - 需要了解一下 camera 的projection: 正交(平行的),另一种是透视
+    - 二面 其他项目组主程 交叉面
+        - 简历相关
+            - 最有技术难点的
+                - 活动框架重构,红点,6方格地块
+            - 图集
+            - lua优化
+            - 分级策略
+        - 非简历相关
+            - 碰撞体 有哪些 胶囊,正方体 圆形等
+            - 点击如何检测哪个三维物体
+            - 三维空间到屏幕做了多少转换
+                - 顶点着色器做的坐标转换是什么
+                    - 顶点着色器最基本的功能就是把模型的顶点坐标从模型空间转换到齐次裁剪坐标空间中
+            - 渲染管线
+- 深圳乐元素 卡牌航海风 立项阶段
+    - 2人交叉面
+        - text文本上下渐变颜色怎么做,回答用shader,反问还有其他作法吗
+    - lua 优化
+        - 补充:思考 可以总结一下项目中的如何应用luaprofiler
+    - ugui源码
+        - 什么导致重建
+    - loopscrollview,假如一行一个item,item高度不同,如何计算content的高度
+
 - 软性问题
     - 自我介绍思考
         - 引导到工作内容,取得什么成就
