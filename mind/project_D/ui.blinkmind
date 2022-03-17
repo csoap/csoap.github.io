@@ -1,0 +1,359 @@
+{
+  "rootTopicKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+  "editorRootTopicKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+  "focusKey": "b9a041d9-d719-422b-b40e-450c359a1395",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "0a05b2c0-64b3-4904-a500-5f201dfce492",
+      "parentKey": "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "addResWidget 添加资源条"
+        }
+      ]
+    },
+    {
+      "key": "b9a041d9-d719-422b-b40e-450c359a1395",
+      "parentKey": "d3f862f6-5cf7-4831-85a8-574374652868",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GroupBase和UIBase的区别:多维护了self.panel\npanel 是PanelBase"
+        }
+      ]
+    },
+    {
+      "key": "d3f862f6-5cf7-4831-85a8-574374652868",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [
+        "b9a041d9-d719-422b-b40e-450c359a1395"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GroupBase:UIBase\n挂LuaUIGroup组件的导出脚本的父类"
+        }
+      ]
+    },
+    {
+      "key": "66ec3cb4-9a8b-48a2-896a-fc6bf8725060",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "click drop toggle slider 等监听"
+        }
+      ]
+    },
+    {
+      "key": "68567627-75f1-4735-a654-84ea5b3198c4",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PanelStack, 作为componet支持PanelManager"
+        }
+      ]
+    },
+    {
+      "key": "040a9678-19fc-4e11-83ed-f55c7da42cf8",
+      "parentKey": "091fd250-d86d-4024-9521-8a4060aba295",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "操作GroupPool\nGroupPool为GroupBase的对象池"
+        }
+      ]
+    },
+    {
+      "key": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "parentKey": null,
+      "subKeys": [
+        "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+        "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+        "d3f862f6-5cf7-4831-85a8-574374652868",
+        "091fd250-d86d-4024-9521-8a4060aba295",
+        "4360e838-1a00-4cd7-abc7-79a4d8be3ade",
+        "68567627-75f1-4735-a654-84ea5b3198c4",
+        "5142d7ad-7693-47e4-be76-27750ccf3ddd"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UI"
+        },
+        {
+          "type": "DESC",
+          "data": "* 作为全局变量\n* 导出基本的ui方法，作为业务处调用\n\n"
+        }
+      ]
+    },
+    {
+      "key": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [
+        "ba38f21b-4ccd-4494-88e7-351692dc79c1",
+        "9c091209-b088-45b5-9f26-334c5062c55b",
+        "fb566bb8-278b-485c-9fe0-d09441cd0747",
+        "66ec3cb4-9a8b-48a2-896a-fc6bf8725060",
+        "fbf6756a-e15a-4b7e-af24-1d14cf0a8d3a",
+        "a009dd0c-7cbd-4a47-9022-7d07a8db325e"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIBase"
+        }
+      ]
+    },
+    {
+      "key": "eb3aebf2-4d5e-40eb-b06f-20e8953a75de",
+      "parentKey": "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UI层级与全屏设置"
+        }
+      ]
+    },
+    {
+      "key": "4360e838-1a00-4cd7-abc7-79a4d8be3ade",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "UIDepthMgr 管理ui 层级"
+        }
+      ]
+    },
+    {
+      "key": "ba38f21b-4ccd-4494-88e7-351692dc79c1",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "init() 初始化属性与容器等\ninitUI()"
+        },
+        {
+          "type": "DESC",
+          "data": "* gameObject ,trasform 赋值\n* panelObject的导出UI节点加入map：self.\\_luaUICompMap\\[name\\] = comp，获取的话通过 getChildUI\\(\\) 获取component\n* 执行initEx\\(\\)，由子类写\n* 自动设置多语言：文字，图片等\n* 绑定UI事件bindUIEvents\\(\\), 由子类写\n\n"
+        }
+      ]
+    },
+    {
+      "key": "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [
+        "eb3aebf2-4d5e-40eb-b06f-20e8953a75de",
+        "bb8976bc-4b72-48ba-be53-5daef9d01ee2",
+        "2745a5f2-4c64-47b1-ab41-7721288e9d8e",
+        "0a05b2c0-64b3-4904-a500-5f201dfce492"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PanelBase:UIBase"
+        }
+      ]
+    },
+    {
+      "key": "bb8976bc-4b72-48ba-be53-5daef9d01ee2",
+      "parentKey": "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "生命周期函数"
+        },
+        {
+          "type": "DESC",
+          "data": "* init， 注册拖动地图时候关闭自身界面（仅当半屏界面）\n* onShow\n   * 显示之后通过uiDepthMgr设置ui层级,时间复杂度O（n）,设置canvasOrder\n   * 是否关闭其他半屏\n* update\n* onClose\n\n"
+        }
+      ]
+    },
+    {
+      "key": "a009dd0c-7cbd-4a47-9022-7d07a8db325e",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "regUIEvent 注册事件监听"
+        }
+      ]
+    },
+    {
+      "key": "5142d7ad-7693-47e4-be76-27750ccf3ddd",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "PanelManager"
+        }
+      ]
+    },
+    {
+      "key": "091fd250-d86d-4024-9521-8a4060aba295",
+      "parentKey": "adc63ed8-97c3-49ce-9a66-dffecc0d2941",
+      "subKeys": [
+        "040a9678-19fc-4e11-83ed-f55c7da42cf8"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "CommonUIPool"
+        }
+      ]
+    },
+    {
+      "key": "fbf6756a-e15a-4b7e-af24-1d14cf0a8d3a",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "loadResource 加载资源\n_unLoadResource() 由onClose()内部发起"
+        }
+      ]
+    },
+    {
+      "key": "9c091209-b088-45b5-9f26-334c5062c55b",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "其他生命周期接口 "
+        },
+        {
+          "type": "DESC",
+          "data": "* onShow\n* update\n* onHide\n* onResume\n* onClose\n* onDispose\n\n"
+        }
+      ]
+    },
+    {
+      "key": "2745a5f2-4c64-47b1-ab41-7721288e9d8e",
+      "parentKey": "817d1161-d7e7-4a1a-9318-971179c7e5e3",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "group操作"
+        }
+      ]
+    },
+    {
+      "key": "fb566bb8-278b-485c-9fe0-d09441cd0747",
+      "parentKey": "dfd8d7cb-88a8-4cde-ac75-374262fd4c73",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "setData, 更新self.data\nupdatePanel,更新ui表现"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

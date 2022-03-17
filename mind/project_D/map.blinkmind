@@ -1,0 +1,102 @@
+{
+  "rootTopicKey": "08cf252f-aa3f-4335-8bbb-17c473861833",
+  "editorRootTopicKey": "08cf252f-aa3f-4335-8bbb-17c473861833",
+  "focusKey": "08cf252f-aa3f-4335-8bbb-17c473861833",
+  "extData": {},
+  "topics": [
+    {
+      "key": "08cf252f-aa3f-4335-8bbb-17c473861833",
+      "parentKey": null,
+      "subKeys": [
+        "be0ea4f6-9d2b-46bc-97e0-c57237e68564"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "map"
+        }
+      ]
+    },
+    {
+      "key": "be0ea4f6-9d2b-46bc-97e0-c57237e68564",
+      "parentKey": "08cf252f-aa3f-4335-8bbb-17c473861833",
+      "subKeys": [
+        "3dec674c-78fc-41e8-aeb6-642ee84eddd0"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "资源"
+        }
+      ]
+    },
+    {
+      "key": "3dec674c-78fc-41e8-aeb6-642ee84eddd0",
+      "parentKey": "be0ea4f6-9d2b-46bc-97e0-c57237e68564",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "初始化 资源点缓存池"
+        },
+        {
+          "type": "DESC",
+          "data": "* 遍历当前赛季的资源点\n   * 每个资源点 创建一个对象池，初始容量5\n   * 空闲状态放在MapResPointPoolRoot中\n\n"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}

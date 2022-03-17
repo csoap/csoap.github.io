@@ -1,0 +1,142 @@
+{
+  "rootTopicKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+  "editorRootTopicKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+  "focusKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+      "parentKey": null,
+      "subKeys": [
+        "4ffbcdf7-855f-4ba0-be82-07f27a5989cd",
+        "ac61bdd6-f52e-4164-8339-48847ba017de",
+        "a9111077-9206-4ce6-b074-ce0fbfdfe054"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "GameWord"
+        },
+        {
+          "type": "DESC",
+          "data": "* 负责世界实体、世界组件管理```\nself.systems = OrderedMap() -- 世界的所有系统， 有序map，利用linkList + map\nself.entityMap = Map()         -- 世界的所有实体, 形如[{entityId: entity}]\nself.globalEntityId = nil       -- 每个世界对应一个实体id\n\n```﻿\n\n"
+        }
+      ]
+    },
+    {
+      "key": "a9111077-9206-4ce6-b074-ce0fbfdfe054",
+      "parentKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "MapWorld:GameWord\nViewWorld:GameWord\nDriveWorld:GameWord"
+        }
+      ]
+    },
+    {
+      "key": "4ffbcdf7-855f-4ba0-be82-07f27a5989cd",
+      "parentKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+      "subKeys": [
+        "a0fee2c9-8e6a-495c-bce7-e1a3fc7d9cff"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Enitity"
+        },
+        {
+          "type": "DESC",
+          "data": "* 容器\n   * self\\.comps = \\{\\} \\-\\- 组件容器，形如\\[\\{comp.name: comp\\}\\]\n\n\n\n\n"
+        }
+      ]
+    },
+    {
+      "key": "a0fee2c9-8e6a-495c-bce7-e1a3fc7d9cff",
+      "parentKey": "4ffbcdf7-855f-4ba0-be82-07f27a5989cd",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "Component"
+        }
+      ]
+    },
+    {
+      "key": "ac61bdd6-f52e-4164-8339-48847ba017de",
+      "parentKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "System"
+        },
+        {
+          "type": "DESC",
+          "data": "* update（）\n\n"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 2,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}
