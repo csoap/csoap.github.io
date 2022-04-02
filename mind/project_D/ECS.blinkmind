@@ -1,7 +1,7 @@
 {
   "rootTopicKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
   "editorRootTopicKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
-  "focusKey": "ee7f6f8c-2bd6-425d-961a-cee800884724",
+  "focusKey": "a9111077-9206-4ce6-b074-ce0fbfdfe054",
   "extData": {
     "TOPIC_REFERENCE": {
       "reference": {}
@@ -38,7 +38,346 @@
       "blocks": [
         {
           "type": "CONTENT",
-          "data": "MapWorld:GameWord\nViewWorld:GameWord\nDriveWorld:GameWord"
+          "data": "MapWorld:GameWord"
+        },
+        {
+          "type": "TOPOLOGY",
+          "data": {
+            "nodes": [
+              {
+                "id": "09f152f9",
+                "name": "rectangle",
+                "tags": [],
+                "rect": {
+                  "x": 64,
+                  "y": 39,
+                  "width": 238,
+                  "height": 45,
+                  "center": {
+                    "x": 183,
+                    "y": 61.5
+                  },
+                  "ex": 302,
+                  "ey": 84
+                },
+                "lineWidth": 1,
+                "rotate": 0,
+                "offsetRotate": 0,
+                "globalAlpha": 1,
+                "dash": 0,
+                "strokeStyle": "#222",
+                "fillStyle": "",
+                "font": {
+                  "color": "#222",
+                  "fontFamily": "\"Hiragino Sans GB\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial",
+                  "fontSize": 12,
+                  "lineHeight": 1.5,
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                  "textAlign": "center",
+                  "textBaseline": "middle",
+                  "background": ""
+                },
+                "animateStart": 0,
+                "animateCycleIndex": 0,
+                "lineDashOffset": 0,
+                "text": "InnerCityController:createDungeon()，完成MapManager的创建",
+                "textOffsetX": 0,
+                "textOffsetY": 0,
+                "animateType": "",
+                "data": "",
+                "zRotate": 0,
+                "anchors": [
+                  {
+                    "x": 64,
+                    "y": 61.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 183,
+                    "y": 39,
+                    "direction": 1
+                  },
+                  {
+                    "x": 302,
+                    "y": 61.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 183,
+                    "y": 84,
+                    "direction": 3
+                  }
+                ],
+                "rotatedAnchors": [
+                  {
+                    "x": 64,
+                    "y": 61.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 183,
+                    "y": 39,
+                    "direction": 1
+                  },
+                  {
+                    "x": 302,
+                    "y": 61.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 183,
+                    "y": 84,
+                    "direction": 3
+                  }
+                ],
+                "animateDuration": 0,
+                "animateFrames": [],
+                "borderRadius": 0,
+                "iconSize": null,
+                "imageAlign": "center",
+                "gradientAngle": 0,
+                "gradientRadius": 0.01,
+                "paddingTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingLeftNum": 0,
+                "paddingRightNum": 0,
+                "paddingTopNum": 0,
+                "paddingBottomNum": 0,
+                "textRect": {
+                  "x": 64,
+                  "y": 72.75,
+                  "width": 238,
+                  "height": 11.25,
+                  "center": {
+                    "x": 183,
+                    "y": 78.375
+                  },
+                  "ex": 302,
+                  "ey": 84
+                },
+                "fullTextRect": {
+                  "x": 64,
+                  "y": 39,
+                  "width": 238,
+                  "height": 45,
+                  "center": {
+                    "x": 183,
+                    "y": 61.5
+                  },
+                  "ex": 302,
+                  "ey": 84
+                },
+                "iconRect": {
+                  "x": 64,
+                  "y": 39,
+                  "width": 238,
+                  "height": 33.75,
+                  "center": {
+                    "x": 183,
+                    "y": 55.875
+                  },
+                  "ex": 302,
+                  "ey": 72.75
+                },
+                "fullIconRect": {
+                  "x": 64,
+                  "y": 39,
+                  "width": 238,
+                  "height": 45,
+                  "center": {
+                    "x": 183,
+                    "y": 61.5
+                  },
+                  "ex": 302,
+                  "ey": 84
+                },
+                "elementRendered": false,
+                "dockWatchers": [
+                  {
+                    "x": 183,
+                    "y": 61.5
+                  },
+                  {
+                    "x": 64,
+                    "y": 39
+                  },
+                  {
+                    "x": 302,
+                    "y": 39
+                  },
+                  {
+                    "x": 302,
+                    "y": 84
+                  },
+                  {
+                    "x": 64,
+                    "y": 84
+                  }
+                ]
+              },
+              {
+                "id": "36e03e3c",
+                "name": "rectangle",
+                "tags": [],
+                "rect": {
+                  "x": 64,
+                  "y": 115,
+                  "width": 239,
+                  "height": 43,
+                  "center": {
+                    "x": 183.5,
+                    "y": 136.5
+                  },
+                  "ex": 303,
+                  "ey": 158
+                },
+                "lineWidth": 1,
+                "rotate": 0,
+                "offsetRotate": 0,
+                "globalAlpha": 1,
+                "dash": 0,
+                "strokeStyle": "#222",
+                "fillStyle": "",
+                "font": {
+                  "color": "#222",
+                  "fontFamily": "\"Hiragino Sans GB\", \"Microsoft YaHei\", \"Helvetica Neue\", Helvetica, Arial",
+                  "fontSize": 12,
+                  "lineHeight": 1.5,
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                  "textAlign": "center",
+                  "textBaseline": "middle",
+                  "background": ""
+                },
+                "animateStart": 0,
+                "animateCycleIndex": 0,
+                "lineDashOffset": 0,
+                "text": "MapManager:ctor()完成SlgMap、MapView、MapWorld、Navigation的创建",
+                "textOffsetX": 0,
+                "textOffsetY": 0,
+                "animateType": "",
+                "data": "",
+                "zRotate": 0,
+                "anchors": [
+                  {
+                    "x": 64,
+                    "y": 136.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 183.5,
+                    "y": 115,
+                    "direction": 1
+                  },
+                  {
+                    "x": 303,
+                    "y": 136.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 183.5,
+                    "y": 158,
+                    "direction": 3
+                  }
+                ],
+                "rotatedAnchors": [
+                  {
+                    "x": 64,
+                    "y": 136.5,
+                    "direction": 4
+                  },
+                  {
+                    "x": 183.5,
+                    "y": 115,
+                    "direction": 1
+                  },
+                  {
+                    "x": 303,
+                    "y": 136.5,
+                    "direction": 2
+                  },
+                  {
+                    "x": 183.5,
+                    "y": 158,
+                    "direction": 3
+                  }
+                ],
+                "animateDuration": 0,
+                "animateFrames": [],
+                "borderRadius": 0,
+                "iconSize": null,
+                "imageAlign": "center",
+                "gradientAngle": 0,
+                "gradientRadius": 0.01,
+                "paddingTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingLeftNum": 0,
+                "paddingRightNum": 0,
+                "paddingTopNum": 0,
+                "paddingBottomNum": 0,
+                "textRect": {
+                  "x": 64,
+                  "y": 147.25,
+                  "width": 239,
+                  "height": 10.75,
+                  "center": {
+                    "x": 183.5,
+                    "y": 152.625
+                  },
+                  "ex": 303,
+                  "ey": 158
+                },
+                "fullTextRect": {
+                  "x": 64,
+                  "y": 115,
+                  "width": 239,
+                  "height": 43,
+                  "center": {
+                    "x": 183.5,
+                    "y": 136.5
+                  },
+                  "ex": 303,
+                  "ey": 158
+                },
+                "iconRect": {
+                  "x": 64,
+                  "y": 115,
+                  "width": 239,
+                  "height": 32.25,
+                  "center": {
+                    "x": 183.5,
+                    "y": 131.125
+                  },
+                  "ex": 303,
+                  "ey": 147.25
+                },
+                "fullIconRect": {
+                  "x": 64,
+                  "y": 115,
+                  "width": 239,
+                  "height": 43,
+                  "center": {
+                    "x": 183.5,
+                    "y": 136.5
+                  },
+                  "ex": 303,
+                  "ey": 158
+                },
+                "elementRendered": false
+              }
+            ],
+            "lines": [],
+            "lineName": "curve",
+            "fromArrowType": "",
+            "toArrowType": "triangleSolid",
+            "scale": 1,
+            "locked": 0
+          }
         }
       ]
     },
@@ -95,7 +434,7 @@
   "config": {
     "readOnly": false,
     "allowUndo": true,
-    "layoutDir": 2,
+    "layoutDir": 0,
     "theme": {
       "name": "default",
       "randomColor": true,
@@ -138,5 +477,5 @@
       }
     }
   },
-  "formatVersion": null
+  "formatVersion": "0.0"
 }
