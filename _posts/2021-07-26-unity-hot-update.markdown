@@ -71,7 +71,7 @@ tags:
 
         ![ios代码](/img/in-post/post-js-version/complier-ios.png "ios代码")
         - 怎么解决？
-            - 比较不好的解决方法。强制AOT生成具象类型代码，这样就丧失的泛型的灵活性。如：OnMessage(AnyEnum.Zero);需要思考有没有更好的办法？思考kow项目中tolua 是怎么解决的
+            - 比较不好的解决方法。强制AOT生成具象类型代码，这样就丧失的泛型的灵活性。如：OnMessage(AnyEnum.Zero);需要思考有没有更好的办法？思考ProjectK项目中tolua 是怎么解决的
     - 解决方案
         - 所以要嵌入脚本语言
             - lua

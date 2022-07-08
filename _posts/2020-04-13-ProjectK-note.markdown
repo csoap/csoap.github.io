@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "KOW的技术指标总结"
+title:      "ProjectK的技术指标总结"
 subtitle:   ""
 date:       2020-04-13
 author:     "CSoap"
@@ -11,7 +11,7 @@ tags:
 - 参考文章
     - https://blog.csdn.net/u012999985/article/details/106346136
 - 配置
-    - excel2lua ,源码参考C2z网盘kow项目excel2lua.zip
+    - excel2lua ,源码参考C2z网盘ProjectK项目excel2lua.zip
     - 配置表文件优化后只有之前不到一半的大小，大量的重复数据被优化掉了，极大地提升了加载时间和内存占用
 - 声音数据处理
     - ogg, 为啥使用ogg

@@ -38,7 +38,7 @@ tags:
             - 合理设定音频导入设置，常用短音频可以考虑牺牲一部分内存来换取加载速度。
         - 效果能接受
 - 实战
-    - kow
+    - projectK
         - sound 音效文件
             - forceMono = true，bSensitive = true， compressSampleRate = true
         - voice 角色声音

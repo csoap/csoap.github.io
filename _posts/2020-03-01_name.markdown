@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "kow项目流程规范-UI命名规范"
+title:      "ProjectK项目流程规范-UI命名规范"
 subtitle:   ""
 date:       2021-03-01
 author:     "CSoap"
@@ -35,4 +35,4 @@ tags:
     - common_w_toggle_bg_001      (common图集下一张用于切换开关功能的背景)
     - bag_w_item_001      (bag图集下一张用于可使用道具的图片)
 
-### KOW图集名格式为 ： common_w
+### ProjectK图集名格式为 ： common_w

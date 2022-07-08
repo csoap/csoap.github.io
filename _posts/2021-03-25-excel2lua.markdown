@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "kow项目流程规范-配置表"
+title:      "ProjectK项目流程规范-配置表"
 subtitle:   ""
 date:       2020-03-25
 author:     "CSoap"
@@ -49,7 +49,7 @@ tags:
 
 ## 四 配置表导出工具
 
-- 源码参考C2z网盘kow项目excel2lua.zip
+- 源码参考C2z网盘ProjectK项目excel2lua.zip
 - 使用工具前，需要安装AccessDatabaseEngine、Python环境和TortoiseSVN
 - AccessDatabaseEngine
     - 目录位置：data\配置导出工具\插件，安装对应的32位和64位版本

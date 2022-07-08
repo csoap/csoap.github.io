@@ -1,0 +1,144 @@
+{
+  "rootTopicKey": "6d8a5ce1-6afe-4c96-9b27-9a16027c40fc",
+  "editorRootTopicKey": "6d8a5ce1-6afe-4c96-9b27-9a16027c40fc",
+  "focusKey": "6cc170af-0eac-4c0b-8b2f-2ccca1b88792",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "6d8a5ce1-6afe-4c96-9b27-9a16027c40fc",
+      "parentKey": null,
+      "subKeys": [
+        "31e1fe24-73dd-40c2-9edf-9ec545512ee2",
+        "a44267d7-c993-4d40-ab50-7c11e80e5e9c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "worker"
+        }
+      ]
+    },
+    {
+      "key": "31e1fe24-73dd-40c2-9edf-9ec545512ee2",
+      "parentKey": "6d8a5ce1-6afe-4c96-9b27-9a16027c40fc",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": " 工人建筑"
+        }
+      ]
+    },
+    {
+      "key": "a44267d7-c993-4d40-ab50-7c11e80e5e9c",
+      "parentKey": "6d8a5ce1-6afe-4c96-9b27-9a16027c40fc",
+      "subKeys": [
+        "38d66274-b792-4685-b3a1-a060b65c4ad8",
+        "b4df0664-c523-42ef-8d9f-c074af5498fe",
+        "6cc170af-0eac-4c0b-8b2f-2ccca1b88792"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "工人"
+        }
+      ]
+    },
+    {
+      "key": "38d66274-b792-4685-b3a1-a060b65c4ad8",
+      "parentKey": "a44267d7-c993-4d40-ab50-7c11e80e5e9c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "搬运"
+        }
+      ]
+    },
+    {
+      "key": "b4df0664-c523-42ef-8d9f-c074af5498fe",
+      "parentKey": "a44267d7-c993-4d40-ab50-7c11e80e5e9c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "表情、hud"
+        }
+      ]
+    },
+    {
+      "key": "6cc170af-0eac-4c0b-8b2f-2ccca1b88792",
+      "parentKey": "a44267d7-c993-4d40-ab50-7c11e80e5e9c",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "进出建筑"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 0,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": null
+}

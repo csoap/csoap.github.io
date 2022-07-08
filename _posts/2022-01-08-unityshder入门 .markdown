@@ -164,3 +164,7 @@ tags:
                 - 单位矩阵 I
             - 逆矩阵 : M X M-1 = I ,M-1表示M的逆矩阵
         - 转置矩阵:r X c => c X r
+
+- CG/HLSL语义
+    - POSITION 模型的顶点坐标
+    - SV_POSITION 裁剪空间中的顶点坐标
