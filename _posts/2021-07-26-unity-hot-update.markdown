@@ -54,7 +54,7 @@ tags:
         - 游戏启动时用新的同名DLL覆盖旧的
         - Assembly.Load动态加载该DLL
         - 反射创建热更DLL中的类的实例或静态方法
-        - 这么简单？理论上android支持jit，所以是可以的。但是ios不支持，因为ios禁止为动态分配内存赋予执行权限
+        - 这么简单？理论上android支持jit，所以是可以的。但是ios不支持，因为ios**禁止为动态分配内存赋予执行权限**
     ```C++
     void* create_space(size_t size) {
         void* ptr = mmap(0, size, PROT_READ | PROT_WRITE | PROT_EXEC，
@@ -76,6 +76,8 @@ tags:
         - 所以要嵌入脚本语言
             - lua
                 - ToLua /XLua，ios和android都是用lua脚本热更，基于lua虚拟机
+                - 思考，为什么脚本语言可以支持热更（动态创建的内存赋予执行权限）
+                    - 脚本语言使用VM虚拟机执行脚本代码
             - C#
                 - ILRuntime,未来更有前景，需要了解一下，毕竟unity官方支持。。
                     - ios用c#脚本热更（运行效率跟lua差不多），android直接用C#反射热更
@@ -116,3 +118,14 @@ tags:
     - objects里的对象是什么时候会被移除？lua怎样才算正确释放了c#对象？
     - 利用tolua如何实现热更？
     - 针对lua和c#的交互有什么优化手段？
+
+- xLua
+
+- ILRuntime
+    - 原理图
+    ![ILRuntime原理图](/img/in-post/post-js-version/ilruntime_1.png "ILRuntime原理图")
+
+    - 基本原理
+    - 热更流程
+    - 性能优化建议
+    - 商业项目中得ILRuntime解决方案
