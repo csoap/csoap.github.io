@@ -32,4 +32,28 @@ tags:
 - 大地图扩张
     - 资源是否显示地块逻辑
 
-
+- aoi刷新优化
+    - 测试环境：PC编辑器-luaProfiler
+    - aoi变化刷新耗时过高（从高到低），耗时 300ms左右
+        - 计算视野 VAoiSystem:_updateVision() ，127ms，初步定位原因：1.全量计算 2.静态地块重复计算 3. 分帧
+            - 99.71ms 为静态地块计算耗时 MapVisionSystem:addVisionByBlock()
+            - 21.32ms 为VWarFogSystem:updateAoi()
+        - 模板获取 VAoiSystem:_updateMapCellByTemplate(),62.29ms，slgMap:getHexSpiralRingBlocks() 会频繁创建对象
+            - 陈鑫解决创建对象问题
+            - 新增cache
+        - 更新静态物体（创建、删除 植被、建筑、资源点），VAoiSystem:_updateStatic(),44.91ms
+            -  VAoiSystem:_updateStatic() 27ms
+                - slgMap:getResIdByIndex() new lua table , 思考避免每次获取都创建表 cache？
+                - VAoiSystem:handleResPointState() + MapEntityFactory:createResPoint()，处理：客户端剔除
+        - 刷新地块、海岸线 VAoiSystem:_handleBlocks()， 28ms
+            - VAoiSystem:_handleEdges(edgeInfos) 边界线 10.9ms
+            - MapEntityFactory:createBlock 地块 6.12ms
+    - 优化之后 总量100ms~115ms之间
+- 大地图拆分优化
+    - 测试环境：pc环境下 luaProfiler
+    - 拆分前
+        - lua内存：36MB ，写入整个地图数据 300MB =》227MB
+    - 拆分后
+        - lua内存：38MB, 写入区域地图数据 60MB
+- lua 堆内存分配
+    - uwa ,slgMap:getBlockListSpiralRing() 计算模板区域地块，创建大量对象， 144.22 MB
