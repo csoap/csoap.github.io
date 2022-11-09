@@ -57,3 +57,25 @@ tags:
         - lua内存：38MB, 写入区域地图数据 60MB
 - lua 堆内存分配
     - uwa ,slgMap:getBlockListSpiralRing() 计算模板区域地块，创建大量对象， 144.22 MB
+
+- uwa 性能报告
+    - 卡顿分析 10.10 - 10.21
+        - vectorpool 模块开发，并修改已有代码，除了部队个别引用vector复杂的代码没修改，减少大量 堆内存分配
+        - 打开 出征界面 ArmySetOffPanel， 耗时85ms
+        - 发起出征，部队从无到有，部队移动
+            - createHud：耗时85ms
+            - 2个部队移动，视野更新触发迷雾计算耗时44ms，可以延迟刷新迷雾，已优化
+        - 动态视野变化导致动态视野全计算，修改为增量计算, 已优化（占比消耗大头）
+        - slgMap 等getCellByIndex() 会new table，如果只需要获取resid，修改成 =》grid:getResIdByIndex(index)
+
+        - 迷雾、视野 代码效率优化 已优化
+        - processHit 点击选中部队，耗时79ms，其中showArmyOpHud()耗时33ms
+        - 打开部队配置界面ArmyEditPanel，耗时100ms，思考：主界面可以打开的一级界面是否可以加入preloadPanel列表里面
+        - 某一帧单次_onGotBlockData() =>_updateAoi() 耗时228
+
+        - aoi变更 服务端通知大量信息，延时刷新，因为服务端通知不可控，如果一通知就刷新 不合理，请求了多次 enter_map_aoi, 耗时626ms，刷新了15次aoi_update
+            - 修改成：
+                - 如果是第一次进入，不延时
+                - 其他刷新状态都要延时极短时间
+                - aoi中心变更定时器移除，改为屏幕移动时候判断
+    - xlua c# 优化
