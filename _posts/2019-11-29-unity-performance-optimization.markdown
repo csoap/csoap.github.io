@@ -107,6 +107,14 @@ tags:
 
 - 音频优化
 
+- 内存
+    - Reserved Total、Used Total 为Unity引擎在内存方面的**总体分配量**和**总体使用量**
+    - 大多数平台来说，Reserved Total内存 = Reserved Unity内存 + GFX内存 + FMOD内存 + Mono内存
+    - 闪退
+        - 只有当PSS内存峰值控制在硬件总内存的0.5-0.6倍以下的时候，闪退风险才较低。对于2GB的设备，PSS内存应该控制在1GB以下。
+        - 对于多数项目，PSS大约高于Reserved Total 200~300MB左右，故2GB设备的Reserved Total应控制在700MB以下，3GB设备则控制在1GB以下
+    - Mono堆内存除了存在本身驻留偏高或者泄露风险的问题外，其大小还会影响GC耗时，UWA认为应该控制在80M以下为最佳
+
 - 其他优化
     - 定点GC
     - 关闭不用的碰撞矩阵？这是啥
