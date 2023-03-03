@@ -1,0 +1,78 @@
+---
+layout:     post
+title:      "编码建议事项"
+subtitle:   "编码规范"
+date:       2023-01-03
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - 规范
+---
+- 编码规范
+    - 缩进 4 个空格
+    - 文件夹名、文件名、类名使用大驼峰 ：BattleLogic
+    - 变量、函数等使用 _ 开头，表示私有，外界请勿直接使用
+    - 成员函数、成员变量、函数参数使用小驼峰 ：battleSpeed
+    - 常量，事件名使用全大写 ： EVENT_TYPE、BATTLE_STATE
+    - Lua 函数调用尽量使用 :, 不推荐使用传参 self
+    - 全局变量统一使用 Globals 声明
+    - 字符串优先使用单引号 '
+    - Windows 使用 CRLF 换行，Mac 使用 LF 换行
+
+    - 代码中尽量使用 logger 替代 print
+    - 服务端业务代码中，不要使用 while。如果确实有需求，找服务器同学讨论
+    - 服务端业务代码中，不要使用递归。如果确实有需求，找服务器同学讨论
+- 性能规范
+    - update 中禁止频繁使用 GetComponent 类函数
+    - 字符串拼接，使用 string.format()；数组拼接，使用 table.concat()；尽力减少 .. 的使用
+    - 访问速度：local 变量 > 成员变量 > 全局变量
+    - 执行速度：t[#t+1] = value > table.insert(t, value)
+- 编码注意项
+    - if 0 then end 会被判定为 true
+    - GameCommon 目录为 Server & Client 公用目录，禁止添加任何单平台代码，比如 Unity 相关、UI 相关等
+    - 导表工具中，Str 类型默认导出为 '' 而非 nil，游戏逻辑中注意进行区分
+    - Lua 代码中统一使用 TimerManager 完成计时器逻辑，避免使用 vp_timer、自行实现等； 战斗内统一使用 UpdateManager 完成 Timer 需求
+    - 禁止在文件顶层，执行自定义函数调用，避免热更失败；如：在 X 文件顶层作用域中，调用 Y.func()
+    - 禁止用 A and B or C 替代三元表达式A ? B : C，可读性差，出错率高
+    - table.insert 不要插入nil， 想要的可能是数组 [1,nil,2]，但是table.insert 会变成 [1,2]
+
+- lua 每日Tips
+    - Lua数组的下标从1开始。
+    - Lua数组中存在nil，取长度的#操作符会得到错误的结果。
+    - index = (index + 1) % (#array) ，循环读数组时，数组下标对数组长度取模的操作，这种常在其他语言中使用的方法在Lua中千万注意，Lua数组的下标从1开始，取模范围是[0, #array-1]。
+    - 函数调用时使用冒号:，是个语法糖。  obj:method() == obj.method(obj)
+    - 关于lua面向对象中，继承属性的细节认知
+
+        ``` lua
+        local Base = class("Base")
+
+        function Base:ctor()
+            self.name = "Base"
+        end
+
+        local Child = class("Child", Base)
+
+        function Child:ctor()
+            Child.super.ctor(self)
+        end
+        ```
+    - rehash
+        ``` lua
+        a={}
+        a.x=1;a.y=2;a.z=3
+        ```
+        - 只有三个元素的表，会执行三次rehash；然而有一百万个元素的表仅仅只会执行20次rehash而已，因为2^20 = 1048576 > 1000000。但是，如果你创建了非常多的长度很小的表（比如坐标点：point = {x=0,y=0}），这可能会造成巨大的影响。
+        - 如果你有很多非常多的很小的表需要创建时，你可以将其预先填充以避免rehash。比如：{true,true,true}，Lua知道这个表有三个元素，所以Lua直接创建了三个元素长度的数组。类似的，{x=1, y=2, z=3}，Lua会在其哈希部分中创建长度为4的数组。
+    - Lua字符串
+        - 所有的字符串在Lua中都只储存一份拷贝。当新字符串出现时，Lua检查是否有其相同的拷贝，若没有则创建它，否则，指向这个拷贝。这可以使得字符串比较和表索引变得相当的快，因为比较字符串只需要检查引用是否一致即可；但是这也降低了创建字符串时的效率，因为Lua需要去查找比较一遍
+        - 在大字符串连接中，我们应避免..。应用table来模拟buffer，然后concat得到最终字符串
+    - lua 的随机种子，在初始化环境的时候已经设置过了。不要在后续其他地方重复设置，以免破坏随机序列，出现意想不到的问题。
+    - 不要将稀疏数组做 json.encode()
+    - 客户端 Lua 代码实时更新
+        - 客户端实现了 Lua Reload：游戏运行时，对已有 Lua 代码进行少量修改的话（增 or 删成员函数、修改函数实现、打 log 看数据等等），可以直接按快捷键 F2 热更生效，避免重开游戏，跳过 Unity 重编、资源检查的冗长时间。
+        - 极少数目录的 Lua 代码不支持 Reload，主要是部分代码写法不支持 reload，会导致报错，所以做了排除。后续可能会重写，方便覆盖更多的 Lua 文件
+- 插件
+    - 代码中杜绝单词拼写错误
+        - VSCode 安装插件 Code Spell Checker，在该插件的设置中（有需求自己定制）
+        - Enable FileTypes 添加 lua
+        - Ignore Words 中添加 tostring

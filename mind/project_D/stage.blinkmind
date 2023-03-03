@@ -2350,7 +2350,15 @@
         },
         {
           "type": "TOPOLOGY",
-          "data": ""
+          "data": {
+            "nodes": [],
+            "lines": [],
+            "lineName": "curve",
+            "fromArrowType": "",
+            "toArrowType": "triangleSolid",
+            "scale": 1,
+            "locked": 0
+          }
         }
       ]
     }
