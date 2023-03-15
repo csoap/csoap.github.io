@@ -1,0 +1,117 @@
+---
+layout:     post
+title:      "ProjectD大地图技术应用"
+subtitle:   ""
+date:       2023-03-15
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - slg
+---
+1. 业务场景
+支撑发行机型下的大地图业务承载。
+1.1 性能目标
+● 内存：安卓端不超过1G（目前750~950MB 不等，需要再完整跑全流程测试）
+● 帧率：同屏幕部队数量50v50，目标帧率30Fps
+● 包体：目前包体大小340MB
+2. 地图数据分片
+2.1 背景
+格子数据由3个大数组组成,如：cellArray[block] = compressVal
+compressVal 数据格式  AABBCCDDDDDD （AABB州郡，CC高度，DDDDDD资源）
+![](/img/in-post/post-js-version/projectD/compressVal.png)
+
+尺寸：100 * 100，三个大数组长度10000，内存占用768KB，table更新耗时0.56ms
+尺寸修改为 2000 * 2000， 内存占用192MB，耗时220ms
+loading界面载入地图数据过久、且lua内存过大
+
+2023.03.03调整
+地图分片策略调整：
+1. 分片数量最大值18，超过18，理解卸载旧的地图分片，保证内存稳定一个范围
+2. 写入地图分片前优先卸载分片
+3. 地图分片由100*100 修改为50*50，缩小为原来1/4
+出生地内存变化：
+![](/img/in-post/post-js-version/projectD/splitMap1.jpg)
+![](/img/in-post/post-js-version/projectD/splitMap2.jpg)
+2.2 实现方案
+1. 关键字：分片、九宫格、延迟卸载
+2. 关键代码：MapDataSystem.lua
+3. loding阶段（登录之后、进入大地图之前），加载领主出生点所在分片，以及所在分片周边的分片格子，参考下图，如出生点所在分片为5，那么就要加载1-9 的所有分片地图，如果出生点为在3，加载2、3、5、6分片地图。
+![](/img/in-post/post-js-version/projectD/9grid.png)
+4. 分片尺寸怎么确定？
+  a. 结合当前aoi半径16，分片尺寸必须 大于 16 * 2，且为了避免地图分片文件太多，定位尺寸100 * 100。
+5. 如何判定当前地图分片是否需要变化？
+  a. 分片中心：MapDataSystem:getCenterPieceId(centerBlockId, width)
+  b. aoi视野中心变更的时候判定地图分片中心是否变更，如分片中心从5变为6，那么1、4、7 地块变为可以卸载的地图分片，并判断是否有新分片需要加载。
+6. 玩家出生点附近九宫格永不卸载
+7. 保护处理：避免设备加载分片过慢，如果在拖拽屏幕情况下导致分片未提前加载的情况下也会加载迷雾。
+
+![](/img/in-post/post-js-version/projectD/aoi1.png)
+2.3 处理前后对比
+处理前：lua内存：36MB ，写入整个地图数据 227MB，内存占用约190ＭＢ
+处理后：
+lua内存：38MB, 写入区域地图数据 60MB，内存占用约22MB
+文件情况：400个地图分片文件、1个main文件，总共12.2MB大小
+2. AOI刷新
+
+![](/img/in-post/post-js-version/projectD/aoi2.png)
+2.1 实现方案
+● 当前方案：
+  ○ 由客户端向服务端告知当前aoi中心点:Cmd_HugeMap_EnterAoiBlock_CS
+  ○ 服务端依据这个中心点作为客户端的关注区中心，中心点所在半径范围内的场景对象通过同步Cmd_MapAoiUpdate_SC通知。
+  ○ 客户端每次在服务端中心变化之后执行aoi刷新：包括静态资源和场景对象。
+● 存在的问题：
+  ○ 单次aoi刷新同时处理静态资源和场景对象，虽然模型资源是异步加载的，但是逻辑数据是同步处理的，同一帧数据处理压力较大，会出现掉帧。
+  ○ 因为网络请求延迟，存在因为网络回包未到的情况下，静态资源未刷新，网络卡顿感较明显。（接入跳转加载迷雾后比较不容易看出来）
+● 后续调整方向：
+  ○ 动静分离，新增静态、动态刷新阀值。静态阀值小于动态阀值。
+    ■ 静态阀值：屏幕移动超过一段距离处理aoi下的静态最远刷新
+    ■ 动态阀值：屏幕移动超过一段距离，告知服务端中心变化，等待服务端通知最新的场景对象进行刷新。场景对象更新后，再处理依赖场景对象的静态数据，如视野、迷雾等。
+  ○ 静态资源加载分类型、级别，按优先级处理，目前耗时较严重的是地块和地块边界线，在显示效果上确是优先级较高的，应该在刷新屏幕的时候就已存在。
+  ○ 减少客户端aoi半径，避免同一时间处理的模型加载过多
+● 可能存在的问题：
+  ○ 触发客户端aoi刷新频率提高，需要观察调整前后性能差异。
+  ○ aoi下的模型现在都是异步加载，可能出现部分模型突然出现，需要跟策划沟通下，如场景对象突然出现是否可以接受。
+● 后续优化点（TODO,完成以后来补充前后对比差异）
+  ○ aoi刷新之后缓存aoi范围内格子高频数据的配置，做一个缓存中间层，避免逻辑业务遍历的时候读取配置嵌套函数过多
+  ○ aoi格子结构由set调整为table，可以节省2/3的耗时
+  ○ aoi静态数据分层细化，如资源地刷新一帧、山脉刷新一帧等
+3.大地图坐标系
+4. 问题&解决
+4.1 VectorPool
+![](/img/in-post/post-js-version/projectD/problem1.png)
+4.2 SlgMap高频接口调整
+![](/img/in-post/post-js-version/projectD/problem2.png)
+4.３格子遍历耗时
+aoi刷新时候会计算范围内的格子数据放在Set结构里，当在格子数量较高遍历的时候，ipars()、has()等函数耗时相比table的遍历更耗时
+uwa性能周报：
+
+![](/img/in-post/post-js-version/projectD/problem3.png)
+对比代码：
+```lua
+    local count = 600
+    LuaProfiler.BeginSampleCustom("czz1")
+    local t = {}
+    for i = 1, count, 1 do
+        t[i] = true
+    end
+    for k, v in pairs(t) do
+        if t[k] then
+        end
+    end
+    t = nil
+    LuaProfiler.EndSampleCustom()
+
+
+    LuaProfiler.BeginSampleCustom("czz2")
+    local s = Set()
+    for i = 1, count, 1 do
+        s:add(i)
+    end
+    for block in s:pairs() do
+        if s:has(block) then
+        end
+    end
+    s = nil
+    LuaProfiler.EndSampleCustom()
+```
+![](/img/in-post/post-js-version/projectD/problem4.png)
