@@ -1,0 +1,30 @@
+---
+layout:     post
+title:      "DOTS"
+subtitle:   "DOTS"
+date:       2023-04-14
+author:     "CSoap"
+header-img: "img/home-bg-o.jpg"
+tags:
+    - DOTS
+---
+- DOTS 主要由三部分组成
+    - C#任务系统（Job System），用于高效运行多线程代码
+    - 实体组件系统， 用于默认编写高性能代码
+    - Burst编译器，用于生成高度优化的本地代码
+    - Job System 和ECS是两个不同的概念，两者组合在一起才能发挥最大优势，当然也可以分开利用
+- C#任务系统
+    - Job System对外之前，unity虽然内部是多线程处理，但是外部的代码必须都跑在主线程上
+    - C#虽然支持Thread，但是在unity中只能处理数据，例如网络消息、下载等，如果想在Thread中调用Unity的APi是不能的
+    - Job System 可以充分利用CPU的多核，如，在多线程中修改Transform旋转、缩放、平移等。MMO游戏碰撞检测、大量同步角色坐标、血条飘字等 比较适合
+    - Unity没有直接将Thread开放出来，可以有效避免Thread被滥用，开发者可放心使用Job而不用太多关心线程安全等问题
+    - Job最好配合Burst编译器，这样能生成高效的本地代码
+- HPC#(高性能 C＃)
+    - .Net Core 比C++ 慢2倍
+    - Mono比.Net Core 慢3倍
+    - IL2CPP比Mono块2-3倍，IL2CPP与.NET core 效率相当，但是依然比C++ 慢2倍
+    - Unity使用Burst编译后可以让C#代码运行效率比C++更快 （来自c#作者官方， https://aras-p.info/blog/2018/03/28/Daily-Pathtracer-Part-3-CSharp-Unity-Burst/）
+- HPC#介绍
+    - C# class类型数据的内存是分配在堆上，没办法主动释放，必须等到.NET垃圾回收才可以真正清理
+    - IL2CPP虽然是将IL转成C++代码，实际还是模拟了.Net的垃圾回收机制，所以效率并非等同于C++
+    - 
