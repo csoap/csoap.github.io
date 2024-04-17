@@ -1,0 +1,83 @@
+{
+  "rootTopicKey": "5f4f240b-b959-41c8-8b5d-a086709c4e7a",
+  "editorRootTopicKey": "5f4f240b-b959-41c8-8b5d-a086709c4e7a",
+  "focusKey": "5f4f240b-b959-41c8-8b5d-a086709c4e7a",
+  "extData": {},
+  "topics": [
+    {
+      "key": "5f4f240b-b959-41c8-8b5d-a086709c4e7a",
+      "parentKey": null,
+      "subKeys": [
+        "c4618b6d-f449-4acb-94aa-a823eb871a1a"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": ""
+        }
+      ]
+    },
+    {
+      "key": "c4618b6d-f449-4acb-94aa-a823eb871a1a",
+      "parentKey": "5f4f240b-b959-41c8-8b5d-a086709c4e7a",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": ""
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 2,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}
