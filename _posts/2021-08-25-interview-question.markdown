@@ -102,3 +102,60 @@ tags:
 		- 腾讯的面试没有我想象中那么难，一方面可能是因为我之前面试过很多公司，经验已经很丰富了吧。另一方面可能是运气好吧，我推测他们可能正缺人。
 - 面试没通过之后怎么办
 	- 面试没通过是很正常的，重要的在于需要知道自己为什么没通过。如果你面试答得本来就不好拿那就很简单了，自己缺那部分知识点有针对性的补。如果感觉自己还可以，但是面试没过可以问hr自己哪方面的能力不太行，希望以后还有机会跟贵公司合作。不要怕不好意思，反正你都没过了还怕啥。一般hr都会告诉你你的不足在哪里。
+
+- 杭州无端 xgf
+	- cpu 123级缓存大小
+	- 怎么提高缓存命中率,具体一点,chunk内存需要控制在多少内缓存命中率最高
+	- C#
+		- 使用List和Dict对耗时有什么需要注意的实现
+		- Dict里再Hash是什么?
+		- delegate Action Func 这三个在使用中有什么注意实现
+		- interface是在栈里还是堆里
+		- class继承interface是在哪里
+		- struct继承interface是在哪里
+	- 多线程在移动平台怎么选择绑定大小核
+		- https://developer.huawei.com/consumer/cn/forum/topic/0201676881402080409
+			1. Unity绑核策略
+			Unity中会优先将重载线程放到Unity判定的大核运行。
+
+			Unity默认判定大核条件：
+
+			优先级1：读取每个的cpu的cpu_capacity
+
+			当前cpu_capacity / 所有cpu中cpu_capacity的最大值 >=0.85则认为是大核
+
+			优先级2：读取CPU的最高频率（cpuinfo_max_freq或scaling_max_freq），
+
+			当前cpu的最高频率 / 所有cpu最高频率最大值 >=0.85则认为是大核
+
+			cpu_capacity路径：/sys/devices/system/cpu/cpu?/cpu_capacity
+
+			cpuinfo_max_freq路径：/sys/devices/system/cpu/cpu?/cpufreq/cpuinfo_max_freq
+
+			scaling_max_freq路径：/sys/devices/system/cpu/cpu?/cpufreq/scaling_max_freq
+
+			说明：部分机型无cpu_capacity，如Kirin960
+
+			cpu实时频率：/sys/devices/system/cpu/cpu?/cpufreq/scaling_cur_freq
+
+			2. Unity绑核默认策略可能会遇到的问题
+			a.问题描述：部分高端芯片平台（1+3+4架构），可能因Unity 0.85的阈值的设置，只把CPU7作为大核，导致逻辑线程和渲染线程等均在CPU7运行，造成了功耗过高的结果。
+
+			b.问题现象：Systrace可以看到，主要线程都被安排在CPU7上，CPU456处于空闲状态。
+
+			这种情况会导致，逻辑和渲染线程之间互相抢占，增加掉帧的风险。
+
+			大多情况大核能耗整体会高于中核，造成功耗浪费。
+
+			c.可能触发条件：
+
+			-        大核+中核+小核架构，且中核能力也很强，中核就可以满足游戏需求。
+
+			-        游戏的逻辑和渲染线程在同一核上抢占
+
+			-        手机系统层面没有解绑线程并重新绑定线程的调度策略
+
+			3. 修改建议
+			a. 游戏存在逻辑线程渲染线程等多个线程，建议不要将逻辑渲染等放在一个线程，可以放在中核或中大核上
+
+			b. 在Unity给出现如上问题的机型加上添加白名单，根据问题机型0.85的阈值降低，最终将使得中核和大核都被认定为大核。
