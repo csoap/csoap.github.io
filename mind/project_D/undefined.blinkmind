@@ -17,7 +17,15 @@
         },
         {
           "type": "TOPOLOGY",
-          "data": ""
+          "data": {
+            "nodes": [],
+            "lines": [],
+            "lineName": "curve",
+            "fromArrowType": "",
+            "toArrowType": "triangleSolid",
+            "scale": 1,
+            "locked": 0
+          }
         }
       ]
     }
@@ -68,5 +76,5 @@
       }
     }
   },
-  "formatVersion": null
+  "formatVersion": "0.0"
 }

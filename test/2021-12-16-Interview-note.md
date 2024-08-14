@@ -297,12 +297,11 @@ tags:
 - funplus 广州 slg 22.1.21 16：00
     - 一面 项目组主程 + 中台技术负责人
         - 问题大同小异
-        - canvas用的render mode是什么, 答:摄像机
-            - 需要了解一下 camera 的projection: 正交(平行的),另一种是透视
+        - canvas用的render mode
+        - 补充:camera 的projection: 正交(平行的),另一种是透视
     - 二面 其他项目组主程 交叉面
         - 简历相关
             - 最有技术难点的
-                - 活动框架重构,红点,6方格地块
             - 图集
             - lua优化
             - 分级策略
