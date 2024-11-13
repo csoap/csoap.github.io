@@ -15,7 +15,54 @@ tags:
 - 20 个最常用的、最基础数据结构与算法
     - 10 个数据结构：数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie 树
     - 10个算法：递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法
+- C# 常见数据结构 名字与含义
+> 在C#中，有许多内置的数据结构，它们是.NET框架的一部分。这些数据结构在System.Collections、System.Collections.Generic、System.Collections.Concurrent和System.Collections.Specialized等命名空间中定义。选择合适的数据结构通常取决于你的特定需求，例如性能要求、数据类型、数据大小以及是否需要线程安全等。以下是一些常见的数据结构及其含义：
+> 1. Array (数组) - 固定大小的数据结构，可以存储相同类型的元素。数组的索引从0开始。
+List (列表) - 可调整大小的序列集合。可以动态地添加和移除项，而不需要担心空间限制。
+> 2. LinkedList (链表) - 由节点组成的序列，每个节点都包含数据和指向列表中下一个节点的引用。支持快速的插入和删除操作。
+> 3. Stack (栈) - 后进先出（LIFO）的集合。支持两种主要操作：push（添加一个元素到栈顶）和pop（移除栈顶元素）。
+> 4. Queue (队列) - 先进先出（FIFO）的集合。元素从队列的一端添加，并从另一端移除。
+> 5. HashSet (哈希集合) - 一个不包含重复元素的集合。它使用哈希表来存储元素，因此查找效率很高。
+> 6. Dictionary (字典) - 键值对的集合，其中每个键都是唯一的。它也是基于哈希表的，因此查找特定键的值非常快。
+> 7. SortedSet (排序集合) - 不包含重复元素的集合，并且所有元素都是按顺序排列的。
+> 8. SortedList (排序列表) - 键值对的集合，其中键是唯一的并且按顺序排列。它结合了数组和哈希表的特点
+> 9. Concurrent Collections (并发集合) - 如ConcurrentDictionary, ConcurrentQueue, ConcurrentStack等，它们是线程安全的集合，可以在多线程环境中使用而不需要额外的同步或锁定。
+> 10. ObservableCollection (可观察集合) - 当项被添加、删除或整个列表被刷新时，它会提供通知。这在数据绑定，特别是在WPF和Xamarin中非常有用。
+> 11. Tuple (元组) - 一个可以存储不同类型元素的数据结构，但它是不可变的，一旦创建就不能更改。
+> 12. ValueTuple (值元组) - 类似于Tuple，但它是可变的，并且通常用于方法返回多个值的场景。
+> 13. Record (记录) - C# 9.0中引入的一种类型，用于创建不可变对象，它自动支持值比较而不是引用比较。
 
+- c# 内置数据结构,线程安全
+    - 是否支持线程安全
+        - 在C#中，大多数基本的集合类型（如List<T>, Dictionary<TKey, TValue>, HashSet<T>等）本身并不是线程安全的。如果你需要在多线程环境中使用这些集合，你需要自己实现同步机制，比如使用锁（lock语句）来保护对集合的访问。.NET提供了一些专门设计为线程安全的集合，这些集合位于System.Collections.Concurrent命名空间,如ConcurrentDictionary,ConcurrentQueue,ConcurrentStack 等
+    - 什么情况下会出现
+        - 同时写入操作：如果两个或更多的线程尝试同时向 Dictionary 添加、删除或更新键值对，内部数据结构可能会损坏，导致数据丢失、异常或不一致的状态。
+        - 读写操作并发：一个线程正在读取 Dictionary 中的数据，而另一个线程同时尝试修改数据（添加、删除或更新键值对），这可能会导致读取操作得到不一致或过时的数据。
+        - 枚举器无效：当一个线程正在遍历 Dictionary（例如使用 foreach 循环）时，如果另一个线程修改了集合（添加或删除元素），则会使当前的枚举器失效，并抛出 InvalidOperationException
+    - 代码如何避免
+        - 锁定：使用 lock 语句在访问 Dictionary 时创建一个同步块。这可以确保在同一时间只有一个线程可以修改 Dictionary。
+        - 即使使用了锁定或线程安全的集合，也需要仔细设计代码以避免死锁、竞态条件和其他并发问题
+        ```csharp
+            private Dictionary<int, string> myDictionary = new Dictionary<int, string>();
+            private readonly object myLock = new object(); // lock
+
+            public void SafeWrite(int key, string value)
+            {
+                lock (myLock)
+                {
+                    myDictionary[key] = value;
+                }
+            }
+
+            public string SafeRead(int key)
+            {
+                lock (myLock)
+                {
+                    return myDictionary.TryGetValue(key, out string value) ? value : default;
+                }
+            }
+
+        ```
 - 栈,用数组实现的栈叫做顺序栈,用链表实现的栈叫做链式栈
     ```csharp
     //数组实现的栈
@@ -97,11 +144,73 @@ tags:
     ```
     - 循环队列
         - 首尾相连，扳成了一个环
+        ```csharp
+        public class CircularQueue<T>
+        {
+            private T[] queue;
+            private int front = 0;
+            private int rear = 0;
+            private int count = 0;
+            private int capacity;
+
+            public CircularQueue(int size)
+            {
+                capacity = size;
+                queue = new T[capacity];
+            }
+
+            public bool IsEmpty()
+            {
+                return count == 0;
+            }
+
+            public bool IsFull()
+            {
+                return count == capacity;
+            }
+
+            public void Enqueue(T item)
+            {
+                if (IsFull())
+                {
+                    throw new InvalidOperationException("Queue is full");
+                }
+                queue[rear] = item;
+                rear = (rear + 1) % capacity; // 模运算 % 来实现循环效果
+                count++;
+            }
+
+            public T Dequeue()
+            {
+                if (IsEmpty())
+                {
+                    throw new InvalidOperationException("Queue is empty");
+                }
+                T item = queue[front];
+                front = (front + 1) % capacity;
+                count--;
+                return item;
+            }
+
+            public T Peek()
+            {
+                if (IsEmpty())
+                {
+                    throw new InvalidOperationException("Queue is empty");
+                }
+                return queue[front];
+            }
+        }
+        ```
     - 阻塞队列
         - 基于阻塞队列实现的"生产者 - 消费者模型"
         - 队列基础上增加了阻塞操作。简单来说，就是在队列为空的时候，从队头取数据会被阻塞。因为此时还没有数据可取，直到队列中有了数据才能返回；如果队列已经满了，那么插入数据的操作就会被阻塞，直到队列中有空闲位置后再插入数据，然后再返回
+        - 应用场景
+            - 任务调度.在多线程应用程序中，可以使用阻塞队列来管理和分配任务。工作线程（消费者）可以从队列中取出任务并执行，而任务的提交者（生产者）将任务放入队列。
+
     - 并发队列
         - 线程安全的队列
+        - 在.NET中，System.Collections.Concurrent.ConcurrentQueue<T> 是并发队列的一个实现
         - 直接在 enqueue()、dequeue()方法上加锁，但是锁粒度大并发度会比较低，同一时刻仅允许一个存或者取操作
 
 - 跳表
@@ -387,17 +496,38 @@ tags:
             - 发明平衡二叉查找树这类数据结构的初衷是，解决普通二叉查找树在频繁的插入、删除等动态更新的情况下，出现时间复杂度退化的问题
             - 平衡二叉查找树中“平衡”的意思，其实就是让整棵树左右看起来比较“平衡”，这样就能让整棵树的高度相对来说低一些，相应的插入、删除、查找等操作的效率高一些
     - 红黑树
+        - 一句话概述
+            - 红黑树是一种自平衡二叉搜索树，通过对节点进行颜色标记并在树操作中维护严格的平衡规则，以确保最长路径不超过最短路径的两倍，从而实现对数级的查找、插入和删除时间复杂度
         - https://www.cnblogs.com/tiancai/p/9072813.html
         - 一种**不严格**的平衡二叉查找树,高度差不一定
         - 红黑树是“近似平衡”的,近似平衡”就等价为性能不会退化的太严重,
-            - 如何证明平衡?红黑树的高度是否比较稳定地趋近log n 
+            - 如何证明平衡?红黑树的高度是否比较稳定地趋近log n
         - what
-            - 红黑树中的节点，一类被标记为黑色，一类被标记为红色
-            - 满足要求
-                - 根节点是黑色的
-                - 每个叶子节点都是黑色的空节点（NIL），也就是说，叶子节点不存储数据
-                - 任何相邻的节点都不能同时为红色，也就是说，红色节点是被黑色节点隔开的
-                - 每个节点，从该节点到达其可达叶子节点的所有路径，都包含相同数目的黑色节点
+            ```
+            红黑树是一种自平衡二叉搜索树，它在插入和删除操作后能够保持大致的平衡，从而保证搜索操作的最坏情况时间复杂度为 O(log n)，其中 n 是树中元素的数量。红黑树通过确保从根到叶子的最长路径不会超过最短路径的两倍来维持平衡。
+
+            红黑树的每个节点都有一个颜色属性，可以是红色或黑色。为了维持平衡，红黑树必须满足以下五个重要性质：
+
+            节点颜色：每个节点要么是红色的，要么是黑色的。
+
+            根节点：根节点总是黑色的。
+
+            叶子节点：所有叶子节点（也称为 NIL 节点或空节点）都是黑色的。
+
+            红色节点规则：如果一个节点是红色的，则它的两个子节点都必须是黑色的（也就是说，不能有两个连续的红色节点）。
+
+            黑色平衡：从任何一个节点到其每个叶子节点的所有路径都包含相同数量的黑色节点。
+
+            这些性质确保了红黑树的关键操作（插入、删除、查找）都能在对数时间内完成。下面是这些操作的简单概述：
+
+            插入：在插入新节点时，节点初始被着色为红色。如果插入违反了红黑树的性质，就需要通过旋转和重新着色节点来修复这些性质。可能需要的操作包括改变节点颜色、左旋和右旋。
+
+            删除：删除节点可能比插入更复杂，因为它可能需要多次旋转和重新着色来保持红黑树的性质。删除操作分为两步：首先找到要删除的节点，如果该节点有两个子节点，则用其后继节点（通常是其右子树中的最小节点）替换它；然后调整树的结构和颜色，以保持红黑树的性质。
+
+            查找：查找操作与普通二叉搜索树相同，从根节点开始，根据键值与当前节点的比较结果向左或向右遍历树，直到找到相应的节点或到达叶子节点。
+
+            红黑树的设计使得它在实际应用中非常有用，特别是在那些需要频繁插入和删除的场景中，因为它能够在这些操作后快速恢复平衡。这就是为什么它被广泛用于实现许多高级数据结构，如 Java 的 TreeMap 和 TreeSet，以及 C# 的 SortedDictionary 和 SortedSet。
+            ```
     - 散列表 跳表 红黑树 对比
         - 散列表：插入删除查找都是O(1), 是最常用的，但其缺点是不能顺序遍历以及扩容缩容的性能损耗。适用于那些不需要顺序遍历，数据更新不那么频繁的。
         - 跳表：插入删除查找都是O(logn), 并且能顺序遍历。缺点是空间复杂度O(n)。适用于不那么在意内存空间的，其顺序遍历和区间查找非常方便。
