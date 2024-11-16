@@ -91,6 +91,7 @@ tags:
                 - 0.052457094192505
 
 - luajit
+    - link https://www.cnblogs.com/zwywilliam/p/5999980.html
     - trace compiler(跟踪编译)的特征：先运行字节码，针对热点代码做profile，了解了可以优化的点后再优化出最高效的机器码。这就是luajit目前的做法。
 - 精简你的lua导出，否则IL2CPP会是你的噩梦
     - 网上已经有非常多IL2CPP导致包体积激增的抱怨，而基于lua静态导出后，由于生成了大量的导出代码。这个问题又更加严重。
